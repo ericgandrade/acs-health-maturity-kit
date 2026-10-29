@@ -11,8 +11,6 @@ Answer 76 questions in an Excel workbook, or let an AI assistant guide you throu
 ![HHS goals](https://img.shields.io/badge/HHS%20CPGs-20%2F20-orange.svg)
 ![Agents](https://img.shields.io/badge/AI%20agents-5-purple.svg)
 
-Created by Eric Gomes de Andrade (Andrade Consulting Services).
-
 ---
 
 ## 📑 Contents
