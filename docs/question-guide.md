@@ -1,0 +1,3452 @@
+# Question Guide
+
+How to assess every question in the ACS Health Maturity Kit: the observable criteria for each maturity level, what to ask, what evidence proves the level and how to obtain it, the signs that an answer is overstated, what is different in hospitals and clinics, and how to reach the next level.
+
+**How to choose a level.** Pick the highest level whose description is fully true today. If part of it is missing, choose the level below. Plans and pilots do not count. A 3 or a 4 requires evidence you have seen. See [methodology.md](methodology.md) for weights and scoring.
+
+This file is generated from `data/questionnaire.csv` by `tools/build_docs.py`; the same content is in the *Question Guide* sheet of the workbook.
+
+## Contents
+
+- **[License Optimization](#license-optimization)** (24 questions) — Governance & Ownership · Entitlements · Deployment & Usage · Security Value Realization · Cloud Cost · Programs & Negotiation
+- **[App Modernization](#app-modernization)** (24 questions) — Portfolio Visibility · Lifecycle & Supportability · Rationalization & Roadmap · Engineering & Release · Resilience & Recovery · Cloud & Data Readiness
+- **[Zero Trust](#zero-trust)** (28 questions) — Identity · Devices · Networks · Applications & Workloads · Data · Visibility & Analytics · Governance & Readiness
+
+---
+
+## License Optimization
+
+### Governance & Ownership
+
+#### LO-01 — Is a named person accountable for software licensing, renewals and license compliance?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** ISO/IEC 19770-1; NIST CSF 2.0 GV.RR
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No one is accountable; renewals and true-ups are handled by whoever receives the vendor's or reseller's email. |
+| 1 – Initial | An IT staff member handles Microsoft licensing informally alongside other duties; responsibilities are not written down and finance signs contracts separately. |
+| 2 – Developing | A SAM owner is named for Microsoft licensing, but clinical application licenses, renewals and audit requests sit with different people and no RACI exists. |
+| 3 – Defined | A named SAM owner with a documented backup holds written responsibilities across IT, procurement, finance and compliance (RACI), covering Microsoft and the major clinical vendors. |
+| 4 – Optimized | The SAM owner reports licensing KPIs to leadership at least quarterly, the RACI is reviewed annually, and the backup has prepared at least one renewal or true-up. |
+
+**Probing questions**
+
+- Who prepared the counts for the last Microsoft renewal or true-up, and who signed it?
+- If a vendor audit letter arrived tomorrow, who would respond and who would they involve?
+- Who owns licensing for the EHR, imaging (PACS), laboratory and revenue cycle systems?
+- What happens to licensing decisions when that person is on leave or leaves the organization?
+
+**Evidence and how to obtain it**
+
+- RACI, charter or job description naming the SAM owner and backup — IT governance or HR documents.
+- The last two renewal or true-up packages showing who prepared, reviewed and approved them — procurement or finance files.
+- Contract owner list for every software vendor — contract management system or contract spreadsheet.
+
+**Red flags**
+
+- The named owner cannot state the date of the next Microsoft renewal or anniversary.
+- Ownership is assigned to "the reseller" or "the MSP" with no internal accountable person.
+
+**Healthcare considerations**
+
+- In small hospitals the CFO or purchasing office often signs software contracts while a two- or three-person IT team runs the tenant; without a bridging owner, true-ups are signed on reseller-supplied counts.
+- Clinical application licenses are frequently bundled into EHR, PACS or laboratory vendor contracts managed by the department or the health information management office, outside IT's view.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Name an interim SAM owner and list every software vendor with its contract owner (days).
+- **To 3 – Defined:** Publish a RACI across IT, finance, procurement and compliance and assign a trained backup (weeks).
+- **To 4 – Optimized:** Add licensing KPIs to quarterly leadership reporting and review the RACI annually (months).
+
+**Recommended action if gap:** Name a SAM owner with a backup and publish a RACI covering IT, finance, procurement, compliance and clinical application contracts.
+
+**Sources:** <https://www.finops.org/framework/phases/>
+
+#### LO-02 — Are licensing decisions governed by a documented policy (requests, approvals, reharvesting, retirement)?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** ISO/IEC 19770-1; NIST CSF 2.0 GV.PO
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No policy exists; licenses are bought or assigned on request by whoever has admin rights. |
+| 1 – Initial | Unwritten habits exist (for example, "ask IT first"), but purchases also happen on departmental credit cards and through vendor portals. |
+| 2 – Developing | A draft or partial policy covers Microsoft 365 requests, but not reharvesting, retirement, SaaS purchases or clinical application licenses. |
+| 3 – Defined | An approved policy defines request, approval, assignment, reharvesting and retirement for all software, and tickets show it is followed for new purchases and departures. |
+| 4 – Optimized | Policy compliance is measured (for example, purchases outside the process, time to reharvest), exceptions are logged and approved, and the policy is reviewed annually. |
+
+**Probing questions**
+
+- Walk me through the last license request: who asked, who approved, how was it assigned and recorded?
+- Can a department buy a SaaS tool or extra seats on a credit card or through a vendor portal without IT knowing?
+- What does the policy say should happen to a license when a user leaves, changes role or goes inactive?
+- When was the policy last approved, and by whom?
+
+**Evidence and how to obtain it**
+
+- Approved software licensing policy with version and approval date — policy library.
+- Sample of five recent license request tickets showing approval and assignment — service desk.
+- Card or accounts-payable report of software purchases outside procurement — finance.
+
+**Red flags**
+
+- The policy exists but no ticket references it.
+- Licenses are assigned directly in the admin center with no request record.
+
+**Healthcare considerations**
+
+- Medical staff, residents, students and agency staff join and leave on different calendars than employees; the policy must state who requests and removes licenses for each group (HR, medical staff office, education coordinator).
+- Departments such as radiology, laboratory and pharmacy often buy add-on modules directly from clinical vendors; require these purchases to pass through the same approval and recording step.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Write a one-page request and approval rule for Microsoft 365 and enforce it through the service desk (weeks).
+- **To 3 – Defined:** Extend the policy to reharvesting, retirement, SaaS and clinical application purchases and get it approved (one to two months).
+- **To 4 – Optimized:** Measure off-process purchases and reharvest time and review the policy annually (months).
+
+**Recommended action if gap:** Approve a licensing policy covering request, approval, assignment, reharvesting and retirement for all software, enforced through the service desk.
+
+**Sources:** <https://www.finops.org/framework/phases/>
+
+#### LO-03 — Are renewals tracked in a calendar and reviewed well before expiry?
+
+**Weight:** 3 · **HHS CPG:** — · **References:** FinOps Framework (Operate)
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Renewal dates are unknown until an invoice or an auto-renewal notice arrives. |
+| 1 – Initial | The Microsoft renewal date is known, but clinical and SaaS renewals are not tracked and usage review starts within the last month. |
+| 2 – Developing | A renewal list exists for major contracts, but review starts less than 90 days before expiry and auto-renewal and notice clauses are not recorded. |
+| 3 – Defined | Every agreement is in a renewal calendar with notice periods and auto-renewal terms, and usage and needs are reviewed at least six months before each major renewal. |
+| 4 – Optimized | Renewal preparation follows a standard timeline (for example 9, 6 and 3 months), outcomes are compared with targets, and lessons feed the next renewal. |
+
+**Probing questions**
+
+- When does your Microsoft agreement or subscription term end, and what is the last date to reduce quantities or change plans?
+- Which contracts auto-renew, and what notice period applies?
+- For the last renewal, when did preparation start and what changed as a result?
+- Where are the EHR, PACS and other clinical renewal dates recorded?
+
+**Evidence and how to obtain it**
+
+- Renewal calendar listing agreement, term end, notice period and auto-renewal status — contract register.
+- Subscription term end dates and renewal settings — Microsoft 365 admin center (Billing > Your products) or the reseller portal.
+- Minutes or notes from the last renewal review showing the start date — procurement files.
+
+**Red flags**
+
+- Annual-term subscriptions auto-renewed at the same quantity although headcount changed.
+- "The reseller reminds us" is the only tracking mechanism.
+
+**Healthcare considerations**
+
+- Budget cycles in hospitals are often fixed months in advance; a renewal reviewed after the budget is set cannot fund a plan change or security add-on.
+- Clinical vendor contracts often have long notice periods and multi-year terms tied to support for regulated workflows; miss the notice window and the hospital is locked in for another term.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Build a renewal calendar for all Microsoft, SaaS and clinical contracts with term end and notice dates (weeks).
+- **To 3 – Defined:** Start usage and needs review at least six months before each major renewal (next renewal cycle).
+- **To 4 – Optimized:** Adopt a 9-6-3 month renewal timeline and record outcomes against targets (months).
+
+**Recommended action if gap:** Keep a renewal calendar with notice dates for every contract and start Microsoft renewal reviews at least six months before term end.
+
+**Sources:** <https://learn.microsoft.com/en-us/partner-center/customers/new-commerce-license-based> · <https://www.finops.org/framework/phases/>
+
+#### LO-04 — Is licensing cost reported to leadership with trends and per-user metrics?
+
+**Weight:** 1 · **HHS CPG:** — · **References:** FinOps Framework (Inform); NIST CSF 2.0 GV.OV
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Licensing cost is visible only as invoice lines in the general ledger. |
+| 1 – Initial | IT can total annual licensing spend on request, but no regular report exists. |
+| 2 – Developing | An annual licensing total is reported in the budget, without per-user cost, trend or waste figures. |
+| 3 – Defined | Leadership receives at least a semiannual report showing licensing cost by vendor, cost per user, unassigned and inactive licenses, and savings achieved. |
+| 4 – Optimized | The report is produced at least quarterly from reconciled data, includes targets and trends, and leadership uses it in budget and renewal decisions. |
+
+**Probing questions**
+
+- What did the organization spend on software licenses last year, and how was the number produced?
+- What is your cost per user per month for Microsoft 365, and how has it moved over two years?
+- Has leadership ever changed a decision because of a licensing report?
+
+**Evidence and how to obtain it**
+
+- Last licensing report presented to leadership — board, finance committee or IT steering pack.
+- Data behind the report (license counts, invoices) and the date it was reconciled — SAM owner's workbook.
+
+**Red flags**
+
+- Reported savings are list-price estimates, not invoice changes.
+- Per-user cost is calculated on total headcount instead of licensed users.
+
+**Healthcare considerations**
+
+- Rural and critical access hospitals operate on thin margins; showing licensing cost per user next to the security gaps it could fund makes reinvestment decisions possible.
+- Separate employed staff, contracted clinicians and affiliated physician practices in the metrics; mixing them hides who is consuming licenses.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Produce a one-page annual licensing cost summary by vendor from invoices (weeks).
+- **To 3 – Defined:** Add cost per user, unassigned and inactive licenses, and savings, reported at least semiannually (one quarter).
+- **To 4 – Optimized:** Report quarterly from reconciled data with targets and link it to budget and renewal decisions (months).
+
+**Recommended action if gap:** Report licensing cost, cost per user, unused licenses and realized savings to leadership at least semiannually from reconciled data.
+
+**Sources:** <https://www.finops.org/framework/phases/> · <https://learn.microsoft.com/en-us/microsoft-365/admin/activity-reports/activity-reports>
+
+### Entitlements
+
+#### LO-05 — Is there a complete, current record of all Microsoft entitlements (agreements, products, quantities, terms)?
+
+**Weight:** 3 · **HHS CPG:** — · **References:** ISO/IEC 19770-1; NIST CSF 2.0 ID.AM
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Nobody can say which Microsoft agreements are active or how many licenses were purchased. |
+| 1 – Initial | Quantities are read from the admin center when needed; agreement numbers, terms and perpetual on-premises licenses are not recorded. |
+| 2 – Developing | A spreadsheet lists cloud subscriptions and quantities, but perpetual licenses, Software Assurance, server and SQL Server licensing and term dates are incomplete. |
+| 3 – Defined | One register lists every Microsoft agreement, product, quantity, term, channel (EA, CSP, MCA) and Software Assurance status, updated after each purchase and matched to the admin center. |
+| 4 – Optimized | The register is reconciled automatically or monthly against the admin center, reseller portal and invoices, and discrepancies are tracked to closure. |
+
+**Probing questions**
+
+- Which agreements do you have with Microsoft or through a reseller today, and how did you confirm that?
+- Do you own perpetual Windows Server or SQL Server licenses, and is Software Assurance active on them?
+- Are there subscriptions bought by another department or a former reseller in a different billing account?
+- How many licenses of each product were purchased versus showing in the admin center?
+
+**Evidence and how to obtain it**
+
+- Entitlement register with agreement numbers, products, quantities and terms — SAM owner's repository.
+- Product and license counts — Microsoft 365 admin center, Billing > Your products and Licenses.
+- Volume licensing summary for perpetual licenses and Software Assurance — Microsoft 365 admin center volume licensing section or reseller statement.
+
+**Red flags**
+
+- The register shows only cloud subscriptions; on-premises server and SQL Server licenses are "in a box somewhere".
+- Counts in the register were copied from the admin center, not from purchase records.
+
+**Healthcare considerations**
+
+- On-premises EHR, interface engine and PACS servers often run Windows Server and SQL Server; entitlements for these are the most common gap and the largest compliance exposure.
+- Mergers, affiliations and former management companies leave behind separate tenants or agreements; ask about every legal entity and clinic.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Export current subscriptions and licenses from the admin center and reseller portal into one register (days).
+- **To 3 – Defined:** Add perpetual, server, SQL Server and Software Assurance entitlements with agreement numbers and terms (weeks).
+- **To 4 – Optimized:** Reconcile the register monthly against portals and invoices and track discrepancies (months).
+
+**Recommended action if gap:** Build one Microsoft entitlement register covering cloud subscriptions, perpetual server and SQL Server licenses, Software Assurance, quantities and terms.
+
+**Sources:** <https://learn.microsoft.com/en-us/azure/cost-management-billing/understand/mca-overview> · <https://learn.microsoft.com/en-us/microsoft-365/admin/activity-reports/activity-reports>
+
+#### LO-06 — Are entitlements reconciled against contracts and invoices at least annually?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** ISO/IEC 19770-1
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Invoices are paid without comparing them with what was ordered or used. |
+| 1 – Initial | Someone checks an invoice when the total looks unusual. |
+| 2 – Developing | Microsoft invoices are compared with the entitlement register once, but clinical and SaaS invoices are not, and discrepancies stay open. |
+| 3 – Defined | At least annually, entitlements, contracts and invoices are reconciled for all major vendors, and each discrepancy is resolved with the supplier and recorded. |
+| 4 – Optimized | Reconciliation runs at least quarterly with a documented method, credits and corrections are tracked, and recurring causes are fixed at the source. |
+
+**Probing questions**
+
+- When did you last compare what you were billed with what you ordered and what is assigned?
+- What discrepancies did you find, and were credits obtained?
+- Do you get invoices for products nobody recognizes?
+
+**Evidence and how to obtain it**
+
+- Last reconciliation workbook with entitlement, invoice and assignment columns — SAM owner.
+- Supplier correspondence or credit notes resulting from reconciliation — procurement or accounts payable.
+
+**Red flags**
+
+- Reconciliation compares invoices only with the reseller's own report.
+- No discrepancies have ever been found.
+
+**Healthcare considerations**
+
+- Clinical vendors often bill by metrics such as beds, encounters, studies or providers; reconcile against the operational count from the relevant department, not last year's invoice.
+- Grant- or program-funded licenses (for example, telehealth) may have separate invoices and end dates that must be tracked.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Reconcile the last twelve months of Microsoft invoices against the entitlement register (weeks).
+- **To 3 – Defined:** Reconcile all major vendors annually and resolve each discrepancy with the supplier (one quarter).
+- **To 4 – Optimized:** Reconcile quarterly with a documented method and fix recurring causes (months).
+
+**Recommended action if gap:** Reconcile entitlements, contracts, invoices and assignments for all major vendors at least annually and resolve discrepancies with suppliers.
+
+**Sources:** <https://learn.microsoft.com/en-us/azure/cost-management-billing/understand/mca-overview>
+
+#### LO-07 — Are licenses for clinical and business applications (EHR modules, imaging, laboratory, revenue cycle) inventoried in the same repository?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** NIST CSF 2.0 ID.AM
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Clinical application licenses are known only to the vendor and the department that uses them. |
+| 1 – Initial | Contracts are filed, but license metrics, quantities and renewal dates are not extracted. |
+| 2 – Developing | The EHR is recorded, but imaging, laboratory, pharmacy, revenue cycle and departmental SaaS licenses are missing or incomplete. |
+| 3 – Defined | Clinical and business application licenses are recorded in the same repository as Microsoft licenses with metric, quantity, renewal date and owner. |
+| 4 – Optimized | Application licenses are reconciled at least annually against usage or operational counts and linked to the application inventory used for modernization planning. |
+
+**Probing questions**
+
+- How is your EHR licensed (per bed, provider, encounter, module) and where is that recorded?
+- Which departmental systems were bought by the department itself?
+- Who would know if a module you pay for is not in use?
+
+**Evidence and how to obtain it**
+
+- License repository extract showing clinical and business applications with metrics — SAM owner.
+- Contract schedules or order forms for the EHR and two other clinical systems — contract files.
+
+**Red flags**
+
+- The repository lists vendors but not license metrics or quantities.
+- Modules licensed at implementation have never been reviewed for use.
+
+**Healthcare considerations**
+
+- EHR and ancillary contracts often license modules that were bought during implementation and never switched on; these are candidates for removal at renewal.
+- Some clinical licenses are tied to regulated workflows or device clearances; involve the department and clinical engineering before changing them.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Add the EHR and the five largest clinical and business applications to the repository (weeks).
+- **To 3 – Defined:** Record metric, quantity, renewal date and owner for all applications (one to two months).
+- **To 4 – Optimized:** Reconcile application licenses annually and link them to the application inventory (months).
+
+**Recommended action if gap:** Record clinical and business application licenses with metric, quantity, renewal date and owner in the same repository as Microsoft licenses.
+
+**Sources:** <https://www.finops.org/framework/phases/>
+
+#### LO-08 — Are third-party license obligations embedded in vendor systems and medical devices (e.g., bundled Windows or SQL Server) identified?
+
+**Weight:** 1 · **HHS CPG:** CPG-E: Vendor/Supplier Cybersecurity Requirements · **References:** NIST CSF 2.0 GV.SC
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Nobody knows which vendor systems or devices include Windows, SQL Server or other embedded software. |
+| 1 – Initial | Embedded software is discovered only when a vendor asks for an upgrade or a scan finds it. |
+| 2 – Developing | Embedded operating systems and databases are listed for some vendor systems, but license responsibility and update obligations are not stated in contracts. |
+| 3 – Defined | Embedded software in vendor systems and medical devices is identified, and contracts state who licenses, patches and supports it. |
+| 4 – Optimized | Embedded software is tracked with end-of-support dates, MDS2 forms or SBOMs are collected, and obligations are reviewed at each contract renewal. |
+
+**Probing questions**
+
+- Which vendor-supplied servers or appliances run Windows or SQL Server, and who licensed them?
+- Who is allowed to patch the operating system on imaging modalities, lab analyzers or monitoring servers?
+- Do you have MDS2 forms or SBOMs for your connected medical devices?
+
+**Evidence and how to obtain it**
+
+- List of vendor systems and medical devices with embedded OS or database and license owner — asset inventory or clinical engineering records.
+- Contract clauses assigning licensing, patching and support responsibility — vendor contracts.
+- Manufacturer Disclosure Statement for Medical Device Security (MDS2) forms or SBOMs — clinical engineering.
+
+**Red flags**
+
+- Vendor servers run SQL Server editions that appear in no entitlement record.
+- "The vendor handles it" with no contract clause to show it.
+
+**Healthcare considerations**
+
+- Hospitals cannot patch or relicense regulated medical device software outside manufacturer guidance; rely on manufacturer disclosures, MDS2 forms and SBOMs, and on contract terms.
+- Biomedical or clinical engineering often owns these devices; the SAM owner needs their inventory, not just IT's.
+
+**Path to the next level**
+
+- **To 2 – Developing:** List vendor systems and devices that run embedded Windows or SQL Server with clinical engineering (weeks).
+- **To 3 – Defined:** Confirm in contracts who licenses, patches and supports each embedded component (one to two quarters).
+- **To 4 – Optimized:** Track end-of-support dates and collect MDS2 forms or SBOMs at each renewal (ongoing).
+
+**Recommended action if gap:** Identify embedded Windows and SQL Server in vendor systems and devices and confirm licensing and patching responsibility in contracts.
+
+**Sources:** <https://learn.microsoft.com/en-us/windows/whats-new/extended-security-updates>
+
+### Deployment & Usage
+
+#### LO-09 — Is actual software deployment discovered automatically across endpoints, servers and cloud?
+
+**Weight:** 3 · **HHS CPG:** CPG-X: Asset Inventory · **References:** NIST CSF 2.0 ID.AM
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Installed software is unknown unless someone checks a machine. |
+| 1 – Initial | Manual inventories or one-off scans exist for some servers. |
+| 2 – Developing | Endpoint management or EDR reports installed software on most workstations, but servers, vendor-managed systems and cloud workloads are not covered. |
+| 3 – Defined | Automated discovery covers endpoints, servers and cloud resources, and results are compared with entitlements at least quarterly. |
+| 4 – Optimized | Discovery coverage is measured, gaps raise alerts, SaaS use is discovered, and deployment is compared with entitlements at least monthly. |
+
+**Probing questions**
+
+- Which tools report installed software, and what percentage of endpoints and servers report in?
+- How do you see SQL Server editions and core counts on servers?
+- How do you find SaaS applications that users signed up for themselves?
+- Which systems are excluded from discovery and why?
+
+**Evidence and how to obtain it**
+
+- Software inventory or discovered applications report with device coverage — endpoint management or EDR console.
+- Server inventory showing OS and SQL Server editions and cores — configuration management tool or hypervisor inventory.
+- Discovered cloud app report, if licensed — Defender for Cloud Apps or equivalent.
+
+**Red flags**
+
+- Coverage is quoted without a device denominator.
+- Vendor-managed and clinical systems are excluded entirely.
+
+**Healthcare considerations**
+
+- Many clinical devices and vendor appliances cannot take agents; use network-based discovery and vendor attestation for those instead of leaving them out.
+- Clinicians and departments adopt SaaS tools (scheduling, dictation, patient messaging) that may handle PHI; discovery should feed business associate agreement checks.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Use the existing endpoint management or EDR inventory for all workstations and record coverage (weeks).
+- **To 3 – Defined:** Extend discovery to servers and cloud and compare with entitlements quarterly (one to two quarters).
+- **To 4 – Optimized:** Add SaaS discovery, alert on coverage gaps and compare monthly (months).
+
+**Recommended action if gap:** Extend automated software discovery to all endpoints, servers and cloud, measure coverage, and compare deployment with entitlements at least quarterly.
+
+**Sources:** <https://learn.microsoft.com/en-us/defender-cloud-apps/what-is-defender-for-cloud-apps> · <https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/licenses>
+
+#### LO-10 — Is the use of assigned user licenses reviewed at least quarterly?
+
+**Weight:** 3 · **HHS CPG:** — · **References:** FinOps Framework (Inform, Optimize)
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | License usage is never reviewed; licenses stay assigned until someone complains about cost. |
+| 1 – Initial | Unassigned licenses are noticed occasionally in the admin center. |
+| 2 – Developing | Usage is reviewed once a year or before a renewal, but inactive and underused accounts are not acted on consistently. |
+| 3 – Defined | At least quarterly, unassigned, inactive and underused licenses are identified from usage reports and sign-in data, confirmed with HR or managers, and reassigned or downgraded. |
+| 4 – Optimized | Review is automated with defined thresholds, results and savings are tracked, and reharvested licenses are reused before new ones are purchased. |
+
+**Probing questions**
+
+- How many licenses are purchased but unassigned today, per product?
+- How do you define an inactive user, and how many accounts meet that definition?
+- Which users have a premium license but use only email or only web apps?
+- How do you treat per-diem, PRN, agency and on-leave staff in the review?
+
+**Evidence and how to obtain it**
+
+- Purchased versus assigned counts per product — Microsoft 365 admin center, Billing > Licenses.
+- Active users and Microsoft 365 Apps usage reports for 90 or 180 days — Microsoft 365 admin center, Reports > Usage.
+- Last sign-in export (signInActivity) for licensed accounts — Microsoft Entra admin center or Microsoft Graph.
+- Record of the last review with actions taken — SAM owner.
+
+**Red flags**
+
+- Usage reports show concealed names, so nobody could act on them.
+- "Inactive" was judged from mailbox logins only.
+
+**Healthcare considerations**
+
+- Per-diem, PRN, agency, locum, resident and student accounts break simple 90- to 180-day inactivity rules; confirm with HR and the medical staff office before removing access or licenses.
+- Clinicians on shared workstations may use only the EHR and web email; they are candidates for frontline licensing rather than full knowledge-worker plans.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Export purchased, assigned and last-activity data and remove clearly unused licenses (weeks).
+- **To 3 – Defined:** Run a quarterly review with defined thresholds and HR confirmation (next quarter).
+- **To 4 – Optimized:** Automate the review, track savings and reuse reharvested licenses before buying (months).
+
+**Recommended action if gap:** Review unassigned, inactive and underused licenses quarterly using usage reports and sign-in data, confirm with HR, then reassign or downgrade.
+
+**Sources:** <https://learn.microsoft.com/en-us/microsoft-365/admin/activity-reports/activity-reports> · <https://learn.microsoft.com/en-us/entra/identity/monitoring-health/howto-manage-inactive-user-accounts>
+
+#### LO-11 — Are the accounts and licenses of departing workforce members removed and reharvested promptly?
+
+**Weight:** 3 · **HHS CPG:** CPG-E: Revoke Credentials for Departing Workforce Members · **References:** HIPAA 45 CFR 164.308(a)(3)(ii)(C)
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Departed staff accounts stay active and licensed until someone notices. |
+| 1 – Initial | IT disables accounts when a manager remembers to tell them; licenses are rarely removed. |
+| 2 – Developing | HR notifies IT of employee departures, but contractors, students, agency and vendor accounts are missed and licenses are removed weeks later or not at all. |
+| 3 – Defined | Every departure (employee, contractor, student, agency, vendor) triggers account disablement within one business day and license removal per policy, verified by monthly reconciliation with HR and contract lists. |
+| 4 – Optimized | Disablement is automated from HR and sponsor records, the reconciliation shows no unexplained active accounts, and reharvested licenses are reused. |
+
+**Probing questions**
+
+- How does IT learn that an employee, contractor, student or vendor has left, and how long does it take?
+- How many enabled, licensed accounts belong to people no longer on the HR roster?
+- What happens to the mailbox and its license when someone leaves (shared mailbox, retention, license removal)?
+- Who sponsors vendor and agency accounts and confirms they are still needed?
+
+**Evidence and how to obtain it**
+
+- Comparison of enabled, licensed accounts with the current HR roster and contractor list — Entra user export and HR report.
+- Offboarding tickets for the last ten departures with timestamps — service desk.
+- Accounts with no sign-in for 90 days or more — Microsoft Entra admin center or Microsoft Graph signInActivity.
+
+**Red flags**
+
+- Disabled accounts still hold paid licenses.
+- Vendor and agency accounts have no named sponsor or end date.
+
+**Healthcare considerations**
+
+- Clinicians often keep EHR, remote access and email accounts after leaving because they may return per diem; require a sponsor and an end date instead of leaving accounts open.
+- Mailboxes of departed staff may hold PHI and be subject to retention; convert or retain them per policy before removing the license, and confirm retention requirements first.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Reconcile enabled, licensed accounts against the HR roster and disable leavers (days).
+- **To 3 – Defined:** Disable within one business day of departure for all workforce types and reconcile monthly (weeks).
+- **To 4 – Optimized:** Automate disablement from HR and sponsor records and reuse reharvested licenses (months).
+
+**Recommended action if gap:** Disable departing workforce and vendor accounts within one business day, remove licenses per policy, and reconcile monthly against HR records.
+
+**Sources:** <https://hhscyber.hhs.gov/cybersecurity-performance-goals.html> · <https://learn.microsoft.com/en-us/entra/identity/monitoring-health/howto-manage-inactive-user-accounts>
+
+#### LO-12 — Are licensing models for shared clinical devices and frontline staff applied correctly?
+
+**Weight:** 1 · **HHS CPG:** — · **References:** ISO/IEC 19770-1
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Shared workstations use a generic account or a single licensed user for many people. |
+| 1 – Initial | Clinical staff receive the same full plan as office staff, or none at all, without analysis. |
+| 2 – Developing | Some frontline or device licenses are used, but shared workstation activation, kiosk and device-only scenarios are not reviewed against terms. |
+| 3 – Defined | Each workforce group and shared device type is mapped to a licensing model (user, frontline, device-only) and the mapping is checked against current product terms. |
+| 4 – Optimized | The mapping is reviewed whenever clinical workflows, devices or plans change, and exceptions are approved and documented. |
+
+**Probing questions**
+
+- How many shared workstations, carts, kiosks and tablets are there, and how do staff sign in to them?
+- Which clinical roles use desktop Office applications, and which use only the EHR, Teams and web email?
+- Are any devices enrolled as device-only (kiosk or dedicated), and do they need Conditional Access?
+- Is shared computer activation enabled for Microsoft 365 Apps on shared workstations?
+
+**Evidence and how to obtain it**
+
+- Mapping of workforce groups and device types to license types — SAM owner.
+- License assignment counts by plan, including frontline plans — Microsoft 365 admin center.
+- Device enrollment profile list showing user-affinity and device-only enrollments — Intune admin center.
+
+**Red flags**
+
+- A generic "nurse station" account is licensed and shared by many people.
+- Frontline licenses assigned to users who need desktop apps on dedicated PCs, or full plans assigned to staff who never use them.
+
+**Healthcare considerations**
+
+- Microsoft describes healthcare clinicians and nursing staff as typical frontline workers; frontline plans can fit staff who work mainly on shared devices, phones or tablets, but confirm app and mailbox needs against the plan comparison and your agreement.
+- Shared computer activation needs each signed-in user to hold a qualifying license; Intune device-only licenses suit carts and kiosks but do not support Conditional Access or app protection policies.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Inventory shared devices and workforce groups and how each signs in and is licensed (weeks).
+- **To 3 – Defined:** Map each group and device type to a licensing model and verify it against current terms (one to two months).
+- **To 4 – Optimized:** Review the mapping whenever workflows, devices or plans change (ongoing).
+
+**Recommended action if gap:** Map each clinical role and shared device type to the right user, frontline or device-only license and verify against current terms.
+
+**Sources:** <https://learn.microsoft.com/en-us/microsoft-365/frontline/flw-licensing-options> · <https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/licenses> · <https://learn.microsoft.com/en-us/microsoft-365-apps/licensing-activation/overview-shared-computer-activation>
+
+### Security Value Realization
+
+#### LO-13 — Does the organization know which security capabilities are already included in its current licenses?
+
+**Weight:** 3 · **HHS CPG:** CPG-E: Multifactor Authentication; CPG-E: Email Security; CPG-E: Strong Encryption · **References:** NIST CSF 2.0 ID.AM, PR.AA
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No one has compared current licenses with the security capabilities they include. |
+| 1 – Initial | IT believes some security features are included but cannot list them or their deployment status. |
+| 2 – Developing | A list of licensed security capabilities exists, but deployment status is unknown or the list is older than the current plans. |
+| 3 – Defined | A current map lists each licensed security capability (identity, endpoint, email, data protection, logging), its deployment status and coverage, verified against current documentation. |
+| 4 – Optimized | The map is reviewed at each renewal and plan change, gaps are in the security roadmap, and new tool purchases are checked against it first. |
+
+**Probing questions**
+
+- Which Microsoft 365 plans are assigned today, and to how many users each?
+- For MFA, Conditional Access, endpoint detection and response, email protection and audit logging, which are licensed, which are deployed, and to how many users or devices?
+- Have you bought a third-party security tool in the last two years that duplicates something already licensed?
+
+**Evidence and how to obtain it**
+
+- Completed License-Security Map sheet with deployment status — assessment workbook.
+- Assigned plans and service plans per user — Microsoft 365 admin center or Microsoft Entra licensing view.
+- Secure Score or equivalent recommendations list — Microsoft Defender portal.
+
+**Red flags**
+
+- The map says "included" without saying deployed or not.
+- A separate tool is paid for a capability already licensed and unused.
+
+**Healthcare considerations**
+
+- Small hospitals often meet several HHS Essential Goals (MFA, email security, encryption) with capabilities they already license; this is usually the fastest, lowest-cost improvement available.
+- Mixed estates are common (some users on E3, some on Business Premium or frontline plans); map capabilities per plan, not per tenant.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Complete the License-Security Map for the plans you own, marking licensed and deployed (days).
+- **To 3 – Defined:** Add coverage per capability and verify statements against current Microsoft documentation (weeks).
+- **To 4 – Optimized:** Review the map at every renewal and require a map check before new security purchases (ongoing).
+
+**Recommended action if gap:** Complete the License-Security Map showing which security capabilities you own, which are deployed, and coverage, verified against current documentation.
+
+**Sources:** <https://learn.microsoft.com/en-us/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-defender-service-description> · <https://learn.microsoft.com/en-us/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description> · <https://hhscyber.hhs.gov/cybersecurity-performance-goals.html>
+
+#### LO-14 — Are licensed identity protections (multifactor authentication, conditional access) deployed to all users, including clinical and remote access?
+
+**Weight:** 3 · **HHS CPG:** CPG-E: Multifactor Authentication · **References:** HIPAA 45 CFR 164.312(d); NIST CSF 2.0 PR.AA
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Conditional Access is licensed but no policies exist; MFA is not required. |
+| 1 – Initial | Security defaults or per-user MFA cover some administrators or volunteers only. |
+| 2 – Developing | Conditional Access requires MFA for most users, but clinical units, vendors or service accounts are excluded without review, or policies are in report-only mode. |
+| 3 – Defined | Licensed Conditional Access policies enforce MFA for all users, administrators, vendors and remote access, with documented and approved exclusions and legacy authentication blocked. |
+| 4 – Optimized | Policies include device compliance and, where licensed, risk-based conditions; phishing-resistant methods are required for administrators; coverage is reported and reviewed. |
+
+**Probing questions**
+
+- Which Conditional Access policies are On, and which are Report-only?
+- Which groups are excluded from MFA, and who approved each exclusion?
+- How do clinicians on shared workstations authenticate, and how often are they prompted?
+- Are risk-based policies licensed for any users, and are they used?
+
+**Evidence and how to obtain it**
+
+- Conditional Access policy list with state and exclusions — Microsoft Entra admin center.
+- Authentication methods registration and usage report — Microsoft Entra admin center.
+- Sign-in logs filtered for single-factor successful sign-ins over 30 days — Microsoft Entra admin center.
+
+**Red flags**
+
+- Entra ID P1 is licensed through the current plan, yet the tenant relies on per-user MFA or security defaults only.
+- A large clinical group is excluded "temporarily" with no end date.
+
+**Healthcare considerations**
+
+- Repeated MFA prompts on shared clinical workstations disrupt care; use session-based controls and badge or proximity sign-in at session start rather than excluding whole units.
+- Vendor remote access to EHR and imaging systems is a recurring gap; vendor accounts need the same MFA policy as staff.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Turn on licensed Conditional Access requiring MFA for administrators, remote access and email (days to weeks).
+- **To 3 – Defined:** Remove undocumented exclusions, include vendors, move report-only policies to On and block legacy authentication (weeks).
+- **To 4 – Optimized:** Add device compliance and, where licensed, risk-based conditions, and report coverage (months).
+
+**Recommended action if gap:** Use licensed Conditional Access to enforce MFA for all users, administrators, vendors and remote access, with documented, approved exclusions only.
+
+**Sources:** <https://learn.microsoft.com/en-us/entra/fundamentals/licensing> · <https://learn.microsoft.com/en-us/entra/identity/conditional-access/overview>
+
+#### LO-15 — Are licensed endpoint protection and device management deployed to all endpoints, including shared clinical workstations?
+
+**Weight:** 3 · **HHS CPG:** CPG-E: Mitigate Known Vulnerabilities; CPG-X: Configuration Management · **References:** NIST CSF 2.0 PR.PS
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Licensed endpoint management and EDR are not deployed; devices rely on whatever antivirus came installed. |
+| 1 – Initial | Licensed tools are deployed to a pilot group or to office PCs only. |
+| 2 – Developing | Most corporate workstations are managed and onboarded to EDR, but shared clinical workstations, servers and remote clinics have gaps and no exception list. |
+| 3 – Defined | Every supported workstation and server is managed and onboarded to licensed endpoint protection, with exceptions documented and compensating controls applied. |
+| 4 – Optimized | Coverage is reconciled with the asset inventory at least monthly, unmanaged devices raise alerts, and baselines and EDR settings are reviewed after each change. |
+
+**Probing questions**
+
+- How many endpoints are in the asset inventory, and how many are managed and onboarded to EDR?
+- Are shared clinical workstations, carts and kiosks managed the same way as office PCs?
+- How are servers licensed for endpoint protection (user plans typically do not cover servers)?
+- Which devices are excluded, and why?
+
+**Evidence and how to obtain it**
+
+- Device inventory with onboarding status — Microsoft Defender portal (Device inventory).
+- Managed device count and compliance status — Intune admin center.
+- Exception list with compensating controls — security team.
+
+**Red flags**
+
+- EDR coverage is reported without the total device count.
+- Servers are assumed to be covered by user licenses.
+
+**Healthcare considerations**
+
+- Shared clinical workstations are often left unmanaged to avoid disrupting care; manage them with tested baselines and maintenance windows agreed with nursing leadership.
+- Vendor-supported and medical device systems may not allow agents; document them as exceptions with segmentation and monitoring, following manufacturer guidance.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Onboard all office and clinical workstations to licensed management and EDR (weeks).
+- **To 3 – Defined:** License and onboard servers, document exceptions and apply compensating controls (one to two quarters).
+- **To 4 – Optimized:** Reconcile coverage with the asset inventory monthly and alert on unmanaged devices (months).
+
+**Recommended action if gap:** Onboard every supported workstation and server to licensed device management and EDR, documenting exceptions with compensating controls.
+
+**Sources:** <https://learn.microsoft.com/en-us/defender-endpoint/minimum-requirements> · <https://learn.microsoft.com/en-us/defender-business/mdb-overview>
+
+#### LO-16 — Are licensed email protection and data protection features (encryption, data loss prevention, labeling) enabled for PHI?
+
+**Weight:** 2 · **HHS CPG:** CPG-E: Email Security; CPG-E: Strong Encryption · **References:** HIPAA 45 CFR 164.312(e)(1); NIST CSF 2.0 PR.DS
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Only default email filtering is in place; licensed message encryption and DLP are not configured. |
+| 1 – Initial | Users can encrypt email manually if they know how; no DLP policies exist. |
+| 2 – Developing | Licensed email protection policies use defaults, and DLP or encryption rules exist in test mode or for one workload only. |
+| 3 – Defined | Licensed anti-phishing, attachment and link protection are configured for all mailboxes, and DLP and encryption policies for PHI are enforced on email and file storage. |
+| 4 – Optimized | Policies are tuned using reports and incidents, sensitivity labels are in use, and coverage and false positives are reviewed at least quarterly. |
+
+**Probing questions**
+
+- Which email protection policies are on, and do they cover all mailboxes, including shared mailboxes?
+- How does a clinician send PHI securely to an outside provider or patient?
+- Which DLP policies exist for PHI, which workloads do they cover, and are they in test or enforce mode?
+- Which data protection features are licensed for your plans (for example, automatic labeling or endpoint DLP)?
+
+**Evidence and how to obtain it**
+
+- Threat policy configuration (anti-phishing, Safe Attachments, Safe Links) — Microsoft Defender portal.
+- DLP policy list with mode and locations — Microsoft Purview portal.
+- Message encryption rules — Exchange admin center mail flow rules.
+
+**Red flags**
+
+- DLP policies have been in simulation mode for months.
+- Shared mailboxes that receive referrals are outside protection policies.
+
+**Healthcare considerations**
+
+- Referral, scheduling and billing mailboxes receive large volumes of external email with attachments and are prime phishing targets; include them explicitly.
+- Clinicians exchange PHI with outside practices and patients; a usable encryption method reduces workarounds such as personal email or fax-to-email.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Enable licensed anti-phishing, attachment and link protection for all mailboxes (days to weeks).
+- **To 3 – Defined:** Enforce PHI DLP and message encryption on email and file storage (one to two months).
+- **To 4 – Optimized:** Tune policies quarterly and adopt sensitivity labels where licensed (months).
+
+**Recommended action if gap:** Enable licensed email protection for all mailboxes and enforce PHI data loss prevention and message encryption on email and file storage.
+
+**Sources:** <https://learn.microsoft.com/en-us/defender-office-365/mdo-about> · <https://learn.microsoft.com/en-us/purview/dlp-learn-about-dlp> · <https://learn.microsoft.com/en-us/purview/ome>
+
+### Cloud Cost
+
+#### LO-17 — Are cloud subscriptions tagged and costs allocated to departments or applications?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** FinOps Framework (Inform)
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Cloud cost is a single bill; nobody can say which application or department drives it. |
+| 1 – Initial | Resources are named inconsistently and a few are tagged. |
+| 2 – Developing | A tagging standard exists, but less than most of the spend is tagged and shared costs are not allocated. |
+| 3 – Defined | Required tags (owner, application, cost center, environment) are applied to nearly all spend, enforced by policy, and monthly cost is allocated and reviewed by owners. |
+| 4 – Optimized | Untagged spend is reported and kept near zero, shared costs are split by an agreed method, and owners act on monthly showback. |
+
+**Probing questions**
+
+- What share of last month's cloud spend can be attributed to an application or department?
+- Which tags are mandatory, and how are they enforced?
+- Who reviews cloud cost each month, and what do they do with it?
+
+**Evidence and how to obtain it**
+
+- Tagging standard — cloud governance documents.
+- Cost analysis grouped by tag for the last three months — Microsoft Cost Management.
+- Policy assignments that require or inherit tags — Azure Policy.
+
+**Red flags**
+
+- Tags exist but values are free text with many spellings.
+- Cost allocation is done once a year in a spreadsheet.
+
+**Healthcare considerations**
+
+- Allocating cost to clinical applications (EHR hosting, imaging archive, interface engine) supports total cost of ownership and modernization decisions.
+- Grant-funded and affiliated-practice workloads may need separate cost tracking for reporting; tag them from the start.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Define four mandatory tags and apply them to the largest resources (weeks).
+- **To 3 – Defined:** Enforce tags with policy and allocate monthly cost to owners (one to two months).
+- **To 4 – Optimized:** Report untagged spend, allocate shared costs and act on monthly showback (months).
+
+**Recommended action if gap:** Enforce owner, application, cost-center and environment tags by policy and allocate monthly cloud cost to accountable owners.
+
+**Sources:** <https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources> · <https://www.finops.org/framework/phases/>
+
+#### LO-18 — Are reservations, savings plans and hybrid-use benefits applied where eligible?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** FinOps Framework (Optimize)
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | All cloud resources run at pay-as-you-go rates and existing licenses are not applied. |
+| 1 – Initial | Commitment discounts have been discussed but never purchased. |
+| 2 – Developing | Some reservations or savings plans exist, but utilization is not monitored and Azure Hybrid Benefit eligibility for Windows Server and SQL Server has not been checked. |
+| 3 – Defined | Steady workloads are covered by reservations or savings plans, eligible VMs and databases use Azure Hybrid Benefit, and utilization is reviewed quarterly. |
+| 4 – Optimized | Commitment coverage and utilization have targets, recommendations are reviewed monthly, and Software Assurance or subscription license eligibility is tracked against hybrid benefit use. |
+
+**Probing questions**
+
+- Which workloads run around the clock and have been stable for a year?
+- Do you have reservations or savings plans, and what is their utilization?
+- Do you own Windows Server or SQL Server licenses with active Software Assurance, and are they applied in Azure?
+- Who approves a one- or three-year commitment, and how is the risk weighed?
+
+**Evidence and how to obtain it**
+
+- Reservation and savings plan utilization reports — Azure portal, Reservations and Savings plans.
+- List of VMs and databases with Azure Hybrid Benefit status — Azure portal or Azure Resource Graph.
+- Commitment recommendations reviewed — Azure Advisor cost recommendations.
+
+**Red flags**
+
+- Hybrid Benefit is enabled without Software Assurance or qualifying subscription licenses to support it.
+- Commitments were bought for workloads scheduled to be retired.
+
+**Healthcare considerations**
+
+- Interface engines, EHR integration servers and imaging archives often run continuously and are good commitment candidates once their future is decided.
+- Savings plan purchases cannot be canceled or refunded; align commitments with the application roadmap before buying.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Check Azure Hybrid Benefit eligibility and apply it where licenses support it (weeks).
+- **To 3 – Defined:** Cover steady workloads with reservations or savings plans and review utilization quarterly (one quarter).
+- **To 4 – Optimized:** Set coverage and utilization targets and review recommendations monthly (months).
+
+**Recommended action if gap:** Apply Azure Hybrid Benefit where licenses qualify and cover steady workloads with reservations or savings plans, reviewing utilization quarterly.
+
+**Sources:** <https://learn.microsoft.com/en-us/azure/cost-management-billing/reservations/save-compute-costs-reservations> · <https://learn.microsoft.com/en-us/azure/cost-management-billing/savings-plan/savings-plan-compute-overview> · <https://learn.microsoft.com/en-us/azure/azure-sql/azure-hybrid-benefit>
+
+#### LO-19 — Are idle or oversized cloud resources identified and rightsized at least monthly?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** FinOps Framework (Optimize)
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Resources are never reviewed after they are created. |
+| 1 – Initial | Idle resources are removed occasionally when someone notices a cost spike. |
+| 2 – Developing | Cost recommendations are reviewed a few times a year, but unattached disks, idle VMs and oversized resources persist. |
+| 3 – Defined | Idle and oversized resources are identified monthly from recommendations and utilization data and rightsized, scheduled or removed with owner approval. |
+| 4 – Optimized | Detection is automated, non-production resources follow schedules, actions and savings are tracked, and exceptions have owners and review dates. |
+
+**Probing questions**
+
+- When did you last act on cost recommendations, and what changed?
+- Are there unattached disks, old snapshots or test VMs left from projects or migrations?
+- Are non-production systems shut down outside working hours?
+
+**Evidence and how to obtain it**
+
+- Cost recommendations list with status — Azure Advisor.
+- Utilization data for the top ten VMs by cost — Azure Monitor metrics.
+- Log of rightsizing actions and savings — cloud owner.
+
+**Red flags**
+
+- Recommendations are dismissed in bulk without reasons.
+- Migration leftovers (old disks, snapshots) are older than six months.
+
+**Healthcare considerations**
+
+- Clinical systems may be sized to vendor specifications; rightsize only with the vendor's agreement and test performance during peak clinical hours.
+- Downtime and disaster recovery environments can look idle; confirm their role in recovery plans before removing them.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Remove unattached disks, old snapshots and abandoned test resources (days).
+- **To 3 – Defined:** Review recommendations monthly and rightsize or schedule with owner approval (one quarter).
+- **To 4 – Optimized:** Automate detection and schedules and track savings and exceptions (months).
+
+**Recommended action if gap:** Review cost recommendations monthly, remove idle resources and rightsize oversized ones with owner and vendor approval.
+
+**Sources:** <https://learn.microsoft.com/en-us/azure/advisor/advisor-cost-recommendations>
+
+#### LO-20 — Are budgets and spending alerts configured for cloud subscriptions?
+
+**Weight:** 1 · **HHS CPG:** — · **References:** FinOps Framework (Operate)
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No budgets or alerts exist; overspending is discovered on the invoice. |
+| 1 – Initial | A single budget exists at the billing account level with alerts to one person. |
+| 2 – Developing | Budgets exist for some subscriptions, but alerts go to people who do not own the resources and are not acted on. |
+| 3 – Defined | Every subscription or resource group has a budget with alerts routed to its owner and finance, and alerts are acknowledged. |
+| 4 – Optimized | Anomaly detection is used, alerts trigger documented investigation, and budgets are revised from forecasts at least quarterly. |
+
+**Probing questions**
+
+- Which subscriptions have budgets, and who receives the alerts?
+- What happened the last time an alert fired?
+- Would you notice a sudden doubling of daily spend within a week?
+
+**Evidence and how to obtain it**
+
+- Budget list with thresholds and recipients — Microsoft Cost Management, Budgets.
+- Last three alert notifications and actions taken — cloud owner.
+
+**Red flags**
+
+- Alerts go to a shared mailbox nobody reads.
+- Budgets were set once and never revised.
+
+**Healthcare considerations**
+
+- Imaging archives and log collection can grow quickly with volume; budget alerts catch growth before it lands on the invoice.
+- With small IT teams, route alerts to both the technical owner and finance so an absence does not leave spend unwatched.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Create a budget with alerts for each subscription (days).
+- **To 3 – Defined:** Route alerts to owners and finance and record actions taken (weeks).
+- **To 4 – Optimized:** Add anomaly alerts and revise budgets quarterly from forecasts (months).
+
+**Recommended action if gap:** Configure budgets and alerts for every subscription, routed to resource owners and finance, and investigate every alert.
+
+**Sources:** <https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/tutorial-acm-create-budgets>
+
+### Programs & Negotiation
+
+#### LO-21 — Has eligibility for nonprofit, healthcare or rural hospital licensing programs and discounts been verified?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** AHA, June 10, 2024 (Microsoft rural hospital program)
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No one has checked whether the organization qualifies for any program or discount. |
+| 1 – Initial | Someone has heard of a program but eligibility has not been checked. |
+| 2 – Developing | Eligibility has been checked for one program, but the result was not applied or documented. |
+| 3 – Defined | Eligibility for applicable programs (for example, nonprofit offers and the Microsoft program for rural hospitals announced in 2024) has been verified, documented and applied where eligible. |
+| 4 – Optimized | Program eligibility and terms are rechecked before each renewal, end dates of promotional terms are in the renewal calendar, and benefits are tracked. |
+
+**Probing questions**
+
+- Is the organization a nonprofit, government-owned, critical access or rural emergency hospital, and is it independent or part of a system?
+- Have you applied for or been offered any Microsoft program for rural hospitals or nonprofits, and what was the outcome?
+- When do any promotional or no-cost terms end, and what happens to pricing then?
+
+**Evidence and how to obtain it**
+
+- Eligibility check records and correspondence — SAM owner or reseller.
+- Applied program pricing or offers on invoices — accounts payable.
+- End dates of promotional terms in the renewal calendar — contract register.
+
+**Red flags**
+
+- A no-cost offer was accepted with no plan for the price at term end.
+- Eligibility was assumed from another hospital's experience.
+
+**Healthcare considerations**
+
+- Microsoft announced a cybersecurity program for rural hospitals in June 2024 that described nonprofit pricing (up to 75% discount) for independent critical access and rural emergency hospitals and a one-year no-cost security offer for other rural hospitals; confirm current terms and availability before planning on it.
+- Hospitals that are part of a health system may be covered by the system's agreement rather than individual programs; check with the parent organization.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Check eligibility for nonprofit and rural hospital programs with your reseller or Microsoft (weeks).
+- **To 3 – Defined:** Apply eligible programs, document the result and record term end dates (one quarter).
+- **To 4 – Optimized:** Recheck eligibility and terms before every renewal and track benefits (ongoing).
+
+**Recommended action if gap:** Verify eligibility for nonprofit and rural hospital programs, apply what qualifies, and record promotional term end dates in the renewal calendar.
+
+**Sources:** <https://www.aha.org/system/files/media/file/2024/12/microsoft-cybersecurity-program-for-rural-hospital-12-23-2024.pdf>
+
+#### LO-22 — Is the agreement type (e.g., Enterprise Agreement, CSP, MCA) reviewed against current size and needs before renewal?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** FinOps Framework (Optimize)
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | The organization does not know which agreement type it buys under. |
+| 1 – Initial | The agreement type is known, but renewals continue on the same type and plan mix by default. |
+| 2 – Developing | Alternatives were discussed with a reseller at the last renewal, but without usage data, term options or a documented comparison. |
+| 3 – Defined | Before each renewal, agreement type, term length, billing frequency and plan mix are compared with current headcount, usage and needs, and the decision is documented. |
+| 4 – Optimized | The comparison uses reconciled usage and multi-year forecasts, includes flexibility terms (for example, cancellation windows and reduction rights), and outcomes are reviewed after renewal. |
+
+**Probing questions**
+
+- Do you buy through an Enterprise Agreement, a CSP partner, a Microsoft Customer Agreement directly, or a mix?
+- What are your term lengths, and when can you reduce quantities without penalty?
+- How has headcount changed since the last renewal, and is it expected to change?
+- Who compared alternatives at the last renewal, and where is the comparison?
+
+**Evidence and how to obtain it**
+
+- Agreement and enrollment documents with term dates — contract register.
+- Subscription terms, billing frequency and renewal settings — Microsoft 365 admin center or reseller portal.
+- Documented comparison of agreement and plan options from the last renewal — procurement files.
+
+**Red flags**
+
+- Annual subscriptions were bought for a seasonal or shrinking workforce without considering flexibility.
+- The only comparison was a single reseller quote.
+
+**Healthcare considerations**
+
+- Microsoft describes the Enterprise Agreement as designed for organizations with at least 500 users or devices; many small hospitals buy through CSP partners instead, where cancellation is typically limited to the first days of a term.
+- Affiliations and mergers can change the right agreement quickly; review agreement fit when ownership or management changes.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Document current agreement type, terms, billing and reduction rights (weeks).
+- **To 3 – Defined:** Compare agreement and plan options against usage and needs before the next renewal (next renewal cycle).
+- **To 4 – Optimized:** Use reconciled usage and forecasts and review outcomes after each renewal (ongoing).
+
+**Recommended action if gap:** Before each renewal, compare agreement type, term length, reduction rights and plan mix against current usage and documented needs.
+
+**Sources:** <https://learn.microsoft.com/en-us/partner-center/customers/new-commerce-license-based> · <https://learn.microsoft.com/en-us/azure/cost-management-billing/understand/mca-overview> · <https://www.microsoft.com/licensing/guidance/Enterprise-Agreement>
+
+#### LO-23 — Are savings from license optimization reinvested in documented security or modernization priorities?
+
+**Weight:** 1 · **HHS CPG:** — · **References:** NIST CSF 2.0 GV.RM
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Savings are not identified or are absorbed into the general budget unnoticed. |
+| 1 – Initial | Savings are mentioned informally but not quantified. |
+| 2 – Developing | Savings are quantified but returned to the general budget without a decision on reinvestment. |
+| 3 – Defined | Savings are tracked from invoices and reinvested through documented leadership decisions in security or modernization priorities. |
+| 4 – Optimized | A standing rule allocates realized savings to the security and modernization roadmap, and outcomes of reinvestment are reported. |
+
+**Probing questions**
+
+- How much did license optimization save last year, measured from invoices?
+- Who decided what happened to those savings?
+- Which security gaps from this assessment could be funded by reharvested or downgraded licenses?
+
+**Evidence and how to obtain it**
+
+- Savings log based on invoice changes — SAM owner.
+- Leadership decision or budget record allocating savings — finance or steering minutes.
+
+**Red flags**
+
+- Savings are projected from list prices and never confirmed on invoices.
+- Reinvestment is promised but no budget line exists.
+
+**Healthcare considerations**
+
+- Linking reharvested license spend to an HHS Essential Goal gap (for example, MFA coverage or email security) gives a hospital board a concrete, budget-neutral improvement.
+- Savings on annual terms are realized only at renewal; plan reinvestment timing accordingly.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Quantify last year's licensing savings from invoices (weeks).
+- **To 3 – Defined:** Present savings to leadership with a proposed reinvestment in documented priorities (next budget cycle).
+- **To 4 – Optimized:** Adopt a standing reinvestment rule and report outcomes (months).
+
+**Recommended action if gap:** Track realized licensing savings from invoices and reinvest them through documented decisions in security and modernization priorities.
+
+**Sources:** <https://hhscyber.hhs.gov/cybersecurity-performance-goals.html> · <https://www.finops.org/framework/phases/>
+
+#### LO-24 — Is license compliance risk assessed with a defensible effective license position?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** ISO/IEC 19770-1
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Compliance position is unknown; under- or over-licensing would be discovered only in an audit. |
+| 1 – Initial | The team believes it is compliant but has no calculation. |
+| 2 – Developing | An effective license position exists for Microsoft 365 user subscriptions, but not for server, SQL Server, virtualization or clinical application licensing. |
+| 3 – Defined | An effective license position for major vendors compares entitlements with deployment and usage rules, and gaps are remediated or accepted by leadership. |
+| 4 – Optimized | The position is refreshed at least annually and before each renewal or true-up, assumptions are documented, and audit requests follow a defined response process. |
+
+**Probing questions**
+
+- How many SQL Server and Windows Server cores are deployed, and how are they licensed, including virtualization?
+- Have you received a vendor audit or license review request in the last three years, and how was it handled?
+- Who reviews licensing terms when infrastructure changes (new hosts, cloud migration, disaster recovery sites)?
+
+**Evidence and how to obtain it**
+
+- Effective license position workbook for Microsoft and the top clinical vendors — SAM owner.
+- Deployment data for servers and databases (editions, cores, hosts) — discovery tool or hypervisor inventory.
+- Audit response procedure — SAM or compliance documentation.
+
+**Red flags**
+
+- The position counts installations but ignores licensing rules for virtualization and disaster recovery.
+- The position was prepared by the vendor or reseller and never checked internally.
+
+**Healthcare considerations**
+
+- Disaster recovery and downtime environments for clinical systems often run duplicate SQL Server and Windows Server instances; confirm whether your licensing terms cover them.
+- Treat any under-licensing finding as a risk to confirm with a licensing specialist before taking action or disclosing it.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Calculate an effective license position for Microsoft 365 and Windows Server and SQL Server (weeks to one quarter).
+- **To 3 – Defined:** Extend the position to the top clinical vendors and remediate or accept gaps (one to two quarters).
+- **To 4 – Optimized:** Refresh the position annually and before renewals and define an audit response process (ongoing).
+
+**Recommended action if gap:** Maintain an effective license position for Microsoft and major clinical vendors, including server and SQL Server, refreshed before renewals and true-ups.
+
+**Sources:** <https://learn.microsoft.com/en-us/azure/virtual-machines/windows/hybrid-use-benefit-licensing>
+
+---
+
+## App Modernization
+
+### Portfolio Visibility
+
+#### AM-01 — Is there a complete inventory of applications with business owner, technical owner, vendor and hosting model?
+
+**Weight:** 3 · **HHS CPG:** CPG-X: Asset Inventory · **References:** NIST CSF 2.0 ID.AM
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No application list exists, or the only list is a software purchase ledger or an EHR module list kept by one analyst. |
+| 1 – Initial | A spreadsheet lists the major clinical and financial systems, but owners, hosting model and departmental or vendor-hosted tools are missing or out of date. |
+| 2 – Developing | Most applications are listed with a technical owner and vendor; business owners, hosting model or PHI handling are blank for many rows, and departmental or SaaS tools are incomplete. |
+| 3 – Defined | Every application, including departmental, SaaS and vendor-hosted systems, has a named business owner, technical owner, vendor, hosting model, user group and PHI flag, reconciled against discovery data and contracts. |
+| 4 – Optimized | The inventory is reconciled automatically against endpoint and server discovery, single sign-on applications and accounts payable at least quarterly, and unregistered applications raise a ticket. |
+
+**Probing questions**
+
+- Show me the list. How many rows, and when was it last changed? Who changes it?
+- Which applications did a department buy directly on a credit card or through a clinical budget, such as a dictation or a scheduling tool?
+- If the laboratory system went down tonight, who is the business owner who decides on downtime procedures, and is that person on the list?
+- How do you reconcile the list with what discovery tools, single sign-on and accounts payable show?
+- Which applications run on medical devices or on vendor-managed servers in your building?
+
+**Evidence and how to obtain it**
+
+- Application inventory with owner, vendor, hosting and PHI columns completed — App Portfolio Triage sheet or the configuration management database export.
+- Reconciliation record comparing the inventory to software discovery, single sign-on application list and accounts payable vendors — IT asset management or finance.
+- Sample of five applications picked by the assessor from the accounts payable vendor list, traced to inventory rows.
+
+**Red flags**
+
+- The inventory was built for a past EHR conversion or audit and has not been touched since.
+- Business owner is recorded as IT for clinical applications.
+
+**Healthcare considerations**
+
+- Departmental systems (cardiology, pharmacy, dietary, wound care, imaging viewers) are often bought outside IT and run on unmanaged servers; they are the rows most often missing.
+- Vendor-hosted EHR and revenue cycle systems still belong in the inventory: you remain responsible for access, interfaces, downtime procedures and the business associate agreement.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Fill the App Portfolio Triage sheet from contracts, accounts payable and discovery data for all known applications (one to two weeks).
+- **To 3 – Defined:** Assign a business and technical owner to every row and reconcile against discovery and single sign-on lists (one to two months).
+- **To 4 – Optimized:** Automate quarterly reconciliation against discovery, single sign-on and accounts payable and ticket every unregistered application (months).
+
+**Recommended action if gap:** Inventory every application, including departmental and vendor-hosted systems, with business owner, technical owner, vendor, hosting and PHI flag.
+
+**Sources:** <https://hhscyber.hhs.gov/cybersecurity-performance-goals.html> · <https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final>
+
+#### AM-02 — Are dependencies between applications (interfaces, databases, HL7 or FHIR feeds, shared infrastructure) documented?
+
+**Weight:** 3 · **HHS CPG:** — · **References:** NIST CSF 2.0 ID.AM
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Dependencies are not documented; interface knowledge sits with the interface analyst or the vendor. |
+| 1 – Initial | The interface engine shows active channels, but nobody has mapped them to source and destination applications, databases or shared servers. |
+| 2 – Developing | An interface list exists for the EHR and laboratory, but file transfers, database links, shared servers and vendor-hosted connections are missing. |
+| 3 – Defined | An interface catalog covers every HL7 v2, FHIR, file, database and API connection with source, destination, message type, owner and transport, and critical applications have a dependency map including shared infrastructure. |
+| 4 – Optimized | The catalog is reconciled against the interface engine and firewall rules after every change, and it is used to assess impact in every change request and outage review. |
+
+**Probing questions**
+
+- If we shut down this database server for maintenance, which applications and interfaces stop? How do you know?
+- How many active channels does the interface engine show, and how many are in your catalog?
+- Which interfaces bypass the engine: point-to-point feeds, nightly file drops, direct database reads, vendor VPN tunnels?
+- Who is alerted when an ADT, orders or results feed stops, and how long before someone notices?
+
+**Evidence and how to obtain it**
+
+- Interface catalog with source, destination, message type, transport and owner — interface team or integration vendor.
+- Active channel list exported from the interface engine, compared with the catalog by the assessor.
+- Dependency map for the three most critical applications showing servers, databases, storage, identity and network dependencies.
+
+**Red flags**
+
+- The catalog lists only interfaces that pass through the engine.
+- Nobody can say which applications share a database server or a file share.
+
+**Healthcare considerations**
+
+- ADT, orders and results feeds (HL7 v2 ADT, ORM, ORU messages) drive patient safety: a silent results interface means clinicians do not see laboratory values. Treat interface failure as a clinical risk, not only a technical one.
+- Interfaces to reference laboratories, state immunization and public health registries and health information exchanges often run on vendor-managed tunnels or file transfers that IT did not build and does not monitor.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Export the interface engine channel list and document every critical clinical feed with source, destination and owner (two to four weeks).
+- **To 3 – Defined:** Add non-engine connections and shared infrastructure and map dependencies for every critical application (one to three months).
+- **To 4 – Optimized:** Reconcile the catalog with the engine and firewall rules after each change and require impact analysis from it (ongoing).
+
+**Recommended action if gap:** Catalog every interface, including those outside the interface engine, and map dependencies for critical applications first.
+
+**Sources:** <https://hl7.org/fhir/> · <https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final>
+
+#### AM-03 — Is each application classified by its criticality to patient care, revenue cycle and operations?
+
+**Weight:** 3 · **HHS CPG:** — · **References:** HIPAA 45 CFR 164.308(a)(7)(ii)(E); NIST CSF 2.0 ID.AM
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No criticality rating exists; everything is treated as equally important, or IT decides informally during an outage. |
+| 1 – Initial | IT has an informal view of the top systems (EHR, laboratory, pharmacy), not written down or agreed with clinical leaders. |
+| 2 – Developing | A criticality rating exists for some applications but was set by IT alone, or it is not used for recovery order or investment. |
+| 3 – Defined | Every application has a documented criticality rating with defined criteria, approved by clinical and business owners, and the rating drives recovery order and recovery objectives. |
+| 4 – Optimized | Ratings are reviewed annually and after major incidents, tied to recovery objectives and the risk analysis, and used in budget and modernization prioritization. |
+
+**Probing questions**
+
+- What are the criteria for critical? Who signed off on them, and is there a clinical leader on that list?
+- In a ransomware event, in what order would you restore systems, and where is that written?
+- Which applications were rated critical only because a department asked loudly?
+- When was the applications and data criticality analysis last updated for the contingency plan?
+
+**Evidence and how to obtain it**
+
+- Applications and data criticality analysis with criteria and ratings — contingency plan or business impact analysis.
+- Approval record from clinical and business leadership (meeting minutes or signed document).
+- Recovery order list that matches the criticality ratings — disaster recovery plan.
+
+**Red flags**
+
+- Every application is rated critical.
+- The restore order in the disaster recovery plan contradicts the criticality ratings.
+
+**Healthcare considerations**
+
+- Criticality must consider dependencies: the EHR may be critical, but so is the identity service, the interface engine and the printing service it relies on.
+- Rate by patient care impact first (medication administration, results, imaging, blood bank), then revenue cycle and operations; clinical leaders, not IT, should approve the patient care ratings.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Define a three-to-five level criticality scale and rate the top 20 applications with clinical input (two to four weeks).
+- **To 3 – Defined:** Rate every application, obtain clinical and business approval and align the recovery order (one to two months).
+- **To 4 – Optimized:** Review ratings annually and after major incidents and link them to recovery objectives and budget decisions (ongoing).
+
+**Recommended action if gap:** Rate every application's criticality with clinical and business owners and use the rating to set recovery order.
+
+**Sources:** <https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C/section-164.308> · <https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final>
+
+#### AM-04 — Is the application inventory reviewed at least annually and updated with every change?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** NIST CSF 2.0 ID.AM
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | The inventory is never updated after it is created. |
+| 1 – Initial | The inventory is updated when someone remembers, usually before an audit or a budget cycle. |
+| 2 – Developing | New applications are usually added, but retirements, owner changes and hosting changes are not captured, and there is no scheduled review. |
+| 3 – Defined | Change management requires an inventory update for new, changed and retired applications, and a full review with owners is completed at least annually. |
+| 4 – Optimized | Inventory completeness is measured (for example rows with missing owners) and reported, and procurement and contract processes cannot complete without an inventory entry. |
+
+**Probing questions**
+
+- Show me the last three applications added and the last one retired. Are they reflected?
+- Does the change form have a field that forces an inventory update?
+- Can purchasing buy software or sign a SaaS contract without IT being told?
+
+**Evidence and how to obtain it**
+
+- Change records referencing inventory updates — change management system.
+- Date and attendance of the last full inventory review — meeting minutes.
+- Procurement or contract checklist that includes IT review and inventory registration.
+
+**Red flags**
+
+- Retired applications are still listed with active owners, or decommissioned servers still appear.
+
+**Healthcare considerations**
+
+- Clinical departments frequently sign SaaS agreements directly; tying inventory registration to contract and business associate agreement review catches them.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Add an inventory update step to the change form and the purchasing checklist (days).
+- **To 3 – Defined:** Run a full annual review with every business owner and record the date (one to two months per cycle).
+- **To 4 – Optimized:** Report inventory completeness quarterly and block procurement of unregistered software (months).
+
+**Recommended action if gap:** Make inventory updates mandatory in change management and purchasing, and review the full inventory with owners annually.
+
+**Sources:** <https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final>
+
+### Lifecycle & Supportability
+
+#### AM-05 — Do you know which applications depend on platforms past end of support (e.g., Windows 10, older Windows Server or SQL Server)?
+
+**Weight:** 3 · **HHS CPG:** CPG-E: Mitigate Known Vulnerabilities · **References:** NIST CSF 2.0 ID.AM, ID.RA
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Platform versions are not tracked; nobody can say which applications run on unsupported operating systems or databases. |
+| 1 – Initial | IT knows of some old servers but has no list linking platforms to applications. |
+| 2 – Developing | Operating system versions are known from discovery, but database, middleware and framework versions, embedded systems and vendor-managed servers are not linked to applications. |
+| 3 – Defined | Every application row records its operating system, database and key runtime versions with support end dates from the vendor's lifecycle page, and unsupported dependencies are reported to leadership. |
+| 4 – Optimized | Support end dates are tracked automatically from discovery data, platforms approaching end of support are flagged at least 18 months ahead, and the list feeds the roadmap and budget. |
+
+**Probing questions**
+
+- How many Windows 10 devices remain, and which clinical applications or devices require them?
+- Which applications still run on Windows Server 2012 R2 or earlier, or on SQL Server 2016 or earlier? Who confirmed it?
+- Which vendor-managed servers and medical device workstations are excluded from your discovery data?
+- Which platforms reach end of support in the next 18 months, for example Windows Server 2016?
+
+**Evidence and how to obtain it**
+
+- Platform support status report linking each application to operating system and database versions — discovery tool or CMDB export.
+- Lifecycle dates for each platform from the vendor's official lifecycle page (for Microsoft, learn.microsoft.com lifecycle).
+- List of devices excluded from discovery (vendor-managed, medical device workstations) with the reason.
+
+**Red flags**
+
+- The report covers servers but not databases or desktops attached to clinical equipment.
+- Extended Security Updates are assumed to be purchased but nobody can show the enrollment.
+
+**Healthcare considerations**
+
+- Many clinical vendors certify their software only on specific operating system and database versions; an unsupported platform may be a vendor certification problem, not only an IT upgrade.
+- Workstations attached to imaging, laboratory analyzers or other regulated devices may run old Windows versions under manufacturer control; track them separately and ask the manufacturer for its supported configuration.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Export operating system and database versions from discovery and map them to applications in the triage sheet (two to three weeks).
+- **To 3 – Defined:** Add vendor-managed and device-attached systems, record official support end dates and report to leadership (one to two months).
+- **To 4 – Optimized:** Automate end-of-support flagging 18 months ahead and feed it into roadmap and budget planning (months).
+
+**Recommended action if gap:** Link every application to its operating system and database versions and official support end dates, including vendor-managed systems.
+
+**Sources:** <https://learn.microsoft.com/en-us/lifecycle/products/windows-10-enterprise-and-education> · <https://learn.microsoft.com/en-us/lifecycle/products/windows-server-2016> · <https://learn.microsoft.com/en-us/lifecycle/products/sql-server-2016>
+
+#### AM-06 — Is there a funded plan for each unsupported platform (upgrade, isolate, retire or purchase extended updates)?
+
+**Weight:** 3 · **HHS CPG:** CPG-X: Cybersecurity Mitigation · **References:** NIST CSF 2.0 GV.RM, ID.RA
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No plan exists for unsupported platforms. |
+| 1 – Initial | IT has an intention to upgrade, but no owner, date or funding. |
+| 2 – Developing | Plans exist for some platforms, such as the Windows 10 refresh, but others lack owners or funding, or rely on Extended Security Updates without an exit date. |
+| 3 – Defined | Each unsupported platform has an approved plan (upgrade, isolate, retire or extended updates as a bridge) with an owner, a target date and approved funding, tracked to closure. |
+| 4 – Optimized | Plans are reviewed monthly with leadership, risk acceptance is signed for every residual exception, and budget is reserved before platforms reach end of support. |
+
+**Probing questions**
+
+- For each unsupported platform on the list, what is the decision, who owns it and when is it done?
+- Is the money in this year's budget, or is it a request?
+- If you bought Extended Security Updates, what is the exit plan before they end?
+- Who signed the risk acceptance for the systems you will not fix this year?
+
+**Evidence and how to obtain it**
+
+- Remediation plan per unsupported platform with owner, decision and date — project tracker or risk register.
+- Approved budget line or purchase order — finance.
+- Signed risk acceptance for each exception — risk register.
+
+**Red flags**
+
+- Extended Security Updates are treated as the plan instead of a bridge.
+- The plan waits on a vendor upgrade that has no committed date.
+
+**Healthcare considerations**
+
+- Clinical vendor upgrades often require a new version of the application, interface retesting and clinical validation; budget for vendor services and clinical informatics time, not only licenses and hardware.
+- Where the manufacturer controls the device, the plan is often isolation plus a request for the manufacturer's supported configuration and patch guidance, not a direct upgrade.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Record a decision, owner and target date for every unsupported platform (two to four weeks).
+- **To 3 – Defined:** Obtain funding approval, sign risk acceptance for exceptions and track each plan to closure (one quarter).
+- **To 4 – Optimized:** Review plans monthly with leadership and reserve budget before platforms reach end of support (ongoing).
+
+**Recommended action if gap:** Approve a funded plan with owner and date for each unsupported platform; use Extended Security Updates only as a bridge.
+
+**Sources:** <https://learn.microsoft.com/en-us/windows/whats-new/extended-security-updates> · <https://learn.microsoft.com/en-us/lifecycle/faq/extended-security-updates>
+
+#### AM-07 — Are vendor support status, roadmap and contract terms tracked for clinical applications?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** NIST CSF 2.0 GV.SC
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Vendor support status and contract terms are not tracked; renewals arrive as surprises. |
+| 1 – Initial | Contracts are filed in procurement, but nobody tracks support end dates, version support or vendor roadmap. |
+| 2 – Developing | A vendor list exists with renewal dates, but supported versions, end-of-life notices and security obligations are not recorded. |
+| 3 – Defined | A vendor register records, for each clinical application, the supported version, support end date, roadmap commitments, renewal date and security and incident notification terms, and it is reviewed before each renewal. |
+| 4 – Optimized | Vendor reviews are scheduled at least annually and before renewals, use the register to negotiate upgrade and security terms, and vendor end-of-life notices trigger roadmap updates. |
+
+**Probing questions**
+
+- Which version of your laboratory or pharmacy system are you on, and until when does the vendor support it?
+- Which vendors have announced end of life for a product you use?
+- Do contracts specify which operating system and database versions the vendor will certify, and when?
+- When is the next renewal, and what will you ask the vendor for?
+
+**Evidence and how to obtain it**
+
+- Vendor register with supported version, support end date, renewal date and security terms — procurement or IT.
+- Vendor end-of-life or support notices received in the last two years.
+- Minutes or notes from the last vendor review before a renewal.
+
+**Red flags**
+
+- The register has renewal dates but no supported-version information.
+
+**Healthcare considerations**
+
+- Small hospitals often run versions several releases behind because upgrades require vendor services they cannot schedule; ask whether you are on a version the vendor still patches.
+- Clinical vendors may require specific operating system and database versions; negotiate certification timelines for supported platforms in renewals.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Build a vendor register for clinical applications with versions, support end dates and renewals (two to four weeks).
+- **To 3 – Defined:** Add roadmap and security terms and review the register before every renewal (one quarter).
+- **To 4 – Optimized:** Hold annual vendor reviews and use the register to negotiate upgrade and certification commitments (ongoing).
+
+**Recommended action if gap:** Track supported version, support end date, roadmap and security terms for each clinical vendor and review before renewals.
+
+**Sources:** <https://hhscyber.hhs.gov/cybersecurity-performance-goals.html>
+
+#### AM-08 — Are legacy systems that cannot be upgraded (including medical device software) isolated with compensating controls?
+
+**Weight:** 3 · **HHS CPG:** CPG-X: Network Segmentation · **References:** NIST CSF 2.0 PR.IR; CISA ZTMM v2.0 Networks
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Legacy and device systems sit on the same flat network as user workstations and servers. |
+| 1 – Initial | Some legacy systems are on a separate VLAN, but traffic between segments is not filtered. |
+| 2 – Developing | Legacy systems are segmented with some filtering, but rules are broad, vendor remote access is unrestricted, or there is no exception register. |
+| 3 – Defined | Each non-upgradable system is in a restricted segment allowing only documented flows, has brokered vendor access, monitoring and an exception record with owner, compensating controls and review date. |
+| 4 – Optimized | Allowed flows are verified at least quarterly against observed traffic, anomalies alert the monitoring team, and each exception has a replacement plan reviewed by leadership. |
+
+**Probing questions**
+
+- Pick one legacy system. What can talk to it, and what can it talk to? Show me the rule.
+- Can a user workstation reach a device workstation over remote desktop or file sharing?
+- How does the manufacturer or vendor connect for support, and who approves each session?
+- Is there an exception record for each system, and when was it last reviewed?
+
+**Evidence and how to obtain it**
+
+- Segmentation design and firewall or access control rule set for legacy and device segments — network team.
+- Exception register with owner, compensating controls and review date — risk register.
+- Manufacturer Disclosure Statement for Medical Device Security (MDS2) or manufacturer guidance for device systems — clinical engineering.
+
+**Red flags**
+
+- Segments exist but allow any traffic between them.
+- Vendor access to legacy systems uses permanent always-on connections.
+
+**Healthcare considerations**
+
+- Hospitals cannot patch regulated device software outside the manufacturer's guidance; isolation, monitoring and manufacturer-supplied patches are the usual controls. Involve clinical engineering, which often owns these devices.
+- Imaging modalities and laboratory analyzers need specific flows (for example DICOM to the image archive, results to the laboratory system); document and allow only those.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Move non-upgradable systems into dedicated segments and block user-to-device traffic (weeks to months).
+- **To 3 – Defined:** Restrict to documented flows, broker vendor access and record each exception with compensating controls (one to two quarters).
+- **To 4 – Optimized:** Verify flows against observed traffic quarterly, alert on anomalies and track replacement plans (ongoing).
+
+**Recommended action if gap:** Isolate non-upgradable systems in restricted segments allowing only documented flows, with brokered vendor access and recorded exceptions.
+
+**Sources:** <https://www.fda.gov/medical-devices/digital-health-center-excellence/cybersecurity> · <https://www.cisa.gov/zero-trust-maturity-model>
+
+### Rationalization & Roadmap
+
+#### AM-09 — Does each application have a documented disposition (retire, retain, rehost, replatform, refactor, replace or isolate)?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** NIST CSF 2.0 ID.AM, GV.RM
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No dispositions exist; applications stay until they break or a vendor forces a change. |
+| 1 – Initial | IT leaders have opinions about which systems should go, but nothing is documented. |
+| 2 – Developing | Dispositions are recorded for some applications, typically those in a current project, without consistent criteria or owner approval. |
+| 3 – Defined | Every application has a disposition from the kit's list, based on documented criteria (risk, value, criticality, cost), approved by the business and clinical owner. |
+| 4 – Optimized | Dispositions are revisited at least annually and on triggering events (vendor end of life, contract renewal, incident), and outcomes are tracked against the roadmap. |
+
+**Probing questions**
+
+- For your ten most expensive applications, what is the decision and who approved it?
+- What criteria did you use, and are they written down?
+- Which applications are marked Retain only because nobody looked at them?
+
+**Evidence and how to obtain it**
+
+- Disposition and Final decision columns completed in the App Portfolio Triage sheet.
+- Approval record from application and clinical owners — governance minutes.
+- Written disposition criteria.
+
+**Red flags**
+
+- All applications are marked Retain.
+- The suggested disposition from the workbook was copied as the final decision without owner review.
+
+**Healthcare considerations**
+
+- Retiring a clinical system requires a plan for legally retained records: archive in a viewable form or keep a read-only instance; do not decommission until medical records and compliance agree.
+- Replace decisions for EHR-adjacent systems often depend on what the EHR vendor offers natively; check before buying another point solution.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Use the triage sheet to propose dispositions for the top 20 applications by priority (two weeks).
+- **To 3 – Defined:** Write disposition criteria and obtain owner approval for every application (one to two months).
+- **To 4 – Optimized:** Review dispositions annually and on vendor end-of-life notices, renewals and incidents (ongoing).
+
+**Recommended action if gap:** Record an owner-approved disposition for every application using documented criteria and the App Portfolio Triage sheet.
+
+**Sources:** <https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final>
+
+#### AM-10 — Is there a sequenced modernization roadmap aligned with business priorities and regulatory deadlines?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** NIST CSF 2.0 GV.RM, ID.IM
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No roadmap exists; projects start in response to failures, vendor deadlines or audits. |
+| 1 – Initial | A list of desired projects exists, without sequence, dependencies, owners or funding. |
+| 2 – Developing | A roadmap covers the next year's major projects but is not linked to dispositions, dependencies or platform end-of-support dates. |
+| 3 – Defined | A funded roadmap sequences work in waves by risk, value and dependencies, reflects known end-of-support dates and tracks regulatory developments, and is approved by leadership. |
+| 4 – Optimized | The roadmap is reviewed quarterly against progress and risk, re-sequenced when dates or risks change, and reports benefits achieved. |
+
+**Probing questions**
+
+- What will be done in the next two quarters, and why in that order?
+- Which items are funded and which are requests?
+- Does the roadmap show dependencies, for example the database upgrade that must precede the application upgrade?
+- How do platform end dates, such as Windows Server 2016 in January 2027, appear in the plan?
+
+**Evidence and how to obtain it**
+
+- Modernization roadmap with waves, owners, dates and funding status.
+- Leadership approval record — board or executive committee minutes.
+- Last quarterly progress review.
+
+**Red flags**
+
+- The roadmap is the EHR vendor's upgrade calendar and nothing else.
+- Regulatory items cite a proposed rule as if it had a fixed compliance date.
+
+**Healthcare considerations**
+
+- The HIPAA Security Rule update published as a proposed rule in January 2025 is still proposed; track it as a development, not a deadline, and plan around controls you already need.
+- Schedule waves around clinical calendars (EHR upgrades, regulatory surveys, census peaks) and around the small number of analysts who know each system.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Turn approved dispositions into a one-year list of projects with owners (two to four weeks).
+- **To 3 – Defined:** Sequence the work in waves by risk, value and dependencies, add end-of-support dates and obtain funding approval (one quarter).
+- **To 4 – Optimized:** Review the roadmap quarterly, re-sequence on new risks and report benefits (ongoing).
+
+**Recommended action if gap:** Build a funded roadmap in waves from approved dispositions, sequenced by risk, value, dependencies and platform end-of-support dates.
+
+**Sources:** <https://learn.microsoft.com/en-us/lifecycle/products/windows-server-2016> · <https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final>
+
+#### AM-11 — Are redundant applications with overlapping functions identified for consolidation?
+
+**Weight:** 1 · **HHS CPG:** — · **References:** NIST CSF 2.0 ID.AM
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Overlaps are not identified. |
+| 1 – Initial | IT knows anecdotally that several tools do the same job, but nothing is documented. |
+| 2 – Developing | Some overlaps are documented, for example two document management systems, but no capability map or decisions exist. |
+| 3 – Defined | A capability-to-application map exposes overlaps, and each overlap has a consolidation decision with an owner. |
+| 4 – Optimized | New purchases are checked against the capability map before approval, and consolidation savings are tracked. |
+
+**Probing questions**
+
+- How many tools do you have for document scanning, faxing, secure messaging and dictation?
+- Does the EHR already include a module that duplicates a departmental tool?
+- Is a new purchase checked against what you already own?
+
+**Evidence and how to obtain it**
+
+- Capability-to-application map — App Portfolio Triage sheet Business function column or a separate map.
+- Consolidation decisions with owners — governance minutes.
+
+**Red flags**
+
+- Consolidation is blocked because no one owns the decision across departments.
+
+**Healthcare considerations**
+
+- Mergers, affiliations and physician practice acquisitions bring duplicate scheduling, billing and document systems; consolidation reduces interfaces and attack surface.
+- Native EHR modules may replace point solutions, but confirm workflow fit with clinical users before deciding.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Group applications by business function in the triage sheet to expose obvious overlaps (one to two weeks).
+- **To 3 – Defined:** Build a capability map and record a consolidation decision and owner for each overlap (one to two months).
+- **To 4 – Optimized:** Check every new purchase against the map and track consolidation savings (ongoing).
+
+**Recommended action if gap:** Map business capabilities to applications, decide on each overlap and check new purchases against the map.
+
+**Sources:** <https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final>
+
+#### AM-12 — Is the total cost of ownership known for major applications?
+
+**Weight:** 1 · **HHS CPG:** — · **References:** FinOps Framework (Inform)
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Application costs are unknown beyond the license invoice. |
+| 1 – Initial | License and maintenance fees are known for some applications. |
+| 2 – Developing | License and maintenance costs are known for major applications, but infrastructure, interfaces, support staff and vendor services are not. |
+| 3 – Defined | For each major application, licensing, maintenance, infrastructure or hosting, interfaces, vendor services and internal staff time are estimated with a documented method. |
+| 4 – Optimized | Total cost of ownership is updated annually, used in disposition decisions and business cases, and compared to alternatives before renewals. |
+
+**Probing questions**
+
+- For your laboratory system, what does it cost in total each year: license, maintenance, servers, interfaces, people?
+- Where do infrastructure and hosting costs get allocated?
+- Have you ever compared the cost of keeping an application to the cost of replacing it?
+
+**Evidence and how to obtain it**
+
+- Cost per application with method — finance or IT, Annual cost column of the triage sheet.
+- Business case or renewal analysis that used total cost of ownership.
+
+**Red flags**
+
+- Cost equals the maintenance invoice only.
+
+**Healthcare considerations**
+
+- Interface costs (engine licenses, per-interface vendor fees, analyst time) and after-hours vendor support are often the hidden part of clinical application cost.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Record license and maintenance cost for the top 20 applications by spend (two weeks).
+- **To 3 – Defined:** Add infrastructure, interfaces, services and staff time with a documented method (one to two months).
+- **To 4 – Optimized:** Update annually and use total cost of ownership in every disposition and renewal decision (ongoing).
+
+**Recommended action if gap:** Estimate total cost of ownership, including infrastructure, interfaces and staff time, for the top applications by spend.
+
+**Sources:** <https://www.finops.org/framework/>
+
+### Engineering & Release
+
+#### AM-13 — Are changes deployed through a controlled, repeatable release process with approval and rollback?
+
+**Weight:** 3 · **HHS CPG:** CPG-X: Configuration Management · **References:** NIST CSF 2.0 PR.PS
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Changes are made directly in production by whoever has access, without records. |
+| 1 – Initial | Changes are announced by email or chat, but approval, testing and rollback depend on the individual. |
+| 2 – Developing | A change process exists for major systems, but emergency and vendor changes bypass it, rollback plans are not written, or configurations are not baselined. |
+| 3 – Defined | All production changes, including vendor-performed changes, follow an approved process with risk rating, test evidence, scheduled window, written rollback plan and configuration baseline. |
+| 4 – Optimized | Change success, failure and rollback rates are measured, rollback is rehearsed for high-risk changes, and deployments of in-house code are automated and repeatable. |
+
+**Probing questions**
+
+- Show me the last three changes to a clinical system. Where are the approval, test evidence and rollback plan?
+- When the vendor applies an upgrade or patch remotely, does it go through your change process?
+- How many emergency changes last quarter, and were they reviewed afterwards?
+- When was a rollback last performed, and did it work?
+
+**Evidence and how to obtain it**
+
+- Change records for a sample of recent changes with approval, test evidence and rollback plan — change management system.
+- Release procedure document.
+- Configuration baseline for a critical application or server.
+
+**Red flags**
+
+- Vendor changes are excluded from the process.
+- Rollback plans say restore from backup without a tested time estimate.
+
+**Healthcare considerations**
+
+- In 24x7 operations, change windows must be agreed with nursing, pharmacy and laboratory leadership and paired with downtime procedures; a failed overnight change can affect medication administration and results.
+- Many clinical vendors perform upgrades remotely; require that their work follows your change approval, communication and verification steps.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Require a change record with approval and rollback plan for every change to critical applications (weeks).
+- **To 3 – Defined:** Extend the process to vendor and emergency changes and baseline configurations (one quarter).
+- **To 4 – Optimized:** Measure change outcomes, rehearse rollback for high-risk changes and automate in-house deployments (months).
+
+**Recommended action if gap:** Route every production change, including vendor changes, through approval with test evidence, a scheduled window and written rollback plan.
+
+**Sources:** <https://hhscyber.hhs.gov/cybersecurity-performance-goals.html>
+
+#### AM-14 — Is automated testing used for critical applications before release?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** NIST SP 800-218 PW.8
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No testing is done before release, or testing is done by users in production. |
+| 1 – Initial | Testing is manual and informal, done by an analyst or super-user without scripts. |
+| 2 – Developing | Manual test scripts exist for some clinical workflows, but they are not run on every release and nothing is automated. |
+| 3 – Defined | Critical workflows have documented regression tests run on every release, with automated tests for in-house code and interfaces where practical, and results are retained. |
+| 4 – Optimized | Automated regression covers critical workflows and interfaces, runs in the release pipeline, and failures block release; test coverage is reviewed after incidents. |
+
+**Probing questions**
+
+- When the vendor delivers an upgrade, what do you test, who tests it and where are the results?
+- Do you have a test environment with representative, de-identified or synthetic data?
+- Which interfaces are tested automatically, for example sending test HL7 messages and checking the result?
+- Has an upgrade ever broken a workflow that testing should have caught?
+
+**Evidence and how to obtain it**
+
+- Test scripts and results for the last two releases of a critical application — release records.
+- Description of the test environment and test data source (synthetic or de-identified).
+- Automated test reports from a pipeline, where in-house code exists.
+
+**Red flags**
+
+- Testing uses copies of production data containing PHI in an uncontrolled environment.
+
+**Healthcare considerations**
+
+- Clinical validation (order to result, medication order to administration, admission to billing) should be scripted with clinical informatics and run on every upgrade; vendor testing does not cover your configuration.
+- Small hospitals often lack a full test environment; at minimum validate interfaces with test patients agreed with the vendor.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Write regression scripts for the top clinical workflows and interfaces with clinical informatics (weeks).
+- **To 3 – Defined:** Run them on every release, retain results and automate tests for in-house code and interfaces (one to two quarters).
+- **To 4 – Optimized:** Integrate automated regression in the release pipeline so failures block release (months).
+
+**Recommended action if gap:** Script regression tests for critical clinical workflows and interfaces, run them every release and automate where practical.
+
+**Sources:** <https://csrc.nist.gov/pubs/sp/800/218/final>
+
+#### AM-15 — Are secure development practices (code review, dependency scanning, secrets management) applied to in-house and customized code?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** NIST SP 800-218 PO.1, PS.1, PW.4, PW.7, RV.1
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | In-house scripts, reports and integrations are written without review, version control or scanning. |
+| 1 – Initial | Some code is in version control, but review and scanning are optional and secrets are embedded in scripts or configuration files. |
+| 2 – Developing | Version control and peer review are used for main projects, but dependency scanning and secrets management are missing or inconsistent, and interface scripts are excluded. |
+| 3 – Defined | All in-house and customized code is in protected version control with mandatory review, dependency and vulnerability scanning and secrets in a managed vault; vendors provide secure development attestations. |
+| 4 – Optimized | Scanning gates releases, vulnerabilities are tracked to closure with timelines, software bills of materials are kept for in-house software, and practices are reviewed against the SSDF annually. |
+
+**Probing questions**
+
+- What code do you own: interface scripts, reports, integrations, web forms, scheduled jobs? Where is it stored?
+- How are database and interface credentials stored in scripts?
+- Who reviews a change before it reaches production?
+- What do you ask vendors about their secure development practices?
+
+**Evidence and how to obtain it**
+
+- Repository settings showing branch protection and required review — source control platform.
+- Dependency and secret scanning results for the last month.
+- Vendor secure development attestation or questionnaire responses — procurement.
+
+**Red flags**
+
+- Interface or report scripts live on a server share outside version control.
+- Service account passwords appear in scripts.
+
+**Healthcare considerations**
+
+- Small hospitals' custom code is usually interface transformations, report queries and integration scripts; these touch PHI and need the same controls as applications.
+- Ask clinical vendors for secure development evidence; the CISA secure software self-attestation form is one example of what producers provide to federal agencies.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Move all in-house code into version control with required review and remove secrets from scripts (weeks).
+- **To 3 – Defined:** Add dependency and secret scanning, a managed vault and vendor attestation requests (one quarter).
+- **To 4 – Optimized:** Gate releases on scanning, track vulnerabilities to closure and keep software bills of materials (months).
+
+**Recommended action if gap:** Put all in-house code in reviewed version control, scan dependencies and secrets, and request secure development evidence from vendors.
+
+**Sources:** <https://csrc.nist.gov/pubs/sp/800/218/final> · <https://www.cisa.gov/secure-software-attestation-form>
+
+#### AM-16 — If AI-assisted engineering is used, is it governed by policy (approved tools, data restrictions, human review)?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** NIST CSF 2.0 GV.PO; NIST SP 800-218 PO.3
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | AI tools are used for code or configuration without any policy, or IT does not know whether they are used. |
+| 1 – Initial | Leaders informally discourage pasting sensitive data into AI tools, but there is no written policy or approved tool list. |
+| 2 – Developing | A draft or general AI policy exists, but approved engineering tools, PHI prohibitions and review requirements are not defined or enforced. |
+| 3 – Defined | A policy names approved AI tools under appropriate agreements, prohibits PHI and secrets in prompts and test data, and requires human review of every AI-generated change before release. |
+| 4 – Optimized | Use of approved tools is logged, review compliance is checked in change records, unapproved tools are blocked, and the policy is reviewed at least annually. |
+
+**Probing questions**
+
+- Who uses AI tools to write scripts, queries or configuration today, and which tools?
+- What stops someone from pasting an HL7 message with patient data into a public tool?
+- How do you know an AI-generated change was reviewed by a person before release?
+
+**Evidence and how to obtain it**
+
+- AI-assisted engineering policy with approved tools — policy library.
+- Change records showing human review of AI-assisted changes.
+- Agreements for approved AI tools covering data handling (business associate agreement where PHI could be involved).
+
+**Red flags**
+
+- The policy exists but nobody can list the approved tools.
+
+**Healthcare considerations**
+
+- Interface messages, error logs and report outputs often contain PHI; the policy must cover these artifacts, not only patient records.
+- Use synthetic test data for AI-assisted interface or report development.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Publish a short policy naming approved tools and prohibiting PHI and secrets in prompts (weeks).
+- **To 3 – Defined:** Require and record human review of AI-assisted changes in change management (one quarter).
+- **To 4 – Optimized:** Log use, block unapproved tools and review the policy annually (months).
+
+**Recommended action if gap:** Publish an AI-assisted engineering policy with approved tools, no PHI or secrets in prompts, and mandatory human review.
+
+**Sources:** <https://csrc.nist.gov/pubs/sp/800/218/final> · <https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final>
+
+### Resilience & Recovery
+
+#### AM-17 — Are backups of critical applications and data protected from tampering and is restoration tested?
+
+**Weight:** 3 · **HHS CPG:** — · **References:** HIPAA 45 CFR 164.308(a)(7)(ii)(A),(D); NIST CSF 2.0 PR.DS, RC.RP
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Backups are not taken for some critical systems, or nobody knows whether they work. |
+| 1 – Initial | Backups run, but they are reachable with the same administrator credentials as production and restoration is not tested. |
+| 2 – Developing | Backups exist for critical systems and some file restores are tested, but backups are not immutable or offline, or full application restores have never been tested. |
+| 3 – Defined | Backups of critical applications are immutable or offline, protected by separate credentials and MFA, and a full application restore is tested at least annually with results documented. |
+| 4 – Optimized | Restores of every critical application are tested on a schedule against recovery objectives, backup integrity is monitored, and failures alert the team. |
+
+**Probing questions**
+
+- If an attacker obtained domain administrator rights, could they delete or encrypt your backups?
+- When did you last restore a complete critical application, not a file, and how long did it take?
+- Do vendor-hosted systems back up your data, and have you seen a restore test?
+- Are interface engine configurations and database backups included?
+
+**Evidence and how to obtain it**
+
+- Backup configuration showing immutability or offline copy and separate credentials — backup console.
+- Restoration test report for a critical application with duration and issues — IT.
+- Vendor backup and restore commitments for hosted systems — contract or service description.
+
+**Red flags**
+
+- Restore testing means restoring a single file.
+- Backup console uses domain administrator accounts.
+
+**Healthcare considerations**
+
+- Restoring a clinical system includes its interfaces, interface engine configuration, identity dependencies and print queues; test the whole chain, not only the database.
+- For vendor-hosted EHRs, confirm what the vendor restores, how fast, and how you access data during their outage (read-only copy or downtime reports).
+
+**Path to the next level**
+
+- **To 2 – Developing:** Back up every critical application and test one full restore (weeks).
+- **To 3 – Defined:** Make backups immutable or offline with separate credentials and test full restores annually (one quarter).
+- **To 4 – Optimized:** Schedule restore tests for every critical application against recovery objectives and monitor integrity (months).
+
+**Recommended action if gap:** Make backups immutable or offline with separate credentials, and test full restores of critical applications at least annually.
+
+**Sources:** <https://405d.hhs.gov/> · <https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C/section-164.308>
+
+#### AM-18 — Do critical applications have recovery time and recovery point objectives that are tested?
+
+**Weight:** 3 · **HHS CPG:** — · **References:** HIPAA 45 CFR 164.308(a)(7)(ii)(B); NIST CSF 2.0 RC.RP
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No recovery objectives are defined. |
+| 1 – Initial | IT has informal expectations of how fast systems come back, not agreed with owners. |
+| 2 – Developing | Recovery objectives are written for some applications but were never tested, or tests showed gaps that remain open. |
+| 3 – Defined | Every critical application has recovery time and point objectives approved by its owner, and recovery exercises confirm they are achievable or document approved gaps. |
+| 4 – Optimized | Recovery exercises run on a schedule, results are reported to leadership, and gaps are funded and closed; objectives are reviewed when criticality changes. |
+
+**Probing questions**
+
+- For the laboratory system, how long can the hospital operate without it, and how much data can it lose?
+- When was recovery last tested, and what time did you actually achieve?
+- Do vendor contracts for hosted systems state recovery commitments matching your objectives?
+- What happens if several critical systems must be recovered at once?
+
+**Evidence and how to obtain it**
+
+- Recovery objectives per critical application approved by owners — disaster recovery plan.
+- Disaster recovery test report with achieved times — IT.
+- Vendor recovery commitments for hosted systems — contract.
+
+**Red flags**
+
+- Objectives were set by IT without clinical owners.
+- Tests recover one system in isolation, never the dependency chain.
+
+**Healthcare considerations**
+
+- Objectives must match how long downtime procedures can safely carry operations; clinical leaders should confirm that paper workflows can last that long.
+- In a ransomware scenario, multiple systems are lost at once; test recovery of the identity service, interface engine and EHR connectivity together.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Agree recovery objectives for critical applications with clinical and business owners (weeks).
+- **To 3 – Defined:** Run recovery exercises, document achieved times and record approved gaps (one to two quarters).
+- **To 4 – Optimized:** Schedule exercises, report results to leadership and fund gap closure (ongoing).
+
+**Recommended action if gap:** Agree recovery time and point objectives with owners for each critical application and prove them in recovery exercises.
+
+**Sources:** <https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final> · <https://learn.microsoft.com/en-us/azure/well-architected/reliability/disaster-recovery>
+
+#### AM-19 — Are downtime procedures for clinical workflows documented and exercised?
+
+**Weight:** 3 · **HHS CPG:** — · **References:** HIPAA 45 CFR 164.308(a)(7)(ii)(C); NIST CSF 2.0 RC.RP
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No documented downtime procedures exist. |
+| 1 – Initial | Downtime binders exist in some units but are outdated, and staff are unsure how to use them. |
+| 2 – Developing | Procedures are documented for major clinical areas, but they are not exercised, downtime forms or reports are stale, or recovery back-entry is not defined. |
+| 3 – Defined | Every clinical department has current downtime procedures, including forms, read-only access or reports and back-entry steps, and exercises them at least annually. |
+| 4 – Optimized | Downtime exercises include extended multi-day scenarios, results drive improvements, and downtime report devices and read-only copies are checked on a schedule. |
+
+**Probing questions**
+
+- If the EHR is down for three days, how do nurses see medication administration records and allergies?
+- Where are downtime reports printed or stored, and when were they last checked?
+- When did each unit last run a downtime exercise, and what went wrong?
+- How are paper records entered back after recovery, and who reconciles them?
+
+**Evidence and how to obtain it**
+
+- Downtime procedures per department with last revision date — clinical policy library.
+- Exercise records and after-action reports — clinical informatics or emergency management.
+- Check log for downtime report devices or read-only copies — IT.
+
+**Red flags**
+
+- Procedures assume the downtime lasts hours, not days.
+- Downtime report devices have not been checked since they were installed.
+
+**Healthcare considerations**
+
+- Ransomware outages can last weeks; procedures should cover extended downtime, including laboratory, pharmacy, imaging, registration and diversion decisions.
+- Downtime report workstations and read-only copies are themselves systems that must be patched, isolated and tested.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Update downtime procedures for the top clinical departments and check downtime report devices (weeks).
+- **To 3 – Defined:** Cover every department, including back-entry, and exercise each at least annually (one to two quarters).
+- **To 4 – Optimized:** Run extended multi-day scenarios and feed results into procedures and recovery planning (ongoing).
+
+**Recommended action if gap:** Document downtime procedures with read-only access and back-entry steps for every clinical department, and exercise them annually.
+
+**Sources:** <https://www.healthit.gov/topic/safety/safer-guides> · <https://405d.hhs.gov/>
+
+#### AM-20 — Is monitoring in place to detect application outages and performance degradation?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** NIST CSF 2.0 DE.CM
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Outages are discovered when clinicians call the help desk. |
+| 1 – Initial | Basic server up/down checks exist for some servers; applications and interfaces are not monitored. |
+| 2 – Developing | Servers and some applications are monitored, but interface queues, response times and vendor-hosted systems are not, or alerts go to an unattended mailbox. |
+| 3 – Defined | Critical applications are monitored end to end, including availability, response time and interface queues, with alerts routed to an accountable on-call team at all hours. |
+| 4 – Optimized | Synthetic transactions test key clinical workflows, alert thresholds are tuned from incident reviews, and availability is reported to owners. |
+
+**Probing questions**
+
+- How did you find out about the last outage: an alert or a phone call?
+- If the results interface queue stops processing at 2 a.m., who is alerted and how quickly?
+- Who receives alerts outside business hours?
+- How do you know a vendor-hosted system is slow before users complain?
+
+**Evidence and how to obtain it**
+
+- Monitoring dashboard showing critical applications and interfaces — monitoring tool.
+- Alert routing and on-call schedule.
+- Last three outages with detection source (alert or user report) — incident records.
+
+**Red flags**
+
+- Alerts go to a shared mailbox nobody watches at night.
+
+**Healthcare considerations**
+
+- Interface queue depth is often the first sign of a clinical outage; monitor queues and message age, not only whether the engine service is running.
+- Small teams rely on one on-call person; route alerts so a single missed page does not leave a results feed down until morning.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Monitor availability of critical applications and interface engine queues with alerts to on-call staff (weeks).
+- **To 3 – Defined:** Add response time and vendor-hosted systems and route alerts to accountable teams at all hours (one quarter).
+- **To 4 – Optimized:** Add synthetic clinical transactions and tune thresholds from incident reviews (months).
+
+**Recommended action if gap:** Monitor critical applications and interface queues end to end with alerts routed to on-call staff at all hours.
+
+**Sources:** <https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final>
+
+### Cloud & Data Readiness
+
+#### AM-21 — Is there a cloud foundation (identity, network, security, cost governance) in place before migrations?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** Microsoft Cloud Adoption Framework (Ready); NIST CSF 2.0 PR.PS
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Cloud resources are created ad hoc, or migrations are planned without a foundation. |
+| 1 – Initial | A cloud subscription exists with a few workloads, created by one person without standard policies. |
+| 2 – Developing | Some foundation elements exist (for example identity integration) but network design, security policies, logging or cost controls are incomplete. |
+| 3 – Defined | A documented foundation provides identity integration, network segmentation and connectivity, security baselines, logging, backup, tagging and budgets, and every migration lands on it. |
+| 4 – Optimized | The foundation is deployed as code, policy compliance is monitored continuously, and drift is corrected automatically or ticketed. |
+
+**Probing questions**
+
+- Before the next workload moves, where will it land, and who designed that environment?
+- How are administrator access, network connectivity to the hospital and logging handled in the cloud?
+- Are policies enforced, for example blocking public storage or untagged resources?
+- Does the cloud provider agreement include a business associate agreement?
+
+**Evidence and how to obtain it**
+
+- Cloud foundation design and policy assignments — cloud management console.
+- Policy compliance report for existing subscriptions.
+- Tagging and budget configuration — cost management console.
+
+**Red flags**
+
+- Workloads with PHI run in a subscription created for a pilot.
+
+**Healthcare considerations**
+
+- Clinical applications moved to cloud still need low-latency, resilient connectivity to on-premises devices and interfaces; design for loss of the internet link, including downtime procedures.
+- Small teams benefit from a standard, small foundation (one landing zone pattern) rather than a large enterprise design they cannot operate.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Document current cloud subscriptions and apply identity, logging and budget basics (weeks).
+- **To 3 – Defined:** Establish a documented foundation with network, security baselines, backup and tagging before further migrations (one quarter).
+- **To 4 – Optimized:** Deploy the foundation as code and monitor policy compliance continuously (months).
+
+**Recommended action if gap:** Establish a governed cloud foundation for identity, network, security, logging and cost before migrating any workload.
+
+**Sources:** <https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/>
+
+#### AM-22 — Are business associate agreements in place with all cloud and SaaS providers that handle PHI?
+
+**Weight:** 3 · **HHS CPG:** CPG-E: Vendor/Supplier Cybersecurity Requirements · **References:** HIPAA 45 CFR 164.308(b); NIST CSF 2.0 GV.SC
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Business associate agreements are not tracked for cloud and SaaS providers. |
+| 1 – Initial | Agreements exist for the EHR vendor and a few others, but nobody knows which other providers handle PHI. |
+| 2 – Developing | A list of agreements exists, but it is not reconciled with the application inventory, or security requirements are not reviewed. |
+| 3 – Defined | Every provider that creates, receives, maintains or transmits PHI has a signed business associate agreement linked to its inventory row, and a security review is completed before onboarding. |
+| 4 – Optimized | Agreements and security reviews are tracked with renewal dates, reviewed periodically and on incidents, and onboarding cannot proceed without them. |
+
+**Probing questions**
+
+- Which providers in your inventory handle PHI, and does each have a signed agreement?
+- What about transcription, fax, messaging, patient engagement and analytics tools bought by departments?
+- What security questions do you ask before signing, and who reviews the answers?
+
+**Evidence and how to obtain it**
+
+- Business associate agreement register linked to the application inventory — compliance or legal.
+- Vendor security reviews for PHI-handling providers — IT or security.
+- Onboarding checklist requiring agreement and review.
+
+**Red flags**
+
+- The agreement register is held by compliance and has never been compared with the application inventory.
+
+**Healthcare considerations**
+
+- Departmental SaaS tools (scheduling, patient messaging, transcription) are the usual gap; reconcile the agreement register with the full inventory.
+- A business associate agreement does not replace a security review; include incident notification and recovery commitments in contracts.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Flag PHI-handling providers in the inventory and confirm a signed agreement for each (weeks).
+- **To 3 – Defined:** Link agreements to inventory rows and complete security reviews before onboarding (one quarter).
+- **To 4 – Optimized:** Track agreements and reviews with renewal dates and block onboarding without them (ongoing).
+
+**Recommended action if gap:** Confirm a signed business associate agreement and a security review for every provider that handles PHI.
+
+**Sources:** <https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C/section-164.308> · <https://hhscyber.hhs.gov/cybersecurity-performance-goals.html>
+
+#### AM-23 — Are interfaces moving toward standards-based APIs (e.g., HL7 FHIR) where applicable?
+
+**Weight:** 1 · **HHS CPG:** — · **References:** HL7 FHIR; NIST CSF 2.0 ID.AM
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Interfaces are point-to-point custom formats or file drops, and standards are not considered. |
+| 1 – Initial | HL7 v2 is used for core feeds, but new interfaces are still built as custom files or direct database access. |
+| 2 – Developing | Standards are preferred informally, but there is no interface standard, API inventory or security requirement for APIs. |
+| 3 – Defined | A documented interface standard prefers HL7 v2 or FHIR APIs over custom formats for new and modernized interfaces, and APIs are inventoried, authenticated and logged. |
+| 4 – Optimized | Interface choices are reviewed against the standard in design review, legacy custom interfaces have replacement plans, and API usage and errors are monitored. |
+
+**Probing questions**
+
+- How was the last new interface built, and why that way?
+- Which applications read the EHR database directly?
+- Which FHIR APIs are exposed, who can call them and how is access logged?
+
+**Evidence and how to obtain it**
+
+- Interface standard or design guideline — integration team.
+- Interface catalog showing interface type per connection.
+- API inventory with authentication method and logging.
+
+**Red flags**
+
+- FHIR endpoints are exposed by vendors but not in the inventory or security review.
+
+**Healthcare considerations**
+
+- HL7 v2 will remain the backbone for ADT, orders and results for years; FHIR is typically added for new uses (patient access, apps, data exchange). Modernize where it reduces custom code, not for its own sake.
+- Direct database reads from the EHR break on upgrades and bypass audit; replace them with supported interfaces or APIs.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Write a short interface standard preferring HL7 or FHIR and record interface type in the catalog (weeks).
+- **To 3 – Defined:** Inventory, authenticate and log every API and apply the standard to new interfaces (one to two quarters).
+- **To 4 – Optimized:** Plan replacement of custom and direct-database interfaces and monitor API usage (months).
+
+**Recommended action if gap:** Adopt an interface standard preferring HL7 v2 or FHIR, and inventory, authenticate and log every API.
+
+**Sources:** <https://hl7.org/fhir/>
+
+#### AM-24 — Are data classification, retention and migration rules for PHI defined before applications are moved?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** HIPAA 45 CFR 164.310(d)(2); NIST CSF 2.0 PR.DS
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No classification or retention rules exist for application data. |
+| 1 – Initial | Retention is decided case by case when a system is retired or moved. |
+| 2 – Developing | A retention schedule exists for medical records, but application data classification and migration rules (what moves, what is archived, what is destroyed) are not defined. |
+| 3 – Defined | PHI classification, retention periods and migration rules are documented and approved by compliance and records management, and applied in every migration and retirement plan. |
+| 4 – Optimized | Compliance with the rules is verified after each migration, legacy archives are inventoried, and destruction is recorded. |
+
+**Probing questions**
+
+- When you retire the old system, where will its records live, and for how long?
+- Who decides what data moves to the new system and what is archived?
+- How do you verify that copies and test environments are deleted after migration?
+
+**Evidence and how to obtain it**
+
+- Data classification and retention policy — compliance or records management.
+- Migration or retirement plan applying the rules for a recent project.
+- Destruction or archive records — records management.
+
+**Red flags**
+
+- Old servers are kept running indefinitely because nobody decided on retention.
+
+**Healthcare considerations**
+
+- Retention periods for medical records vary by state and record type; records management and counsel decide, not IT.
+- Legacy systems kept only for record lookup are often unpatched; a read-only archive with access controls reduces the risk.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Document retention requirements with records management for applications in the next migration (weeks).
+- **To 3 – Defined:** Approve classification, retention and migration rules and apply them in every migration and retirement plan (one quarter).
+- **To 4 – Optimized:** Verify compliance after each migration and inventory legacy archives (ongoing).
+
+**Recommended action if gap:** Define PHI classification, retention and migration rules with records management before moving or retiring any application.
+
+**Sources:** <https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C>
+
+---
+
+## Zero Trust
+
+### Identity
+
+#### ZT-01 — Is multifactor authentication enforced for remote access, email and privileged accounts?
+
+**Weight:** 3 · **HHS CPG:** CPG-E: Multifactor Authentication · **References:** HIPAA 45 CFR 164.312(d); CISA ZTMM v2.0 Identity; NIST CSF 2.0 PR.AA
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No MFA, or MFA only for a few volunteers. |
+| 1 – Initial | MFA on some remote access (for example the VPN) but not on email or administrator accounts. |
+| 2 – Developing | MFA on remote access and email for most users; exceptions are undocumented; administrators use SMS or voice; vendor accounts are excluded. |
+| 3 – Defined | MFA is enforced (not report-only) for all remote access, email, administrators and third-party/vendor access; exceptions are documented, approved and reviewed. |
+| 4 – Optimized | Phishing-resistant methods (FIDO2 security keys, Windows Hello for Business or certificate-based authentication) are required for administrators and remote access; legacy authentication is blocked; coverage is monitored and gaps raise alerts. |
+
+**Probing questions**
+
+- List every remote entry point (VPN, VDI/Citrix, vendor portals, RDP gateways, EHR remote access). Is MFA enforced on each one?
+- How do vendors connect for support, and who owns those accounts?
+- Are any access policies in report-only or audit mode? Is legacy authentication blocked?
+- How many accounts are excluded from MFA, why, and who approves exclusions?
+- How are emergency (break-glass) accounts protected and monitored?
+
+**Evidence and how to obtain it**
+
+- Conditional Access (or equivalent) policy list showing each policy's state is On, not Report-only — identity provider admin portal.
+- Authentication methods registration and usage report — identity provider reporting.
+- Sign-in logs filtered for successful single-factor sign-ins over the last 30 days — identity provider sign-in logs.
+- Inventory of remote entry points with the MFA status of each — remote access or network team.
+
+**Red flags**
+
+- "We have MFA" but the policy is in report-only mode or excludes a large group.
+- Vendor or service accounts are excluded from MFA without compensating controls.
+- The VPN has MFA but a second, older entry point (RDP gateway, legacy portal) does not.
+
+**Healthcare considerations**
+
+- Shared clinical workstations: MFA at every login disrupts care, so teams exempt whole units. Use badge-tap or proximity sign-in with MFA at session start instead of blanket exemptions.
+- Vendor remote access is a recurring gap; in 2024 congressional testimony, UnitedHealth Group's CEO acknowledged that the Change Healthcare server attackers entered through did not have MFA.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Enforce MFA on all remote access, email and vendor accounts first (days to weeks).
+- **To 3 – Defined:** Remove undocumented exclusions, turn report-only policies on and block legacy authentication (weeks).
+- **To 4 – Optimized:** Require phishing-resistant methods for administrators and remote access and alert on coverage gaps (months).
+
+**Recommended action if gap:** Enforce MFA on all remote access, email, vendor and administrator accounts; move administrators to phishing-resistant methods.
+
+**Sources:** <https://hhscyber.hhs.gov/cybersecurity-performance-goals.html> · <https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf> · <https://energycommerce.house.gov/posts/what-we-learned-change-healthcare-cyber-attack>
+
+#### ZT-02 — Does every workforce member use unique credentials, including on shared clinical workstations?
+
+**Weight:** 3 · **HHS CPG:** CPG-E: Unique Credentials · **References:** HIPAA 45 CFR 164.312(a)(2)(i); NIST CSF 2.0 PR.AA
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Generic logins (for example a unit or station account) are the normal way clinicians sign in to workstations and clinical applications. |
+| 1 – Initial | Most staff have personal accounts, but several units, nursing stations or device workstations still run under shared logins that nobody inventories. |
+| 2 – Developing | Shared accounts are inventoried and reduced, but some remain on clinical workstations, kiosks or vendor systems without an owner or compensating controls. |
+| 3 – Defined | Every person signs in with a unique account; remaining non-person accounts (kiosks, device service accounts) are inventoried, owned, restricted to one function and reviewed at least annually. |
+| 4 – Optimized | Shared workstations use fast user switching or badge-based sign-in with per-user sessions; the directory is scanned automatically for new generic or shared accounts and any found raise an alert. |
+
+**Probing questions**
+
+- Walk me through how a nurse signs in at a nursing station at shift change. Whose name appears in the EHR audit trail?
+- Which accounts in the directory are not tied to a person (unit, station, scanner, kiosk, vendor)? Who owns each?
+- Do any medical device workstations or departmental systems (lab, imaging, pharmacy) use a single shared login?
+- If a generic account were misused tonight, how would you tell who used it?
+
+**Evidence and how to obtain it**
+
+- Directory export of accounts without a linked person or HR record, with owner and purpose — directory or identity governance report.
+- EHR or clinical application user list showing generic or departmental logins — application security administrator.
+- Configuration of the shared-workstation sign-in method (fast user switching, badge tap) — endpoint management console.
+
+**Red flags**
+
+- Account names such as unit, station, nurse or scan with recent interactive sign-ins.
+- The answer covers the EHR but not departmental systems or device workstations.
+
+**Healthcare considerations**
+
+- Generic logins exist because sign-in takes too long at the bedside; removing them without a fast sign-in option (badge tap, session roaming) pushes staff back to workarounds.
+- Some vendor-managed modalities and analyzers ship with a single operator account; record them as exceptions with the vendor and clinical engineering, and restrict them by network segment.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Inventory every shared and generic account with an owner and purpose (two to four weeks).
+- **To 3 – Defined:** Replace shared logins on clinical workstations with personal accounts and document the remaining non-person accounts (one to three months).
+- **To 4 – Optimized:** Deploy badge-based fast user switching and automated detection of new shared accounts (three to six months).
+
+**Recommended action if gap:** Inventory and retire shared logins; give shared clinical workstations fast, badge-based personal sign-in so unique accounts stay practical.
+
+**Sources:** <https://hhscyber.hhs.gov/cybersecurity-performance-goals.html> · <https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C/section-164.312>
+
+#### ZT-03 — Are administrator accounts separate from daily user accounts and granted only when needed?
+
+**Weight:** 3 · **HHS CPG:** CPG-E: Separate User and Privileged Accounts · **References:** CISA ZTMM v2.0 Identity; NIST CSF 2.0 PR.AA
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | IT staff use their everyday accounts, which also read email and browse the web, for administration. |
+| 1 – Initial | Some administrators have separate admin accounts, but daily accounts still hold domain or cloud administrator rights. |
+| 2 – Developing | Separate admin accounts exist for all IT staff, but they hold standing high privilege, are not reviewed and are sometimes used to read email or browse. |
+| 3 – Defined | Separate admin accounts are used only for administration, are protected by MFA, privileged groups are reviewed at least quarterly and service accounts are inventoried. |
+| 4 – Optimized | Highest privileges are granted just in time with approval and expiry, administrative work happens from dedicated admin workstations, and privileged activity is logged and alerted. |
+
+**Probing questions**
+
+- How many people are in your top-level directory and cloud administrator roles today? When did someone last remove a member?
+- Do your administrators' daily accounts have any administrative rights anywhere, including local administrator on workstations?
+- Where do administrators perform admin tasks from, and can that device read email or browse?
+- Which service accounts have domain-level rights, and do EHR or vendor installers require them?
+- How are local administrator passwords on workstations and servers managed?
+
+**Evidence and how to obtain it**
+
+- Membership of privileged directory and cloud roles with last-review date — directory and cloud identity admin portals.
+- Privileged identity or access management activation log for the last 90 days — PIM/PAM console.
+- Local administrator password management configuration and coverage — endpoint management console.
+
+**Red flags**
+
+- Admin accounts exist but sign-in logs show them used for email or web.
+- Vendor or integration service accounts are members of domain administrator groups.
+- The same local administrator password is used on all workstations.
+
+**Healthcare considerations**
+
+- EHR, interface engine and imaging vendors often request domain administrator rights for installs or support; grant time-bound, scoped rights and remove them afterward.
+- In a small IT team, two or three people hold all admin rights and cover each other 24x7; design break-glass accounts so an outage at 2 a.m. does not force standing privilege.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Create separate admin accounts for every administrator and remove admin rights from daily accounts (two to four weeks).
+- **To 3 – Defined:** Review privileged groups quarterly, require MFA on admin accounts and rotate unique local administrator passwords (one to three months).
+- **To 4 – Optimized:** Adopt just-in-time elevation with approval and dedicated admin workstations (three to six months).
+
+**Recommended action if gap:** Separate administrator accounts from daily accounts, review privileged groups quarterly and move top privileges to just-in-time elevation.
+
+**Sources:** <https://hhscyber.hhs.gov/cybersecurity-performance-goals.html> · <https://www.cisa.gov/zero-trust-maturity-model>
+
+#### ZT-04 — Are the accounts of departing workforce members and vendors revoked promptly?
+
+**Weight:** 3 · **HHS CPG:** CPG-E: Revoke Credentials for Departing Workforce Members · **References:** HIPAA 45 CFR 164.308(a)(3)(ii)(C); NIST CSF 2.0 PR.AA
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Accounts are disabled only when someone remembers; former staff and vendors remain active. |
+| 1 – Initial | HR emails IT about departures and IT disables directory accounts, but application, remote access and vendor accounts are missed. |
+| 2 – Developing | A documented offboarding checklist covers the directory and main applications, but timing varies, contractors and vendors are not always included and nobody reconciles. |
+| 3 – Defined | Access for employees, contractors, students, volunteers and vendors is revoked within a defined timeframe (for example 24 hours) across directory, EHR and remote access, verified by monthly reconciliation. |
+| 4 – Optimized | Revocation is triggered automatically from HR and vendor-contract records, covers connected applications, and reconciliation exceptions are tracked to closure. |
+
+**Probing questions**
+
+- Pick three people who left last month. Show me when each account was disabled in the directory, the EHR and remote access.
+- How do you learn that a travel nurse, locum, student or vendor engineer has finished?
+- Which applications have their own user stores outside single sign-on?
+- How are accounts handled for staff who leave involuntarily?
+
+**Evidence and how to obtain it**
+
+- Sample of recent terminations compared with account disable dates across directory, EHR and remote access — HR report and system audit logs.
+- Monthly reconciliation report of active accounts against HR and contractor rosters — identity or IT operations team.
+- List of enabled accounts with no sign-in in 90 days — directory report.
+
+**Red flags**
+
+- Revocation evidence covers only employees, not contractors, agency staff or vendors.
+- Many enabled accounts have not signed in for months.
+
+**Healthcare considerations**
+
+- Hospitals rely on agency nurses, locum physicians, students and affiliated physicians who are not on HR payroll; sponsor-based expiry dates are needed for these populations.
+- Medical staff with privileges at several facilities may keep remote EHR access long after they stop practicing; include medical staff office records in reconciliation.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Document an offboarding checklist covering directory, EHR, remote access and vendor accounts (two weeks).
+- **To 3 – Defined:** Set a revocation timeframe, add expiry dates for non-employees and reconcile monthly (one to two months).
+- **To 4 – Optimized:** Automate revocation from HR and contract records across connected applications (three to six months).
+
+**Recommended action if gap:** Revoke access for all departing staff, contractors and vendors within a defined timeframe, with expiry dates and monthly reconciliation.
+
+**Sources:** <https://hhscyber.hhs.gov/cybersecurity-performance-goals.html> · <https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C/section-164.308>
+
+### Devices
+
+#### ZT-05 — Is there a complete inventory of endpoints, servers and connected medical devices?
+
+**Weight:** 3 · **HHS CPG:** CPG-X: Asset Inventory · **References:** CISA ZTMM v2.0 Devices; NIST CSF 2.0 ID.AM
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No inventory, or only purchase records and spreadsheets that do not match what is on the network. |
+| 1 – Initial | IT has a spreadsheet of workstations and servers; clinical engineering keeps a separate list of medical equipment without network details. |
+| 2 – Developing | Endpoint and server inventory comes from management tools, but connected medical and building devices are partly listed and the lists are not reconciled. |
+| 3 – Defined | One inventory covers endpoints, servers, network gear and connected medical devices with owner, location, operating system, support status and network segment, reconciled with discovery at least quarterly. |
+| 4 – Optimized | Passive and active discovery keeps the inventory current automatically, unknown devices raise alerts, and medical devices are linked to MDS2 forms, SBOMs and manufacturer patch guidance. |
+
+**Probing questions**
+
+- How many networked devices are there in total, and how was that number produced?
+- Who owns the infusion pumps, imaging modalities, lab analyzers and patient monitors, and are they in the same inventory as IT assets?
+- When a new device shows up on the network, how do you learn about it?
+- For each medical device, do you know the operating system, whether it is supported and which segment it is on?
+
+**Evidence and how to obtain it**
+
+- Inventory export with coverage metrics (discovered versus recorded devices) — CMDB, endpoint management or asset discovery tool.
+- Clinical engineering medical equipment list cross-referenced to network data — biomedical/clinical engineering system.
+- File of MDS2 forms and SBOMs for connected medical devices — clinical engineering or procurement.
+
+**Red flags**
+
+- IT and clinical engineering totals differ widely and nobody can explain the gap.
+- The inventory has no operating system or support status for medical devices.
+
+**Healthcare considerations**
+
+- Medical devices often cannot take endpoint agents; passive network discovery is the practical way to find them without disrupting patient care.
+- Clinical engineering, not IT, usually owns medical devices; the inventory only works if both teams agree on one record and one owner per device.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Merge IT and clinical engineering lists into one inventory with owners (one to two months).
+- **To 3 – Defined:** Add discovery, operating system, support status and segment, and reconcile quarterly (two to four months).
+- **To 4 – Optimized:** Automate discovery with alerts for unknown devices and link MDS2 and SBOM data (six months or more).
+
+**Recommended action if gap:** Build one inventory of endpoints, servers and connected medical devices with owners, support status and segment, reconciled with network discovery.
+
+**Sources:** <https://hhscyber.hhs.gov/cybersecurity-performance-goals.html> · <https://www.fda.gov/medical-devices/digital-health-center-excellence/cybersecurity>
+
+#### ZT-06 — Are known exploited vulnerabilities remediated within defined, risk-based timeframes?
+
+**Weight:** 3 · **HHS CPG:** CPG-E: Mitigate Known Vulnerabilities · **References:** CISA ZTMM v2.0 Devices; NIST CSF 2.0 ID.RA, PR.PS
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No regular vulnerability scanning; patching happens when a system breaks or a vendor calls. |
+| 1 – Initial | Workstations receive automatic operating system updates, but servers, network devices and third-party software are patched irregularly and nothing is scanned. |
+| 2 – Developing | Scanning runs and patching follows a monthly cycle, but there are no written timeframes, internet-facing systems are not prioritized and exceptions are not recorded. |
+| 3 – Defined | Written remediation timeframes by severity exist, with known exploited vulnerabilities (CISA KEV) and internet-facing systems first; exceptions are approved, compensated and tracked. |
+| 4 – Optimized | Remediation performance against timeframes is measured and reported monthly, KEV matches are flagged automatically from scan data, and unpatchable assets have documented compensating controls. |
+
+**Probing questions**
+
+- Show me the scan of internet-facing systems from the last 30 days. Which findings are on the CISA KEV catalog and how old are they?
+- What are your written remediation timeframes, and how often do you meet them?
+- How are firewalls, VPN appliances and remote access gateways patched, and who watches their advisories?
+- What happens when a vendor forbids patching a system that runs the EHR interface or a medical device?
+
+**Evidence and how to obtain it**
+
+- Vulnerability scan report for internet-facing and internal systems with age by severity — scanner console or CISA Vulnerability Scanning report.
+- Written vulnerability management standard with timeframes — policy library.
+- Exception register with compensating controls and expiry dates — security or risk team.
+
+**Red flags**
+
+- Patching is described only for Windows workstations.
+- Edge devices (firewall, VPN, file transfer) are patched less often than desktops.
+- Exceptions have no expiry date or compensating control.
+
+**Healthcare considerations**
+
+- Medical devices and some clinical systems may only be patched per manufacturer guidance; record the manufacturer position and compensate with segmentation and monitoring rather than ignoring the finding.
+- Patch windows compete with 24x7 clinical operations; agree standing maintenance windows with nursing and the EHR team so urgent KEV fixes do not wait for the next quarterly downtime.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Scan internet-facing systems and patch KEV-listed findings first; CISA offers free external scanning (weeks).
+- **To 3 – Defined:** Publish remediation timeframes by severity with an approved exception register (one to two months).
+- **To 4 – Optimized:** Measure and report remediation against timeframes monthly with automatic KEV flagging (three to six months).
+
+**Recommended action if gap:** Scan internet-facing systems, patch CISA KEV findings first and enforce written remediation timeframes with tracked exceptions.
+
+**Sources:** <https://www.cisa.gov/known-exploited-vulnerabilities-catalog> · <https://www.cisa.gov/resources-tools/services/cisa-vulnerability-scanning> · <https://hhscyber.hhs.gov/cybersecurity-performance-goals.html>
+
+#### ZT-07 — Is device health and compliance checked before access to PHI is granted?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** CISA ZTMM v2.0 Devices; NIST CSF 2.0 PR.AA
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Any device with valid credentials, including personal computers and phones, can reach email, the EHR and file shares. |
+| 1 – Initial | Hospital-owned devices are managed, but there is no check at sign-in; personal devices reach PHI freely. |
+| 2 – Developing | Compliance policies exist for some device types, but access policies do not require compliance or are in report-only mode. |
+| 3 – Defined | Access to email, cloud storage and remote EHR access requires a managed, compliant device or an approved protected app; non-compliant devices are blocked or limited. |
+| 4 – Optimized | Device risk signals (encryption, patch level, EDR status) are evaluated continuously and access is adjusted automatically, with exceptions reviewed. |
+
+**Probing questions**
+
+- Can I read hospital email or open the EHR remote portal from my personal laptop today?
+- What makes a device compliant, and how many managed devices are non-compliant right now?
+- How do physicians who are not employees access PHI from their own devices?
+- Are compliance-based access policies enforced or in report-only mode?
+
+**Evidence and how to obtain it**
+
+- Access policies that require compliant or managed devices, showing enforcement state — identity provider admin portal.
+- Device compliance report with counts of non-compliant devices — endpoint management console.
+- Sign-in log sample showing access from unmanaged devices — identity provider sign-in logs.
+
+**Red flags**
+
+- Compliance policies are defined but no access policy uses them.
+- Affiliated physicians are excluded from device requirements without an alternative.
+
+**Healthcare considerations**
+
+- Affiliated and community physicians use their own devices; app protection policies or a virtual desktop are usually more practical than full enrollment.
+- Shared clinical workstations and devices on carts must stay compliant without user action; schedule updates around shifts so compliance checks do not lock clinicians out mid-care.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Define compliance policies for each managed device type (weeks).
+- **To 3 – Defined:** Enforce compliant-device or protected-app requirements for email, cloud storage and remote EHR access (one to three months).
+- **To 4 – Optimized:** Feed EDR and patch signals into access decisions and review exceptions (three to six months).
+
+**Recommended action if gap:** Require a managed, compliant device or protected app for email, cloud storage and remote EHR access.
+
+**Sources:** <https://www.cisa.gov/zero-trust-maturity-model> · <https://csrc.nist.gov/pubs/sp/800/207/final>
+
+#### ZT-08 — Are secure configuration baselines applied and configuration drift monitored?
+
+**Weight:** 2 · **HHS CPG:** CPG-X: Configuration Management · **References:** CISA ZTMM v2.0 Devices; NIST CSF 2.0 PR.PS
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Devices are configured individually by whoever builds them; there is no standard. |
+| 1 – Initial | A standard workstation image exists, but servers and network devices are configured by hand and settings change over time. |
+| 2 – Developing | Baselines exist for workstations and some servers, but they are not applied to all devices and drift is not checked. |
+| 3 – Defined | Approved baselines cover workstations, servers and network devices, are applied through management tools, and drift is reported at least monthly. |
+| 4 – Optimized | Baseline compliance is measured continuously, drift is corrected automatically where safe, and deviations are approved exceptions with owners. |
+
+**Probing questions**
+
+- What security baseline do you apply to workstations and servers, and when was it last reviewed?
+- What percentage of devices currently comply with the baseline, and how do you know?
+- How are firewalls, switches and wireless controllers configured and backed up?
+- How do you handle vendor-built servers that cannot take the baseline?
+
+**Evidence and how to obtain it**
+
+- Baseline documents or policy profiles with version and approval date — endpoint management or group policy.
+- Baseline compliance report by device type — endpoint management console.
+- Network device configuration backups and change records — network team.
+
+**Red flags**
+
+- The baseline is the default image and has never been reviewed.
+- Vendor servers are excluded from baselines without a list.
+
+**Healthcare considerations**
+
+- EHR, PACS and interface engine vendors often specify server settings; document vendor-required deviations as approved exceptions rather than excluding the servers entirely.
+- Clinical workstations need kiosk-style lockdown (no local admin, restricted USB) balanced against peripherals such as label printers, scanners and signature pads.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Adopt a published security baseline for workstations and servers (weeks).
+- **To 3 – Defined:** Apply baselines through management tools to all device types and report drift monthly (two to four months).
+- **To 4 – Optimized:** Monitor compliance continuously and auto-remediate drift with approved exceptions (six months).
+
+**Recommended action if gap:** Apply approved security baselines to workstations, servers and network devices through management tools and report drift monthly.
+
+**Sources:** <https://hhscyber.hhs.gov/cybersecurity-performance-goals.html> · <https://www.nist.gov/cyberframework>
+
+### Networks
+
+#### ZT-09 — Is the network segmented so that medical devices, clinical systems, guest and corporate traffic are separated?
+
+**Weight:** 3 · **HHS CPG:** CPG-X: Network Segmentation · **References:** CISA ZTMM v2.0 Networks; NIST CSF 2.0 PR.IR
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | A flat network: workstations, servers, medical devices and building systems share the same network. |
+| 1 – Initial | Guest wireless is separated, but medical devices, servers and user workstations share segments. |
+| 2 – Developing | Separate segments exist for some medical devices or servers, but traffic between them is largely allowed and rules are not reviewed. |
+| 3 – Defined | Medical devices, clinical servers, user workstations, building systems and guests are in separate segments, and traffic between segments is allowed only by documented rules reviewed at least annually. |
+| 4 – Optimized | Medical device segments are restricted to the specific flows each device needs, rule changes go through review, and unexpected traffic between segments raises alerts. |
+
+**Probing questions**
+
+- Can a workstation in registration reach an infusion pump or imaging modality directly?
+- How are medical devices assigned to segments when clinical engineering installs them?
+- Which rules between segments allow any service or any destination, and who approved them?
+- Where do backup systems and their management interfaces sit?
+
+**Evidence and how to obtain it**
+
+- Segmentation design listing segments and permitted flows (without addresses) — network team.
+- Firewall rule review record with date and reviewer — network or security team.
+- Count of medical devices by segment from the inventory — asset inventory.
+
+**Red flags**
+
+- Segments exist but the rule between them allows any traffic.
+- Segmentation is described only for guest wireless.
+
+**Healthcare considerations**
+
+- Many medical devices run unsupported operating systems that the manufacturer will not let you patch; segmentation is the main compensating control and should follow the communication needs in the MDS2 form.
+- Clinical engineering and the device vendor must take part in rule design; blocking a needed flow can stop results reaching the EHR or stop a modality sending images.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Move medical devices and building systems off user networks into their own segments (one to three months).
+- **To 3 – Defined:** Restrict traffic between segments to documented rules and review them annually (three to six months).
+- **To 4 – Optimized:** Restrict medical device segments to required flows and alert on unexpected traffic (six to twelve months).
+
+**Recommended action if gap:** Separate medical devices, clinical servers, users, building systems and guests into segments with documented, reviewed rules between them.
+
+**Sources:** <https://hhscyber.hhs.gov/cybersecurity-performance-goals.html> · <https://www.cisa.gov/zero-trust-maturity-model>
+
+#### ZT-10 — Is remote and vendor access brokered through controlled, logged and time-limited connections?
+
+**Weight:** 3 · **HHS CPG:** CPG-E: Vendor/Supplier Cybersecurity Requirements · **References:** CISA ZTMM v2.0 Networks; NIST CSF 2.0 PR.AA
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Vendors connect with always-on VPN accounts, remote desktop exposed to the internet or remote control tools installed ad hoc. |
+| 1 – Initial | Most vendors use the VPN with shared or permanent accounts; nobody has a complete list of vendor connections. |
+| 2 – Developing | Vendor connections are listed and use named accounts with MFA, but access is always on and sessions are not logged. |
+| 3 – Defined | Vendor and remote administrative access goes through a broker or gateway with MFA, named accounts, access only to specific systems, approval or schedule-based enablement, and session logs. |
+| 4 – Optimized | Vendor sessions are just in time, recorded and reviewed, unapproved remote access tools are detected and blocked, and each connection is tied to a contract and owner. |
+
+**Probing questions**
+
+- List every vendor that can connect remotely. How does each one connect, and is access on when nobody has asked for it?
+- Are any remote control tools installed by vendors on servers or medical device workstations?
+- Can a vendor reach anything beyond the system it supports once connected?
+- If a vendor's credentials were stolen tonight, what would stop someone using them?
+
+**Evidence and how to obtain it**
+
+- Inventory of vendor remote access paths with method, account, MFA status and owner — remote access or network team.
+- Session logs or recordings from the access broker for the last 30 days — remote access broker console.
+- Endpoint report of installed remote access tools — EDR or software inventory.
+
+**Red flags**
+
+- Vendor accounts are shared by the vendor's support team.
+- Remote access tools appear on servers that are not on the vendor list.
+
+**Healthcare considerations**
+
+- EHR, PACS, lab and medical device vendors often need remote support around the clock; schedule-based or on-request enablement must still work at night, so define who approves after hours.
+- Medical device vendors sometimes install their own remote access appliance or software; record each one with clinical engineering and route it through the broker where the manufacturer allows.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Inventory vendor connections and require named accounts with MFA (weeks).
+- **To 3 – Defined:** Route vendor access through a broker with system-specific access, approval and session logs (two to four months).
+- **To 4 – Optimized:** Make vendor access just in time with recording and block unapproved remote tools (six months).
+
+**Recommended action if gap:** Route all vendor access through an MFA-protected broker with named accounts, system-specific, time-limited sessions and session logs.
+
+**Sources:** <https://hhscyber.hhs.gov/cybersecurity-performance-goals.html> · <https://www.cisa.gov/resources-tools/resources/guide-securing-remote-access-software>
+
+#### ZT-11 — Is PHI encrypted in transit on internal and external connections?
+
+**Weight:** 2 · **HHS CPG:** CPG-E: Strong Encryption · **References:** HIPAA 45 CFR 164.312(e)(2)(ii); NIST CSF 2.0 PR.DS
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | External web applications may use TLS, but file transfers, interfaces and internal connections send PHI unencrypted. |
+| 1 – Initial | External connections are encrypted; internal HL7 feeds, database connections and printing are unencrypted and not inventoried. |
+| 2 – Developing | An inventory of connections carrying PHI exists and external ones are encrypted, but internal interfaces and some legacy protocols remain unencrypted. |
+| 3 – Defined | All external connections and internal interfaces carrying PHI use current protocols (for example TLS 1.2 or later), or have documented compensating controls where a vendor cannot support encryption. |
+| 4 – Optimized | Weak protocols are detected and blocked, certificates are inventoried with expiry alerts, and exceptions are reviewed on a schedule. |
+
+**Probing questions**
+
+- Which interfaces send PHI between the EHR, lab, imaging, pharmacy and outside partners, and which of them are encrypted?
+- Do HL7 feeds through the interface engine use plain transmission on the internal network?
+- How are files exchanged with payers, clearinghouses and reference labs?
+- Who tracks certificate expiry for interfaces and web services?
+
+**Evidence and how to obtain it**
+
+- Interface and protocol inventory with encryption status — interface engine and integration team.
+- TLS configuration scan of external services — vulnerability scanner or external scan report.
+- Certificate inventory with expiry dates — certificate management or IT operations.
+
+**Red flags**
+
+- The answer covers websites only, not interfaces or file transfers.
+- Encryption is assumed because traffic stays inside the building.
+
+**Healthcare considerations**
+
+- Many HL7 v2 interfaces use plain transmission on internal networks; adding TLS needs coordination with both application vendors and an interface downtime window.
+- Some medical devices and older modalities cannot encrypt traffic; place them in restricted segments and record the gap rather than marking the control complete.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Inventory every connection carrying PHI and encrypt external ones (one to two months).
+- **To 3 – Defined:** Encrypt internal interfaces and database connections or document compensating controls (three to six months).
+- **To 4 – Optimized:** Detect weak protocols and alert on certificate expiry (six months).
+
+**Recommended action if gap:** Inventory every connection carrying PHI and encrypt external and internal interfaces, documenting compensating controls where vendors cannot.
+
+**Sources:** <https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C/section-164.312> · <https://hhscyber.hhs.gov/cybersecurity-performance-goals.html>
+
+### Applications & Workloads
+
+#### ZT-12 — Are email protections (SPF, DKIM, DMARC, attachment and link scanning) enforced?
+
+**Weight:** 3 · **HHS CPG:** CPG-E: Email Security · **References:** CISA ZTMM v2.0 Applications and Workloads; NIST CSF 2.0 PR.PS
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No SPF, DKIM or DMARC records, and only basic spam filtering. |
+| 1 – Initial | SPF exists, but DKIM is not configured and DMARC is absent or set to monitor only (p=none). |
+| 2 – Developing | SPF, DKIM and DMARC exist for the main domain, but DMARC is not at enforcement, other domains are unprotected and attachment or link scanning covers only some mailboxes. |
+| 3 – Defined | DMARC is at enforcement (quarantine or reject) for all sending domains, parked domains reject all mail, and attachment and link scanning apply to all mailboxes, with external sender warnings. |
+| 4 – Optimized | DMARC reports are reviewed regularly, impersonation protection covers executives and finance, users can report phishing in one click, and reported messages are triaged and removed across mailboxes. |
+
+**Probing questions**
+
+- What is the DMARC policy for each domain you own, including old or parked domains?
+- Which third-party services send mail as your domain (billing, patient portal, appointment reminders), and are they aligned?
+- Are attachment and link scanning applied to every mailbox, including shared and service mailboxes?
+- What happens when a user reports a phishing email?
+
+**Evidence and how to obtain it**
+
+- DNS records for SPF, DKIM and DMARC for every owned domain — public DNS lookup.
+- Email security policy configuration showing attachment and link scanning scope — email security admin portal.
+- Phishing report and triage records for the last 90 days — security team or email security console.
+
+**Red flags**
+
+- DMARC has been at p=none for more than a year.
+- Scanning policies apply to a pilot group only.
+
+**Healthcare considerations**
+
+- Patient portals, appointment reminder services and billing vendors send mail as the hospital; inventory them before moving DMARC to enforcement so patient communications are not blocked.
+- Payroll and vendor-payment fraud by email targets finance and revenue cycle staff; add impersonation protection for executives and finance mailboxes.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Publish SPF, DKIM and DMARC for all domains and enable scanning for all mailboxes (weeks).
+- **To 3 – Defined:** Move DMARC to quarantine then reject after aligning third-party senders (one to three months).
+- **To 4 – Optimized:** Review DMARC reports, add impersonation protection and one-click phishing reporting (three months).
+
+**Recommended action if gap:** Move DMARC to enforcement for every domain after aligning third-party senders, and scan attachments and links in all mailboxes.
+
+**Sources:** <https://hhscyber.hhs.gov/cybersecurity-performance-goals.html>
+
+#### ZT-13 — Is access to applications granted per application based on identity and context, rather than network location?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** CISA ZTMM v2.0 Applications and Workloads; NIST CSF 2.0 PR.AA
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Anyone on the internal network or VPN can reach every application's sign-in page and many back-end services. |
+| 1 – Initial | A few cloud applications use single sign-on, but on-premises applications trust anyone on the network or VPN. |
+| 2 – Developing | Major applications use single sign-on, but access policies do not consider device, location or risk, and VPN users still reach the whole network. |
+| 3 – Defined | Critical applications, including EHR remote access, are published through identity-aware access policies that consider user, device and context; network location alone does not grant access. |
+| 4 – Optimized | All applications use identity-aware access with continuous evaluation, broad VPN access is retired for most users, and policy decisions are logged and reviewed. |
+
+**Probing questions**
+
+- Once someone is on the VPN, what can they reach?
+- Which applications use single sign-on, and which still have local passwords?
+- Do access policies treat a sign-in from an unmanaged device or unusual location differently?
+- How is the EHR published to remote clinicians?
+
+**Evidence and how to obtain it**
+
+- Application list with authentication method (single sign-on, local) — identity provider enterprise applications list.
+- Access policies with conditions on device and context — identity provider admin portal.
+- VPN access scope configuration showing which networks users can reach — remote access team.
+
+**Red flags**
+
+- VPN users receive full network access.
+- Single sign-on exists, but local application accounts remain enabled as a back door.
+
+**Healthcare considerations**
+
+- Many clinical applications are thick clients or vendor-hosted and support only basic authentication; virtual desktop or application gateways can add identity checks in front of them.
+- Clinicians move between facilities, clinics and home; context policies must allow legitimate after-hours access for on-call staff without blanket exceptions.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Move major applications to single sign-on and limit VPN scope (one to three months).
+- **To 3 – Defined:** Publish critical applications through identity-aware policies using device and context (three to six months).
+- **To 4 – Optimized:** Retire broad VPN access and evaluate access continuously (six to twelve months).
+
+**Recommended action if gap:** Publish critical applications, including EHR remote access, through identity-aware policies and limit what VPN users can reach.
+
+**Sources:** <https://www.cisa.gov/zero-trust-maturity-model> · <https://csrc.nist.gov/pubs/sp/800/207/final>
+
+#### ZT-14 — Are internet-facing systems and critical applications tested for vulnerabilities at least annually?
+
+**Weight:** 2 · **HHS CPG:** CPG-X: Cybersecurity Testing · **References:** NIST CSF 2.0 ID.RA
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No vulnerability scans or penetration tests have been performed. |
+| 1 – Initial | A scan or test happened once, usually for an audit, and findings were not tracked. |
+| 2 – Developing | External scans run, but penetration tests are irregular, critical internal applications are not covered and findings are only partly tracked. |
+| 3 – Defined | Internet-facing and critical systems receive vulnerability scans at least monthly and a penetration test at least annually, with findings tracked to closure. |
+| 4 – Optimized | Testing scope follows the inventory and major changes, retests confirm fixes, and results feed the risk register and leadership reporting. |
+
+**Probing questions**
+
+- When was the last penetration test, what was in scope and how many high findings remain open?
+- Do you know every internet-facing service, including vendor-hosted portals that use your domain?
+- Are the patient portal, remote access gateways and file transfer services tested?
+- Who retests findings after they are fixed?
+
+**Evidence and how to obtain it**
+
+- Most recent penetration test report with scope and finding status — security team.
+- External vulnerability scan reports for the last three months — scanner or CISA Vulnerability Scanning.
+- Findings tracker with owners and dates — remediation tracker.
+
+**Red flags**
+
+- The test scope excluded the EHR, remote access or vendor-hosted services.
+- The same high findings appear in consecutive reports.
+
+**Healthcare considerations**
+
+- Testing live clinical systems and medical devices can disrupt care; agree rules of engagement with clinical leadership and exclude fragile devices from active scanning.
+- Small hospitals can use free federal services such as CISA external vulnerability scanning to cover internet-facing systems between paid tests.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Scan internet-facing systems monthly, using free CISA scanning if budget is limited (weeks).
+- **To 3 – Defined:** Commission an annual penetration test of internet-facing and critical systems and track findings (one quarter).
+- **To 4 – Optimized:** Tie scope to the inventory and change, retest fixes and report trends (six months).
+
+**Recommended action if gap:** Scan internet-facing systems monthly and penetration-test critical systems annually, tracking every finding to closure.
+
+**Sources:** <https://www.cisa.gov/resources-tools/services/cisa-vulnerability-scanning> · <https://hhscyber.hhs.gov/cybersecurity-performance-goals.html>
+
+#### ZT-15 — Are vendors required to disclose vulnerabilities and report incidents that affect your systems or data?
+
+**Weight:** 3 · **HHS CPG:** CPG-X: Third Party Vulnerability Disclosure; CPG-X: Third Party Incident Reporting · **References:** HIPAA 45 CFR 164.308(b); NIST CSF 2.0 GV.SC
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Contracts and business associate agreements do not address vulnerability disclosure or incident reporting beyond the minimum breach notice. |
+| 1 – Initial | Business associate agreements require breach notification, but there are no vulnerability disclosure or incident timeframes, and nobody tracks notices. |
+| 2 – Developing | New contracts include disclosure and reporting clauses, but older contracts and medical device vendors are not covered and notices are handled ad hoc. |
+| 3 – Defined | Contracts for critical vendors require vulnerability disclosure and incident reporting within defined timeframes, and notices are logged, triaged and assigned. |
+| 4 – Optimized | Vendor notices and advisories are monitored against the inventory, response to each is tracked, and vendor performance is reviewed at renewal. |
+
+**Probing questions**
+
+- If your EHR or billing vendor had an incident today, how quickly are they required to tell you, and who would receive the notice?
+- Do your medical device manufacturers provide security advisories and patch guidance, and who reads them?
+- How many of your critical vendor contracts include incident reporting timeframes?
+- Show me the last vendor security notice you received and what you did with it.
+
+**Evidence and how to obtain it**
+
+- Contract and business associate agreement clauses for critical vendors — contracts or legal office.
+- Log of vendor security notices and actions taken — security or IT operations team.
+- Subscription list for manufacturer and vendor security advisories — clinical engineering and IT.
+
+**Red flags**
+
+- Only business associate agreements are cited, without timeframes.
+- Notices go to a former employee or a general mailbox no one monitors.
+
+**Healthcare considerations**
+
+- A third-party outage can stop claims, pharmacy or lab results for weeks; incident reporting clauses should include notice of service outages, not only data breaches.
+- Medical device manufacturers publish security advisories and patch guidance; FDA requires plans to address postmarket vulnerabilities for cyber devices in premarket submissions under section 524B, so ask for them.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Identify critical vendors and the notice requirements in their current contracts (weeks).
+- **To 3 – Defined:** Add disclosure and incident reporting timeframes to critical contracts and log every notice (renewal cycle).
+- **To 4 – Optimized:** Monitor advisories against the inventory and review vendor performance at renewal (ongoing).
+
+**Recommended action if gap:** Add vulnerability disclosure and incident reporting timeframes to critical vendor contracts and log and triage every vendor notice.
+
+**Sources:** <https://hhscyber.hhs.gov/cybersecurity-performance-goals.html> · <https://www.fda.gov/medical-devices/digital-health-center-excellence/cybersecurity-medical-devices-frequently-asked-questions-faqs>
+
+### Data
+
+#### ZT-16 — Is PHI encrypted at rest on servers, endpoints, removable media and backups?
+
+**Weight:** 3 · **HHS CPG:** CPG-E: Strong Encryption · **References:** HIPAA 45 CFR 164.312(a)(2)(iv); NIST CSF 2.0 PR.DS
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No encryption at rest on laptops, servers, removable media or backups. |
+| 1 – Initial | Some laptops are encrypted, but desktops, servers, USB drives and backups are not, and nobody reports coverage. |
+| 2 – Developing | Laptops and most workstations are encrypted, but servers, removable media, backup copies or cloud storage are partly covered, and recovery keys are scattered. |
+| 3 – Defined | Encryption at rest covers endpoints, servers, removable media, backups and cloud storage holding PHI, with recovery keys escrowed centrally and coverage reported. |
+| 4 – Optimized | Encryption coverage is monitored continuously, unencrypted devices are blocked from PHI, removable media is restricted to encrypted devices, and key access is logged. |
+
+**Probing questions**
+
+- What percentage of laptops and workstations are encrypted, and where are recovery keys kept?
+- Are database and file servers, backup copies and cloud storage holding PHI encrypted?
+- Can staff copy PHI to an unencrypted USB drive?
+- If you decided encryption was not reasonable for a system, where is that decision documented?
+
+**Evidence and how to obtain it**
+
+- Encryption status report for endpoints with recovery key escrow — endpoint management console.
+- Server, storage and backup encryption settings — storage, backup and cloud admin consoles.
+- Removable media policy configuration — endpoint management or DLP console.
+
+**Red flags**
+
+- Encryption is claimed for laptops only.
+- Recovery keys are kept on a spreadsheet on a file share.
+
+**Healthcare considerations**
+
+- Workstations on carts and in clinics are easily stolen; HICP lists loss or theft of equipment as one of the main threats to healthcare, and encryption limits the impact.
+- Medical devices and modalities may store images or results locally without encryption; record them, ask the manufacturer for options and protect them physically.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Encrypt all laptops and workstations and escrow recovery keys centrally (weeks).
+- **To 3 – Defined:** Extend encryption to servers, backups, removable media and cloud storage and report coverage (two to four months).
+- **To 4 – Optimized:** Monitor coverage continuously and block unencrypted devices and media (six months).
+
+**Recommended action if gap:** Encrypt PHI at rest on endpoints, servers, backups, removable media and cloud storage, with central key escrow and coverage reporting.
+
+**Sources:** <https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C/section-164.312> · <https://hhscyber.hhs.gov/Documents/HICP/HICP-Main-508.pdf>
+
+#### ZT-17 — Is PHI classified and are its storage locations known?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** CISA ZTMM v2.0 Data; NIST CSF 2.0 ID.AM
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Nobody knows where PHI is stored outside the EHR. |
+| 1 – Initial | The main clinical systems are known, but exports, reports, file shares and cloud storage holding PHI are not mapped. |
+| 2 – Developing | A data map lists systems with PHI, but it is incomplete for file shares, cloud storage and departmental databases, and no labels are applied. |
+| 3 – Defined | A data map covers applications, file shares, databases and cloud services holding PHI, is reviewed at least annually, and a classification scheme with labels is in use. |
+| 4 – Optimized | Automated discovery finds PHI in file shares, email and cloud storage, labels are applied automatically where practical, and new locations raise alerts. |
+
+**Probing questions**
+
+- Besides the EHR, where do reports and exports with patient data end up (shared drives, spreadsheets, cloud storage, email)?
+- Which departmental systems (quality, research, case management) hold copies of PHI?
+- Is there a classification scheme, and do staff use it?
+- When was the data map last updated, and who owns it?
+
+**Evidence and how to obtain it**
+
+- Data map of systems and repositories holding PHI with owners — compliance, privacy or IT.
+- Classification policy and label usage report — information protection console.
+- Results of a scan of file shares or cloud storage for PHI — data discovery tool.
+
+**Red flags**
+
+- The data map lists only the EHR and billing system.
+- Labels exist but nobody applies them.
+
+**Healthcare considerations**
+
+- Quality, case management and revenue cycle teams routinely export EHR reports to spreadsheets on shared drives; these exports are often the largest unmanaged store of PHI.
+- The risk analysis must cover all ePHI the organization creates, receives, maintains or transmits, so the data map is an input to it.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Build a data map of systems and repositories holding PHI with owners (one to two months).
+- **To 3 – Defined:** Extend the map to file shares and cloud storage, adopt a classification scheme and review annually (three to six months).
+- **To 4 – Optimized:** Discover and label PHI automatically and alert on new locations (six to twelve months).
+
+**Recommended action if gap:** Map every system, share and cloud location holding PHI with an owner, and adopt a simple classification scheme with labels.
+
+**Sources:** <https://www.cisa.gov/zero-trust-maturity-model> · <https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C/section-164.308>
+
+#### ZT-18 — Are data loss prevention controls applied to email, cloud storage and endpoints?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** CISA ZTMM v2.0 Data; NIST CSF 2.0 PR.DS
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No controls on sending or copying PHI outside the organization. |
+| 1 – Initial | Users are told to encrypt sensitive email, but nothing detects or blocks PHI leaving. |
+| 2 – Developing | DLP policies exist for email in audit or test mode, or for one channel only; alerts are not reviewed. |
+| 3 – Defined | DLP policies for PHI are enforced on email and cloud storage, with defined actions (encrypt, warn, block), and alerts are reviewed by a named owner. |
+| 4 – Optimized | DLP covers email, cloud storage, endpoints and removable media, policies are tuned using alert data, and incidents feed training and the risk register. |
+
+**Probing questions**
+
+- What happens if a user emails a spreadsheet of patient records to a personal address?
+- Are DLP policies enforced or in test mode, and on which channels?
+- Who reviews DLP alerts, and how many were reviewed last month?
+- How do staff send PHI securely to outside providers and patients?
+
+**Evidence and how to obtain it**
+
+- DLP policy list with mode (test or enforce) and scope — information protection console.
+- DLP alert and incident report for the last 90 days — information protection console.
+- Secure external sharing procedure — privacy or IT policy.
+
+**Red flags**
+
+- Policies have stayed in test mode for months.
+- Alerts are generated but nobody reviews them.
+
+**Healthcare considerations**
+
+- Clinicians legitimately send PHI to referring providers, nursing homes and patients; DLP must offer an easy encrypted path or staff will use personal email or fax workarounds.
+- Privacy officers usually own disclosure decisions; route DLP alerts to them as well as IT so a potential breach is assessed promptly.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Turn on DLP policies for PHI on email in test mode and review results (weeks).
+- **To 3 – Defined:** Enforce DLP on email and cloud storage with encrypt, warn or block actions and a named reviewer (two to four months).
+- **To 4 – Optimized:** Extend DLP to endpoints and removable media and tune using alert data (six months).
+
+**Recommended action if gap:** Enforce DLP for PHI on email and cloud storage with a secure sharing option and a named alert reviewer.
+
+**Sources:** <https://www.cisa.gov/zero-trust-maturity-model> · <https://hhscyber.hhs.gov/Documents/HICP/HICP-Main-508.pdf>
+
+#### ZT-19 — Are backups isolated from the production environment and protected against ransomware?
+
+**Weight:** 3 · **HHS CPG:** — · **References:** HIPAA 45 CFR 164.308(a)(7)(ii)(A); NIST CSF 2.0 PR.DS, RC.RP
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No regular backups of critical systems, or backups are kept only on the production server or storage they protect. |
+| 1 – Initial | Backups run daily, but the backup server and repository are domain-joined, use the same administrator accounts and have no offline or immutable copy. |
+| 2 – Developing | An offsite or cloud copy exists, but it is not immutable, backup administration uses production credentials, or restores of critical systems have not been tested. |
+| 3 – Defined | At least one backup copy is immutable or offline, backup systems use separate credentials with MFA, and restores of critical systems, including the EHR, are tested at least annually. |
+| 4 – Optimized | Restore tests for critical systems run on a schedule against defined recovery time and recovery point objectives, results are reported, and backup deletion or change attempts raise alerts. |
+
+**Probing questions**
+
+- If an attacker held domain administrator rights tonight, could they delete or encrypt your backups?
+- Is at least one copy immutable or offline, and how long is it retained?
+- When did you last restore the EHR database, the interface engine or PACS from backup, and how long did it take?
+- For vendor-hosted systems, what does the contract say about backups and restore time?
+
+**Evidence and how to obtain it**
+
+- Backup architecture showing copies, immutability settings and credential separation (no addresses) — backup administrator.
+- Restore test records for critical systems with dates and durations — IT operations.
+- Backup console alerts for deletion or retention changes — backup system.
+
+**Red flags**
+
+- Immutability is claimed but the retention lock can be changed by a normal administrator.
+- Restore testing means restoring a few files, never a full system.
+
+**Healthcare considerations**
+
+- Restoring the EHR is not only restoring a database; interfaces, the identity directory, print servers and medical device integrations must come back in the right order, so test with the application teams.
+- Hosted EHR and vendor systems shift backup to the vendor; ask for evidence of their immutability and restore testing, and keep an exportable copy of critical data where the contract allows.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Add an immutable or offline copy and move backup administration to separate credentials with MFA (weeks).
+- **To 3 – Defined:** Restore the EHR and other critical systems in a test and record times (one quarter).
+- **To 4 – Optimized:** Schedule restore tests against recovery objectives and alert on backup tampering (six months).
+
+**Recommended action if gap:** Keep an immutable or offline backup copy, separate backup credentials with MFA and test full EHR restores at least annually.
+
+**Sources:** <https://www.cisa.gov/stopransomware/ransomware-guide> · <https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C/section-164.308>
+
+### Visibility & Analytics
+
+#### ZT-20 — Are security logs from identity, endpoints, network and key applications collected centrally?
+
+**Weight:** 3 · **HHS CPG:** CPG-X: Centralized Log Collection · **References:** HIPAA 45 CFR 164.312(b); CISA ZTMM v2.0 Visibility and Analytics; NIST CSF 2.0 DE.CM
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Logs stay on individual systems, are overwritten quickly and are not collected. |
+| 1 – Initial | Some logs (for example firewall or domain controllers) are collected, but retention is short and identity, cloud and application logs are missing. |
+| 2 – Developing | A central log platform receives several sources, but the source list is incomplete (for example no EHR audit, VPN or cloud identity logs) and retention is undefined. |
+| 3 – Defined | Identity, endpoint detection, firewall and VPN, cloud, email and key clinical application logs are centralized with a defined retention period, and missing sources are detected. |
+| 4 – Optimized | Log source health is monitored automatically, retention meets policy and investigation needs, and logs are protected from alteration by administrators. |
+
+**Probing questions**
+
+- If we needed to know who signed in to the VPN 60 days ago, where would we look and would it still be there?
+- Which log sources feed your central platform, and which important ones do not?
+- Are EHR audit logs and cloud identity logs included?
+- How would you notice if a log source stopped sending?
+
+**Evidence and how to obtain it**
+
+- Log source inventory with last-received time — SIEM or log platform.
+- Retention settings per source — SIEM or log platform configuration.
+- Alert configuration for silent log sources — SIEM or MDR provider.
+
+**Red flags**
+
+- The MDR provider receives endpoint data only.
+- Retention is shorter than the look-back period your incident response plan or cyber insurer expects for an investigation.
+
+**Healthcare considerations**
+
+- EHR audit logs are large and sometimes stay inside the vendor platform; agree what can be exported or queried during an investigation.
+- Small teams cannot run a full SIEM themselves; a managed detection provider can collect the essential sources if the contract lists them explicitly.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Centralize identity, endpoint, firewall and VPN logs with defined retention (one to two months).
+- **To 3 – Defined:** Add cloud, email and key clinical application logs and detect missing sources (three to six months).
+- **To 4 – Optimized:** Monitor source health automatically and protect logs from alteration (six months).
+
+**Recommended action if gap:** Centralize identity, endpoint, VPN, firewall, cloud, email and EHR logs with defined retention and alerts for silent sources.
+
+**Sources:** <https://hhscyber.hhs.gov/cybersecurity-performance-goals.html> · <https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C/section-164.312>
+
+#### ZT-21 — Is there 24x7 capability, in-house or managed, to detect and respond to relevant threats?
+
+**Weight:** 3 · **HHS CPG:** CPG-X: Detect and Respond to Relevant Threats and TTPs · **References:** NIST CSF 2.0 DE.CM, DE.AE, RS.MA
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Alerts go to an inbox checked during business hours, or no one receives them. |
+| 1 – Initial | Endpoint protection raises alerts, and IT reviews them during the day; nights and weekends are uncovered. |
+| 2 – Developing | A managed provider or on-call rotation watches some sources around the clock, but it cannot take containment actions and escalation is unclear. |
+| 3 – Defined | A 24x7 in-house or managed service monitors endpoint, identity and network alerts, can isolate devices and disable accounts under agreed rules, and escalates through a tested contact list. |
+| 4 – Optimized | Detection coverage is mapped to the threats most relevant to healthcare, response times are measured and reported, and the service is reviewed after each incident and exercise. |
+
+**Probing questions**
+
+- If ransomware started at 2 a.m. on Saturday, who would see the alert, and what could they do without waking someone?
+- What is the provider allowed to do on its own (isolate a device, disable an account)?
+- What response times does the contract commit to, and what did the last report show?
+- When did you last test the after-hours escalation path?
+
+**Evidence and how to obtain it**
+
+- MDR or SOC contract and runbook, including authorized response actions — contract and provider portal.
+- Monthly service reports with alert volumes and response times — provider portal.
+- Escalation contact list with test date — security or IT operations.
+
+**Red flags**
+
+- The provider only notifies; it cannot contain.
+- The escalation list has former staff or a single person.
+
+**Healthcare considerations**
+
+- Hospitals run 24x7 and an attack can start at any hour; isolating a device can affect patient care, so pre-agree which devices (for example medical device workstations) need clinical approval before isolation.
+- Rural hospitals with one or two IT staff usually get 24x7 coverage only through a managed service; size the contract around containment authority, not alert volume.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Route endpoint and identity alerts to a 24x7 managed service or on-call rotation (one to two months).
+- **To 3 – Defined:** Authorize containment actions, define escalation and test it (two to three months).
+- **To 4 – Optimized:** Map detections to healthcare-relevant threats and measure response times (six months).
+
+**Recommended action if gap:** Establish 24x7 detection and response, typically through a managed service, with agreed containment authority and a tested escalation path.
+
+**Sources:** <https://hhscyber.hhs.gov/cybersecurity-performance-goals.html> · <https://www.cisa.gov/stopransomware/ransomware-guide>
+
+#### ZT-22 — Are records of access to PHI reviewed regularly?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** HIPAA 45 CFR 164.308(a)(1)(ii)(D)
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Access records are not reviewed. |
+| 1 – Initial | Access is reviewed only after a complaint or suspected breach. |
+| 2 – Developing | Some reviews happen (for example VIP or employee-as-patient records), but there is no schedule, scope or documentation. |
+| 3 – Defined | Information system activity is reviewed on a documented schedule covering the EHR and key systems, with criteria (VIP, coworker, family, unusual volume) and recorded follow-up. |
+| 4 – Optimized | Automated analytics flag unusual access, alerts are triaged by privacy and security, and results feed sanctions, training and the risk analysis. |
+
+**Probing questions**
+
+- Who reviews EHR access logs, how often and using what criteria?
+- How do you detect a staff member viewing a coworker's or family member's record?
+- Show me the last review and what was done with the findings.
+- Are access reports reviewed for applications other than the EHR?
+
+**Evidence and how to obtain it**
+
+- Activity review procedure with schedule and criteria — privacy or compliance office.
+- Recent review records with follow-up — privacy or compliance office.
+- Configuration of automated access monitoring — EHR or privacy monitoring tool.
+
+**Red flags**
+
+- Reviews are triggered only by complaints.
+- IT generates reports that nobody reads.
+
+**Healthcare considerations**
+
+- In small communities staff often know patients personally, which makes coworker and neighbor snooping a real risk; reviews should include these patterns.
+- Privacy and security usually sit in different teams at small hospitals; agree who reviews, who investigates and who decides sanctions.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Document a review schedule and criteria for EHR access (weeks).
+- **To 3 – Defined:** Review on schedule, record follow-up and extend to key systems (two to three months).
+- **To 4 – Optimized:** Use automated analytics to flag unusual access (six months).
+
+**Recommended action if gap:** Review EHR and key system access on a documented schedule with clear criteria, and record follow-up for every finding.
+
+**Sources:** <https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C/section-164.308>
+
+### Governance & Readiness
+
+#### ZT-23 — Has a security risk analysis been completed in the last 12 months, driving a risk management plan?
+
+**Weight:** 3 · **HHS CPG:** — · **References:** HIPAA 45 CFR 164.308(a)(1)(ii)(A),(B); NIST CSF 2.0 GV.RM
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No documented risk analysis exists. |
+| 1 – Initial | A risk analysis exists but is older than 12 months, or it is a checklist that does not identify risks to specific systems. |
+| 2 – Developing | A risk analysis was completed in the last 12 months, but it does not cover all systems with ePHI (for example vendor-hosted systems or medical devices) or it has no risk management plan. |
+| 3 – Defined | A risk analysis covering all systems with ePHI, including vendor-hosted systems and medical devices, is updated at least annually and after major changes, and drives a risk management plan with owners and dates. |
+| 4 – Optimized | The risk analysis is updated continuously from the inventory, incidents and assessments, and the funded risk management plan is reported to leadership and the board. |
+
+**Probing questions**
+
+- When was the last risk analysis completed, who did it and what did it cover?
+- Does it include vendor-hosted systems, medical devices and cloud services?
+- Which risks from the last analysis have been addressed, and which were accepted and by whom?
+- Is the risk management plan funded in the budget?
+
+**Evidence and how to obtain it**
+
+- Risk analysis report with date, scope and method — compliance or security office.
+- Risk management plan with owners, dates and status — compliance or security office.
+- Leadership or board minutes showing review of risks — executive office.
+
+**Red flags**
+
+- The risk analysis is a completed questionnaire with no list of risks.
+- The plan has no owners or dates.
+
+**Healthcare considerations**
+
+- The Security Rule requires an accurate and thorough assessment of risks to all ePHI; vendor-hosted EHR modules, medical devices and cloud services are the parts most often left out.
+- Rural hospitals often rely on a free assessment tool or an outside firm; the analysis is only useful if risks are translated into a funded plan with owners.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Complete or update the risk analysis to cover all systems with ePHI (one to two months).
+- **To 3 – Defined:** Turn findings into a risk management plan with owners and dates and update after major changes (one quarter).
+- **To 4 – Optimized:** Fund the plan and report progress to leadership and the board (budget cycle).
+
+**Recommended action if gap:** Update the risk analysis to cover every system with ePHI and drive a funded risk management plan with owners.
+
+**Sources:** <https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C/section-164.308>
+
+#### ZT-24 — Is there a tested incident response plan covering ransomware and extended downtime?
+
+**Weight:** 3 · **HHS CPG:** CPG-E: Basic Incident Planning and Preparedness; CPG-X: Centralized Incident Planning and Preparedness · **References:** HIPAA 45 CFR 164.308(a)(6), 164.308(a)(7); NIST CSF 2.0 RS.MA, RC.RP
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No incident response plan exists. |
+| 1 – Initial | A generic plan exists but does not cover ransomware or multi-week downtime and has never been exercised. |
+| 2 – Developing | The plan covers ransomware, but it has not been exercised in the last 12 months, contacts are outdated or clinical downtime procedures are not linked. |
+| 3 – Defined | The plan covers ransomware and extended downtime, includes out-of-band communication and contact lists, links to clinical downtime procedures, and is exercised at least annually with clinical and executive participants. |
+| 4 – Optimized | Exercises use realistic multi-week scenarios, lessons learned are tracked to closure, and downtime procedures are drilled by clinical units. |
+
+**Probing questions**
+
+- If email, the EHR and phones on the network were down for three weeks, how would you communicate and keep care going?
+- When was the last tabletop exercise, who took part and what changed afterward?
+- Who decides to divert patients or stop services, and who contacts law enforcement, insurers and regulators?
+- Are paper downtime forms and read-only downtime reports current and available on every unit?
+
+**Evidence and how to obtain it**
+
+- Incident response plan with ransomware playbook and version date — security or IT office.
+- Tabletop exercise report with participants and actions — security or emergency management.
+- Clinical downtime procedures and the last downtime drill record — nursing or emergency management.
+
+**Red flags**
+
+- The plan relies on email or the hospital network to communicate during an attack.
+- The exercise involved IT only.
+
+**Healthcare considerations**
+
+- Ransomware recovery in hospitals can take weeks; downtime procedures sized for a four-hour planned outage will not hold, so plan for extended paper operation, staffing and result delivery.
+- Emergency management, nursing, pharmacy, lab and the medical staff must own their parts of the plan; IT cannot run downtime alone.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Add a ransomware playbook with out-of-band contacts to the plan (weeks).
+- **To 3 – Defined:** Run an annual tabletop with clinical and executive participants and link downtime procedures (one quarter).
+- **To 4 – Optimized:** Run multi-week scenarios, drill downtime by unit and track lessons learned (ongoing).
+
+**Recommended action if gap:** Test the incident response plan annually with a multi-week ransomware and downtime scenario including clinical and executive leaders.
+
+**Sources:** <https://hhscyber.hhs.gov/cybersecurity-performance-goals.html> · <https://www.cisa.gov/stopransomware/ransomware-guide>
+
+#### ZT-25 — Does the whole workforce complete cybersecurity awareness training, including phishing exercises?
+
+**Weight:** 2 · **HHS CPG:** CPG-E: Basic Cybersecurity Training · **References:** HIPAA 45 CFR 164.308(a)(5); NIST CSF 2.0 PR.AT
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No cybersecurity awareness training. |
+| 1 – Initial | Training happens at hire only, or for some departments. |
+| 2 – Developing | Annual training is assigned to employees, but completion is not tracked for clinicians, contractors or volunteers, and phishing exercises are rare. |
+| 3 – Defined | All workforce members, including clinicians, medical staff, contractors and volunteers, complete training at least annually, with completion tracked and periodic phishing exercises. |
+| 4 – Optimized | Training is tailored by role (clinical, finance, IT), phishing results and reporting rates are tracked over time, and repeat clickers receive follow-up. |
+
+**Probing questions**
+
+- What percentage of the workforce, including physicians and contractors, completed training this year?
+- How often do you run phishing exercises, and what is done with the results?
+- Does training cover healthcare-specific threats such as fake vendor calls and payment redirection?
+- How do night-shift staff complete training?
+
+**Evidence and how to obtain it**
+
+- Training completion report by workforce group — learning management system.
+- Phishing exercise results and reporting rates over time — phishing simulation tool.
+- Training content outline — security or education team.
+
+**Red flags**
+
+- Physicians and contractors are excluded from completion figures.
+- Phishing exercises are punitive, discouraging reporting.
+
+**Healthcare considerations**
+
+- Clinicians have limited time; short, role-based modules integrated with annual competencies get better completion than long generic courses.
+- HHS offers free healthcare-specific awareness materials through the 405(d) program that small hospitals can use.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Assign annual training to all workforce groups and track completion (one to two months).
+- **To 3 – Defined:** Include medical staff, contractors and volunteers and run periodic phishing exercises (one quarter).
+- **To 4 – Optimized:** Tailor training by role and track phishing reporting trends (ongoing).
+
+**Recommended action if gap:** Train the whole workforce annually, including physicians and contractors, and run periodic phishing exercises that reward reporting.
+
+**Sources:** <https://hhscyber.hhs.gov/cybersecurity-performance-goals.html> · <https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C/section-164.308>
+
+#### ZT-26 — Are cybersecurity requirements included in vendor contracts and verified before onboarding?
+
+**Weight:** 3 · **HHS CPG:** CPG-E: Vendor/Supplier Cybersecurity Requirements · **References:** HIPAA 45 CFR 164.308(b); NIST CSF 2.0 GV.SC
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Vendors are selected without any security review, and contracts contain no security terms beyond a business associate agreement, if any. |
+| 1 – Initial | Security is reviewed occasionally for large purchases, and contract terms depend on what the vendor offers. |
+| 2 – Developing | A vendor security questionnaire exists, but it is not applied to every vendor handling PHI or connecting to the network, and contract clauses are not standard. |
+| 3 – Defined | Vendors handling PHI or connecting to the network are assessed before onboarding using a tiered process, and contracts include standard security requirements (MFA, access, notification, data return). |
+| 4 – Optimized | Critical vendors are reassessed periodically, contract requirements are monitored, and vendor risk is reported with the risk management plan. |
+
+**Probing questions**
+
+- Who decides whether a new vendor is reviewed for security before contract signature?
+- Do medical device purchases include an MDS2 form, SBOM and patch support commitment?
+- Which standard security clauses go into contracts, and who maintains them?
+- Which vendors are critical, and when were they last reassessed?
+
+**Evidence and how to obtain it**
+
+- Vendor assessment procedure and recent completed assessments — security, procurement or compliance.
+- Standard contract security clauses — contracts or legal office.
+- Critical vendor list with assessment dates — vendor management.
+
+**Red flags**
+
+- Departments buy cloud services on a card without review.
+- Medical devices are purchased without security documentation.
+
+**Healthcare considerations**
+
+- Clinical departments often select systems directly; security review must be built into the capital and purchasing process, not added after contract signature.
+- For medical devices, request the MDS2 form, an SBOM and the manufacturer's patch and end-of-support commitments before purchase.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Require a security review for vendors handling PHI or connecting to the network (weeks).
+- **To 3 – Defined:** Tier vendors, standardize contract clauses and require MDS2 and SBOM for devices (one quarter).
+- **To 4 – Optimized:** Reassess critical vendors periodically and report vendor risk (ongoing).
+
+**Recommended action if gap:** Assess vendors before contract signature, standardize security clauses and require MDS2 forms and SBOMs for medical devices.
+
+**Sources:** <https://hhscyber.hhs.gov/cybersecurity-performance-goals.html> · <https://www.fda.gov/medical-devices/digital-health-center-excellence/cybersecurity>
+
+#### ZT-27 — Are identified vulnerabilities and gaps tracked to closure with owners and dates?
+
+**Weight:** 2 · **HHS CPG:** CPG-X: Cybersecurity Mitigation · **References:** NIST CSF 2.0 ID.IM
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Findings from scans, tests and audits are not tracked. |
+| 1 – Initial | Findings are kept in separate reports and emails; there is no single list. |
+| 2 – Developing | A tracker exists, but not every finding has an owner and date, and status is not reported. |
+| 3 – Defined | Every finding from scans, tests, audits and this assessment has an owner, target date and status in one tracker, reviewed at least monthly. |
+| 4 – Optimized | Overdue items are escalated, closure is verified, and trends are reported to leadership and linked to the risk management plan. |
+
+**Probing questions**
+
+- Show me the tracker. How many items are overdue, and who owns the oldest?
+- Are penetration test, audit and risk analysis findings all in the same place?
+- Who verifies that a closed item was actually fixed?
+- How does leadership see progress?
+
+**Evidence and how to obtain it**
+
+- Remediation tracker with owners, dates and status — security or IT management.
+- Monthly status report to leadership — IT or security leadership.
+- Closure verification records — security team.
+
+**Red flags**
+
+- Items are closed without verification.
+- Owners are teams rather than named people.
+
+**Healthcare considerations**
+
+- Many gaps depend on vendors or clinical engineering; track the external dependency and owner so items do not stall silently.
+- Small teams need one simple tracker; multiple tools create the appearance of tracking without accountability.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Put all findings in one tracker with owners and dates (weeks).
+- **To 3 – Defined:** Review the tracker monthly and report status to leadership (one to two months).
+- **To 4 – Optimized:** Verify closure, escalate overdue items and link to the risk plan (one quarter).
+
+**Recommended action if gap:** Track every finding in one place with a named owner and date, review monthly and verify closure.
+
+**Sources:** <https://hhscyber.hhs.gov/cybersecurity-performance-goals.html>
+
+#### ZT-28 — Is there a Zero Trust strategy with a target maturity per pillar and an executive sponsor?
+
+**Weight:** 1 · **HHS CPG:** — · **References:** CISA ZTMM v2.0 (Governance); NIST CSF 2.0 GV.OC
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No security strategy beyond individual projects. |
+| 1 – Initial | A security plan exists, but it lists projects without target maturity or sponsor. |
+| 2 – Developing | Zero Trust goals are described, but targets per pillar, sponsor or funding are missing. |
+| 3 – Defined | An approved strategy sets target maturity for each CISA ZTMM pillar, has an executive sponsor, and links to a funded roadmap. |
+| 4 – Optimized | Progress against targets is measured and reported to leadership at least twice a year, and the strategy is updated after assessments and incidents. |
+
+**Probing questions**
+
+- Who outside IT sponsors the security program and approves its budget?
+- Which pillar targets have you set for the next two years, and why?
+- How does the strategy connect to the risk analysis and the capital plan?
+- When did leadership last review progress?
+
+**Evidence and how to obtain it**
+
+- Strategy document with pillar targets and approval — IT or security leadership.
+- Roadmap with budget lines — finance or IT.
+- Leadership or board minutes reviewing progress — executive office.
+
+**Red flags**
+
+- The strategy is a vendor presentation.
+- Targets are Optimal for every pillar with no funding.
+
+**Healthcare considerations**
+
+- For a small hospital, Initial or Advanced in most pillars is a realistic target; aim for Optimal only where it directly protects patient care, such as identity and backups.
+- Executive sponsorship from the CEO, CFO or COO matters because security work competes with clinical capital requests.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Draft pillar targets based on this assessment (weeks).
+- **To 3 – Defined:** Approve the strategy with an executive sponsor and a funded roadmap (one budget cycle).
+- **To 4 – Optimized:** Report progress against targets to leadership twice a year (ongoing).
+
+**Recommended action if gap:** Set realistic target maturity per pillar, name an executive sponsor and fund the roadmap in the budget cycle.
+
+**Sources:** <https://www.cisa.gov/zero-trust-maturity-model>

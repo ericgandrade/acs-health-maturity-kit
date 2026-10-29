@@ -13,7 +13,7 @@ from openpyxl.chart import BarChart, RadarChart, Reference
 from openpyxl.worksheet.datavalidation import DataValidation
 from openpyxl.formatting.rule import CellIsRule, FormulaRule
 
-VERSION = '0.1.0'
+VERSION = '0.2.0'
 RELEASE_DATE = '2026-10-29'
 ROOT = Path(__file__).resolve().parent.parent
 OUT = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / 'toolkit' / 'ACS-Health-Maturity-Assessment.xlsx'
@@ -79,8 +79,23 @@ def fit_height(ws, row, texts_widths, base=13.0):
     lines = 1
     for text, width in texts_widths:
         if text:
-            lines = max(lines, math.ceil(len(str(text)) / max(width * 1.15, 1)))
-    ws.row_dimensions[row].height = max(base, 13.0 * lines + 2)
+            n = sum(max(1, math.ceil(len(part) / max(width * 1.15, 1))) for part in str(text).split('\n'))
+            lines = max(lines, n)
+    ws.row_dimensions[row].height = min(409.0, max(base, 13.0 * lines + 2))
+
+
+def split_list(text):
+    """List fields in the CSV are separated by ' | '."""
+    return [t.strip() for t in (text or '').split(' | ') if t.strip()]
+
+
+def bullets(text):
+    return '\n'.join('• ' + t for t in split_list(text))
+
+
+def level_guide(q):
+    texts = [q['level_0'], q['level_1'], q['level_2'], q['level_3'], q['target_state']]
+    return '\n'.join(f'{lvl[0]} – {t}' for lvl, t in zip(LEVELS, texts))
 
 
 def load_csv(name):
@@ -137,10 +152,16 @@ def build():
         ('Who should answer', 'The IT leader, with input from security, infrastructure, applications, procurement and '
                               'clinical informatics. Answer based on evidence, not intent.'),
         ('How to use', '1) Fill in the Profile sheet. 2) Answer every question in the three service sheets using the '
-                       'yellow Answer column. 3) Review the Dashboard, Priority Gaps and CPG Crosswalk sheets. '
-                       '4) Use App Portfolio Triage and License-Security Map for detailed planning.'),
+                       'yellow Answer column: pick the level in the "Maturity levels (0–4)" column that matches what the '
+                       'evidence shows today. 3) Use the Question Guide sheet for interview probes, evidence, red flags and '
+                       'the path to the next level. 4) Review the Dashboard, Priority Gaps and CPG Crosswalk sheets. '
+                       '5) Use App Portfolio Triage and License-Security Map for detailed planning.'),
+        ('Rule of evidence', 'Choose the highest level whose description is fully true today. If part of it is missing, '
+                             'choose the level below. Plans and pilots do not count. Scores of 3 or 4 require evidence you have seen.'),
         ('Cells to edit', 'Only yellow cells. All other values are calculated.'),
-        ('Example', 'If MFA protects remote access but not email or privileged accounts, answer ZT-01 with "2 - Developing".'),
+        ('Example', 'ZT-01: if MFA protects the VPN but not email or administrator accounts, the level 1 description is fully true and '
+                    'level 2 is not, so answer "1 - Initial". If MFA covers remote access and email for most users but '
+                    'vendor accounts are excluded, answer "2 - Developing".'),
         ('Weights', '3 = critical to patient safety or data protection; 2 = important; 1 = foundational.'),
         ('Scoring', 'Each answer scores 0–4. Scores are weighted averages; "N/A" and blank answers are excluded. '
                     'Gap points = (4 − score) × weight and rank the Priority Gaps.'),
@@ -181,6 +202,7 @@ def build():
         ('CPG Crosswalk', 'Status against each of the 20 HHS Cybersecurity Performance Goals.'),
         ('App Portfolio Triage', 'Application inventory with risk scoring and a suggested disposition.'),
         ('License-Security Map', 'Security capabilities included in common Microsoft licenses and whether they are deployed.'),
+        ('Question Guide', 'For every question: interview probes, evidence and how to obtain it, red flags, healthcare considerations, the path to the next level and sources.'),
     ]
     for name, desc in sheets_desc:
         r += 1
@@ -213,10 +235,10 @@ def build():
     pf['B13'].number_format = 'yyyy-mm-dd'
 
     # ---------------- Questionnaire sheets ----------------
-    QH = ['ID', 'Dimension', 'Question', 'What “4 - Optimized” looks like', 'Evidence to review',
+    QH = ['ID', 'Dimension', 'Question', 'Maturity levels (0–4)', 'Evidence to review',
           'HHS CPG mapping', 'Other references', 'Weight', 'Answer', 'Notes', 'Recommended action if gap',
           'Score', 'Weighted score', 'Weight applied', 'Gap points']
-    QW = [8, 18, 46, 44, 28, 28, 26, 8, 17, 26, 40, 8, 9, 9, 9]
+    QW = [8, 18, 40, 60, 42, 26, 26, 8, 17, 26, 36, 8, 9, 9, 9]
     FIRST = 5
     service_rows = {}
     for idx, svc in enumerate(SERVICES, 2):
@@ -228,7 +250,7 @@ def build():
         items = [q for q in questions if q['service'] == svc]
         r = FIRST
         for q in items:
-            vals = [q['id'], q['dimension'], q['question'], q['target_state'], q['evidence'], q['hhs_cpg'],
+            vals = [q['id'], q['dimension'], q['question'], level_guide(q), bullets(q['evidence']), q['hhs_cpg'],
                     q['references'], int(q['weight']), None, None, q['recommended_action']]
             for c, v in enumerate(vals, 1):
                 cell = ws.cell(row=r, column=c, value=v)
@@ -247,7 +269,7 @@ def build():
                 cell.fill = PatternFill('solid', fgColor='F2F2F2')
                 cell.alignment = CENTER
                 cell.border = BORDER
-            fit_height(ws, r, [(vals[2], 46), (vals[3], 44), (vals[10], 40), (vals[5], 28), (vals[6], 26)])
+            fit_height(ws, r, [(vals[2], 40), (vals[3], 60), (vals[4], 42), (vals[10], 36), (vals[5], 26), (vals[6], 26)])
             r += 1
         last = r - 1
         dv(ws, 'A', len(ANSWERS), f'I{FIRST}:I{last}')
@@ -508,9 +530,32 @@ def build():
     lm.conditional_formatting.add(f'G6:G{llast}', FormulaRule(formula=['LEFT(G6,8)="Licensed"'], fill=PatternFill('solid', fgColor='FFE699')))
     lm.freeze_panes = 'B6'
 
-    # order: Start Here, Profile, LO, AM, ZT, Dashboard, Priority Gaps, CPG Crosswalk, Triage, License map, AllItems, Lists
+    # ---------------- Question Guide ----------------
+    qg = wb.create_sheet('Question Guide')
+    title(qg, 'Question Guide',
+          'How to assess each question: what to ask, what evidence proves the level, what to watch for and how to reach the next level.')
+    GH = ['ID', 'Service', 'Dimension', 'Question', 'Probing questions', 'Evidence and how to obtain it', 'Red flags',
+          'Healthcare considerations', 'Path to 2 - Developing', 'Path to 3 - Defined', 'Path to 4 - Optimized',
+          'References', 'Sources']
+    GW = [8, 16, 18, 36, 52, 48, 36, 48, 30, 30, 30, 26, 40]
+    header(qg, 4, GH, GW)
+    qg.freeze_panes = 'E5'
+    for r, q in enumerate(questions, 5):
+        vals = [q['id'], q['service'], q['dimension'], q['question'], bullets(q['probing_questions']), bullets(q['evidence']),
+                bullets(q['red_flags']), bullets(q['healthcare_considerations']), q['action_to_2'], q['action_to_3'],
+                q['action_to_4'], q['references'], '\n'.join(split_list(q['sources']))]
+        for c, v in enumerate(vals, 1):
+            cell = qg.cell(row=r, column=c, value=v)
+            cell.font = font(bold=(c == 1))
+            cell.alignment = CENTER if c == 1 else WRAP
+            cell.border = BORDER
+        fit_height(qg, r, list(zip(vals, GW)))
+    qg.print_title_rows = '4:4'
+
+    # order: Start Here, Profile, LO, AM, ZT, Dashboard, Priority Gaps, CPG Crosswalk, Triage, License map, Guide, AllItems, Lists
     order = ['Start Here', 'Profile'] + list(SERVICES) + ['Dashboard', 'Priority Gaps', 'CPG Crosswalk',
-                                                          'App Portfolio Triage', 'License-Security Map', 'AllItems', 'Lists']
+                                                          'App Portfolio Triage', 'License-Security Map', 'Question Guide',
+                                                          'AllItems', 'Lists']
     wb._sheets = [wb[n] for n in order]
     for ws in wb.worksheets:
         ws.page_setup.orientation = 'landscape'
