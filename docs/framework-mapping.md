@@ -30,7 +30,7 @@ This file is generated from `data/questionnaire.csv` by `tools/build_docs.py`. F
 | LO-18 | Cloud Cost | Are reservations, savings plans and hybrid-use benefits applied where eligible? | — | FinOps Framework (Optimize) | 2 |
 | LO-19 | Cloud Cost | Are idle or oversized cloud resources identified and rightsized at least monthly? | — | FinOps Framework (Optimize) | 2 |
 | LO-20 | Cloud Cost | Are budgets and spending alerts configured for cloud subscriptions? | — | FinOps Framework (Operate) | 1 |
-| LO-21 | Programs & Negotiation | Has eligibility for nonprofit, healthcare or rural hospital licensing programs and discounts been verified? | — | AHA, June 10, 2024 (Microsoft rural hospital program) | 2 |
+| LO-21 | Programs & Negotiation | Has eligibility for nonprofit, healthcare or rural hospital licensing programs and discounts been verified? | — | Microsoft rural hospital cybersecurity program, announced June 10, 2024 (AHA program flyer, December 2024) | 2 |
 | LO-22 | Programs & Negotiation | Is the agreement type (e.g., Enterprise Agreement, CSP, MCA) reviewed against current size and needs before renewal? | — | FinOps Framework (Optimize) | 2 |
 | LO-23 | Programs & Negotiation | Are savings from license optimization reinvested in documented security or modernization priorities? | — | NIST CSF 2.0 GV.RM | 1 |
 | LO-24 | Programs & Negotiation | Is license compliance risk assessed with a defensible effective license position? | — | ISO/IEC 19770-1 | 2 |
@@ -52,9 +52,9 @@ This file is generated from `data/questionnaire.csv` by `tools/build_docs.py`. F
 | AM-11 | Rationalization & Roadmap | Are redundant applications with overlapping functions identified for consolidation? | — | NIST CSF 2.0 ID.AM | 1 |
 | AM-12 | Rationalization & Roadmap | Is the total cost of ownership known for major applications? | — | FinOps Framework (Inform) | 1 |
 | AM-13 | Engineering & Release | Are changes deployed through a controlled, repeatable release process with approval and rollback? | CPG-X: Configuration Management | NIST CSF 2.0 PR.PS | 3 |
-| AM-14 | Engineering & Release | Is automated testing used for critical applications before release? | — | NIST SP 800-218 PW.8 | 2 |
+| AM-14 | Engineering & Release | Is automated testing used for critical applications before release? | — | NIST SP 800-218 PW.8; NIST CSF 2.0 PR.PS | 2 |
 | AM-15 | Engineering & Release | Are secure development practices (code review, dependency scanning, secrets management) applied to in-house and customized code? | — | NIST SP 800-218 PO.1, PS.1, PW.4, PW.7, RV.1 | 2 |
-| AM-16 | Engineering & Release | If AI-assisted engineering is used, is it governed by policy (approved tools, data restrictions, human review)? | — | NIST CSF 2.0 GV.PO; NIST SP 800-218 PO.3 | 2 |
+| AM-16 | Engineering & Release | If AI-assisted engineering is used, is it governed by policy (approved tools, data restrictions, human review)? | — | NIST CSF 2.0 GV.PO; NIST SP 800-218 PO.3; NIST SP 800-218A | 2 |
 | AM-17 | Resilience & Recovery | Are backups of critical applications and data protected from tampering and is restoration tested? | — | HIPAA 45 CFR 164.308(a)(7)(ii)(A),(D); NIST CSF 2.0 PR.DS, RC.RP | 3 |
 | AM-18 | Resilience & Recovery | Do critical applications have recovery time and recovery point objectives that are tested? | — | HIPAA 45 CFR 164.308(a)(7)(ii)(B); NIST CSF 2.0 RC.RP | 3 |
 | AM-19 | Resilience & Recovery | Are downtime procedures for clinical workflows documented and exercised? | — | HIPAA 45 CFR 164.308(a)(7)(ii)(C); NIST CSF 2.0 RC.RP | 3 |
@@ -62,7 +62,7 @@ This file is generated from `data/questionnaire.csv` by `tools/build_docs.py`. F
 | AM-21 | Cloud & Data Readiness | Is there a cloud foundation (identity, network, security, cost governance) in place before migrations? | — | Microsoft Cloud Adoption Framework (Ready); NIST CSF 2.0 PR.PS | 2 |
 | AM-22 | Cloud & Data Readiness | Are business associate agreements in place with all cloud and SaaS providers that handle PHI? | CPG-E: Vendor/Supplier Cybersecurity Requirements | HIPAA 45 CFR 164.308(b); NIST CSF 2.0 GV.SC | 3 |
 | AM-23 | Cloud & Data Readiness | Are interfaces moving toward standards-based APIs (e.g., HL7 FHIR) where applicable? | — | HL7 FHIR; NIST CSF 2.0 ID.AM | 1 |
-| AM-24 | Cloud & Data Readiness | Are data classification, retention and migration rules for PHI defined before applications are moved? | — | HIPAA 45 CFR 164.310(d)(2); NIST CSF 2.0 PR.DS | 2 |
+| AM-24 | Cloud & Data Readiness | Are data classification, retention and migration rules for PHI defined before applications are moved? | — | HIPAA 45 CFR 164.310(d)(2)(iv); NIST CSF 2.0 PR.DS | 2 |
 
 ## Zero Trust
 
@@ -82,7 +82,7 @@ This file is generated from `data/questionnaire.csv` by `tools/build_docs.py`. F
 | ZT-12 | Applications & Workloads | Are email protections (SPF, DKIM, DMARC, attachment and link scanning) enforced? | CPG-E: Email Security | CISA ZTMM v2.0 Applications and Workloads; NIST CSF 2.0 PR.PS | 3 |
 | ZT-13 | Applications & Workloads | Is access to applications granted per application based on identity and context, rather than network location? | — | CISA ZTMM v2.0 Applications and Workloads; NIST CSF 2.0 PR.AA | 2 |
 | ZT-14 | Applications & Workloads | Are internet-facing systems and critical applications tested for vulnerabilities at least annually? | CPG-X: Cybersecurity Testing | NIST CSF 2.0 ID.RA | 2 |
-| ZT-15 | Applications & Workloads | Are vendors required to disclose vulnerabilities and report incidents that affect your systems or data? | CPG-X: Third Party Vulnerability Disclosure; CPG-X: Third Party Incident Reporting | HIPAA 45 CFR 164.308(b); NIST CSF 2.0 GV.SC | 3 |
+| ZT-15 | Applications & Workloads | Are vendors required to disclose vulnerabilities and report incidents that affect your systems or data? | CPG-X: Third Party Vulnerability Disclosure; CPG-X: Third Party Incident Reporting | HIPAA 45 CFR 164.308(b); HIPAA 45 CFR 164.314(a)(2)(i)(C); NIST CSF 2.0 GV.SC | 3 |
 | ZT-16 | Data | Is PHI encrypted at rest on servers, endpoints, removable media and backups? | CPG-E: Strong Encryption | HIPAA 45 CFR 164.312(a)(2)(iv); NIST CSF 2.0 PR.DS | 3 |
 | ZT-17 | Data | Is PHI classified and are its storage locations known? | — | CISA ZTMM v2.0 Data; NIST CSF 2.0 ID.AM | 2 |
 | ZT-18 | Data | Are data loss prevention controls applied to email, cloud storage and endpoints? | — | CISA ZTMM v2.0 Data; NIST CSF 2.0 PR.DS | 2 |
@@ -94,5 +94,5 @@ This file is generated from `data/questionnaire.csv` by `tools/build_docs.py`. F
 | ZT-24 | Governance & Readiness | Is there a tested incident response plan covering ransomware and extended downtime? | CPG-E: Basic Incident Planning and Preparedness; CPG-X: Centralized Incident Planning and Preparedness | HIPAA 45 CFR 164.308(a)(6), 164.308(a)(7); NIST CSF 2.0 RS.MA, RC.RP | 3 |
 | ZT-25 | Governance & Readiness | Does the whole workforce complete cybersecurity awareness training, including phishing exercises? | CPG-E: Basic Cybersecurity Training | HIPAA 45 CFR 164.308(a)(5); NIST CSF 2.0 PR.AT | 2 |
 | ZT-26 | Governance & Readiness | Are cybersecurity requirements included in vendor contracts and verified before onboarding? | CPG-E: Vendor/Supplier Cybersecurity Requirements | HIPAA 45 CFR 164.308(b); NIST CSF 2.0 GV.SC | 3 |
-| ZT-27 | Governance & Readiness | Are identified vulnerabilities and gaps tracked to closure with owners and dates? | CPG-X: Cybersecurity Mitigation | NIST CSF 2.0 ID.IM | 2 |
+| ZT-27 | Governance & Readiness | Are identified vulnerabilities and gaps tracked to closure with owners and dates? | CPG-X: Cybersecurity Mitigation | NIST CSF 2.0 ID.RA-06; NIST CSF 2.0 ID.IM | 2 |
 | ZT-28 | Governance & Readiness | Is there a Zero Trust strategy with a target maturity per pillar and an executive sponsor? | — | CISA ZTMM v2.0 (Governance); NIST CSF 2.0 GV.OC | 1 |

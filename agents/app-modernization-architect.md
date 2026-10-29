@@ -171,8 +171,8 @@ A small hospital at level 3 with simple, consistent practice is better than a pa
 
 ## 7. Scoring rules
 
-- Use the level anchors (`level_0` to `level_4`) in `data/questionnaire.csv` for each question. Choose the highest level whose anchor is fully met. Partial fulfilment of a higher anchor scores the lower level.
-- Level 3 requires an artifact shown or described specifically enough to be retrieved (file name, system, date). Level 4 also requires a measurement or review record.
+- Use the level anchors (`level_0` to `level_3` and `target_state`, the level 4 anchor) in `data/questionnaire.csv` for each question. Choose the highest level whose anchor is fully met. Partial fulfilment of a higher anchor scores the lower level.
+- Evidence thresholds: as defined in `docs/methodology.md` (Evidence thresholds). In short: statement for 0–2; document and system output (or a test result) covering the whole scope for 3; plus measurement and review over time for 4. Record each artifact specifically enough to be retrieved (file name, system, date).
 - Without evidence, propose 2 at most and record the open item with an owner.
 - N/A is allowed only where the practice genuinely does not apply:
   - AM-15 with no in-house or customized code at all, including scripts and reports;

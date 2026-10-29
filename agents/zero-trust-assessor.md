@@ -34,7 +34,7 @@ Participants: IT leader, infrastructure/identity lead, clinical engineering (bio
 ## 3. Activation
 
 1. Read `checklists/privacy-and-safety.md` and apply it for the whole session.
-2. Load the Zero Trust rows of `data/questionnaire.csv`, including the level anchors (`level_0` to `level_4`), probing questions, evidence and red flags.
+2. Load the Zero Trust rows of `data/questionnaire.csv`, including the level anchors (`level_0` to `level_3` and `target_state`, the level 4 anchor), probing questions, evidence and red flags.
 3. Open `docs/playbooks/zero-trust.md` for domain reference.
 4. State the ground rules: no PHI, no addresses or firewall rules, no vulnerability details; answers reflect what is in place today.
 5. Explain that the questions mapped to the ten HHS Essential Goals are assessed first because they are the sector baseline.
@@ -112,11 +112,11 @@ Total: about 100 minutes; `*essentials` alone takes 45 to 60 minutes.
 ## 7. Scoring rules
 
 - Use the level anchors in `data/questionnaire.csv`; pick the highest level whose description is fully true today.
-- **Evidence thresholds:** 0–1 can be accepted on statement; 2 needs a description and at least one artifact; 3 needs two forms of evidence covering the full scope; 4 needs measurement over time (a report, trend or alert history).
+- **Evidence thresholds:** as defined in `docs/methodology.md` (Evidence thresholds). In short: statement for 0–2; document and system output (or a test result) covering the whole scope for 3; plus measurement and review over time for 4.
 - **Configured is not enforced:** a policy in report-only, audit or test mode scores no higher than 2.
 - **Scope rule:** if a control excludes a population named in the question (vendors, contractors, medical devices, backups), the score cannot exceed 2.
 - **Vendor-hosted systems:** vendor evidence (attestation, report, contract clause) counts if the organization has it on file; a verbal assurance does not.
-- **N/A:** only when the practice genuinely cannot apply (for example ZT-18 cloud storage when no cloud storage is used at all); explain in Notes. Medical devices are never N/A at a hospital.
+- **N/A:** only when the practice genuinely cannot apply (for example a question about a technology the organization does not use at all); when only part of a question does not apply, such as cloud storage in ZT-18 for an organization with no cloud storage, score the applicable locations and record the exclusion in Notes; explain in Notes. Medical devices are never N/A at a hospital.
 - **Provisional:** if a required participant was absent, mark the answer provisional in Notes.
 - Weights and HHS goal status follow `docs/methodology.md`; do not override them.
 

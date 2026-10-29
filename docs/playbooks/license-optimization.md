@@ -12,7 +12,7 @@ Three consequences follow:
 
 1. **Shelfware.** Licenses are bought for peak headcount, kept for departed staff, or assigned at a higher tier than the role needs.
 2. **Security left on the table.** Plans such as Microsoft 365 Business Premium, E3 and E5 typically include capabilities that map directly to HHS Cybersecurity Performance Goals: multifactor authentication, email security, encryption, endpoint detection and response, and audit logging. These capabilities are often licensed and not deployed. For a budget-constrained hospital, deploying what it already owns is usually the fastest and cheapest security improvement available.
-3. **Compliance exposure.** On-premises Windows Server and SQL Server licensing, often on servers that run clinical systems, is the most common gap. It surfaces during an audit or a migration.
+3. **Compliance exposure.** On-premises Windows Server and SQL Server licensing, often on servers that run clinical systems, is a frequent gap. It surfaces during an audit or a migration.
 
 License optimization connects all three. Money recovered from shelfware can fund security gaps. Knowing what is licensed prevents duplicate purchases. A defensible license position removes surprise costs.
 
@@ -162,7 +162,7 @@ Microsoft's Enterprise Agreement guidance describes a 120-day start for true-up 
 
 **Agreement notes (verify against your agreement)**
 
-- **Enterprise Agreement:** Microsoft describes it as designed for commercial organizations with at least 500 users or devices, with a three-year term. The annual true-up order is due between 60 and 30 days before the anniversary, and an update statement is submitted if nothing changed. Microsoft describes an Annual Order under the Subscription Enrollment through which counts can be increased or decreased. Don't assume reductions are available under other enrollment types.
+- **Enterprise Agreement:** Microsoft describes it as designed for commercial organizations with at least 500 users or devices (250 for public-sector organizations, which can include county and district hospitals), with a three-year term. The annual true-up order is due between 60 and 30 days before the anniversary, and an update statement is submitted if nothing changed. Microsoft describes an Annual Order under the Subscription Enrollment through which counts can be increased or decreased. Don't assume reductions are available under other enrollment types.
 - **CSP new commerce:** Monthly, annual and three-year terms are available for many subscriptions. Cancellation is allowed only in the first seven days of a term. Changes can be scheduled to take effect at the end of the term.
 - **Microsoft Customer Agreement:** A billing account with billing profiles and invoice sections. Invoice sections can organize costs by department or project.
 

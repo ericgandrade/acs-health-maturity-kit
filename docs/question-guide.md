@@ -475,7 +475,7 @@ This file is generated from `data/questionnaire.csv` by `tools/build_docs.py`; t
 | 0 – Not in place | Departed staff accounts stay active and licensed until someone notices. |
 | 1 – Initial | IT disables accounts when a manager remembers to tell them; licenses are rarely removed. |
 | 2 – Developing | HR notifies IT of employee departures, but contractors, students, agency and vendor accounts are missed and licenses are removed weeks later or not at all. |
-| 3 – Defined | Every departure (employee, contractor, student, agency, vendor) triggers account disablement within one business day and license removal per policy, verified by monthly reconciliation with HR and contract lists. |
+| 3 – Defined | Every departure (employee, contractor, student, agency, vendor) triggers account disablement within one business day (or a shorter, documented timeframe) and license removal per policy, verified by monthly reconciliation with HR and contract lists. |
 | 4 – Optimized | Disablement is automated from HR and sponsor records, the reconciliation shows no unexplained active accounts, and reharvested licenses are reused. |
 
 **Probing questions**
@@ -609,7 +609,7 @@ This file is generated from `data/questionnaire.csv` by `tools/build_docs.py`; t
 | Level | What you would see |
 |---|---|
 | 0 – Not in place | Conditional Access is licensed but no policies exist; MFA is not required. |
-| 1 – Initial | Security defaults or per-user MFA cover some administrators or volunteers only. |
+| 1 – Initial | MFA relies on security defaults or per-user MFA, for some or all users; no Conditional Access policies exist. |
 | 2 – Developing | Conditional Access requires MFA for most users, but clinical units, vendors or service accounts are excluded without review, or policies are in report-only mode. |
 | 3 – Defined | Licensed Conditional Access policies enforce MFA for all users, administrators, vendors and remote access, with documented and approved exclusions and legacy authentication blocked. |
 | 4 – Optimized | Policies include device compliance and, where licensed, risk-based conditions; phishing-resistant methods are required for administrators; coverage is reported and reviewed. |
@@ -919,7 +919,7 @@ This file is generated from `data/questionnaire.csv` by `tools/build_docs.py`; t
 
 #### LO-21 — Has eligibility for nonprofit, healthcare or rural hospital licensing programs and discounts been verified?
 
-**Weight:** 2 · **HHS CPG:** — · **References:** AHA, June 10, 2024 (Microsoft rural hospital program)
+**Weight:** 2 · **HHS CPG:** — · **References:** Microsoft rural hospital cybersecurity program, announced June 10, 2024 (AHA program flyer, December 2024)
 
 | Level | What you would see |
 |---|---|
@@ -948,7 +948,7 @@ This file is generated from `data/questionnaire.csv` by `tools/build_docs.py`; t
 
 **Healthcare considerations**
 
-- Microsoft announced a cybersecurity program for rural hospitals in June 2024 that described nonprofit pricing (up to 75% discount) for independent critical access and rural emergency hospitals and a one-year no-cost security offer for other rural hospitals; confirm current terms and availability before planning on it.
+- Microsoft announced a cybersecurity program for rural hospitals in June 2024 that described special pricing and time-limited security offers for eligible rural hospitals; confirm with your licensing partner whether it is still available and what it includes before planning on it.
 - Hospitals that are part of a health system may be covered by the system's agreement rather than individual programs; check with the parent organization.
 
 **Path to the next level**
@@ -1681,7 +1681,7 @@ This file is generated from `data/questionnaire.csv` by `tools/build_docs.py`; t
 
 #### AM-14 — Is automated testing used for critical applications before release?
 
-**Weight:** 2 · **HHS CPG:** — · **References:** NIST SP 800-218 PW.8
+**Weight:** 2 · **HHS CPG:** — · **References:** NIST SP 800-218 PW.8; NIST CSF 2.0 PR.PS
 
 | Level | What you would see |
 |---|---|
@@ -1770,7 +1770,7 @@ This file is generated from `data/questionnaire.csv` by `tools/build_docs.py`; t
 
 #### AM-16 — If AI-assisted engineering is used, is it governed by policy (approved tools, data restrictions, human review)?
 
-**Weight:** 2 · **HHS CPG:** — · **References:** NIST CSF 2.0 GV.PO; NIST SP 800-218 PO.3
+**Weight:** 2 · **HHS CPG:** — · **References:** NIST CSF 2.0 GV.PO; NIST SP 800-218 PO.3; NIST SP 800-218A
 
 | Level | What you would see |
 |---|---|
@@ -2126,7 +2126,7 @@ This file is generated from `data/questionnaire.csv` by `tools/build_docs.py`; t
 
 #### AM-24 — Are data classification, retention and migration rules for PHI defined before applications are moved?
 
-**Weight:** 2 · **HHS CPG:** — · **References:** HIPAA 45 CFR 164.310(d)(2); NIST CSF 2.0 PR.DS
+**Weight:** 2 · **HHS CPG:** — · **References:** HIPAA 45 CFR 164.310(d)(2)(iv); NIST CSF 2.0 PR.DS
 
 | Level | What you would see |
 |---|---|
@@ -2182,7 +2182,7 @@ This file is generated from `data/questionnaire.csv` by `tools/build_docs.py`; t
 | 0 – Not in place | No MFA, or MFA only for a few volunteers. |
 | 1 – Initial | MFA on some remote access (for example the VPN) but not on email or administrator accounts. |
 | 2 – Developing | MFA on remote access and email for most users; exceptions are undocumented; administrators use SMS or voice; vendor accounts are excluded. |
-| 3 – Defined | MFA is enforced (not report-only) for all remote access, email, administrators and third-party/vendor access; exceptions are documented, approved and reviewed. |
+| 3 – Defined | MFA is enforced (not report-only) for all remote access, email, administrators and third-party/vendor access; administrators do not use SMS or voice; exceptions are documented, approved and reviewed. |
 | 4 – Optimized | Phishing-resistant methods (FIDO2 security keys, Windows Hello for Business or certificate-based authentication) are required for administrators and remote access; legacy authentication is blocked; coverage is monitored and gaps raise alerts. |
 
 **Probing questions**
@@ -2322,7 +2322,7 @@ This file is generated from `data/questionnaire.csv` by `tools/build_docs.py`; t
 | 0 – Not in place | Accounts are disabled only when someone remembers; former staff and vendors remain active. |
 | 1 – Initial | HR emails IT about departures and IT disables directory accounts, but application, remote access and vendor accounts are missed. |
 | 2 – Developing | A documented offboarding checklist covers the directory and main applications, but timing varies, contractors and vendors are not always included and nobody reconciles. |
-| 3 – Defined | Access for employees, contractors, students, volunteers and vendors is revoked within a defined timeframe (for example 24 hours) across directory, EHR and remote access, verified by monthly reconciliation. |
+| 3 – Defined | Access for employees, contractors, students, volunteers and vendors is revoked within one business day (or a shorter, documented timeframe) across directory, EHR and remote access, verified by monthly reconciliation. |
 | 4 – Optimized | Revocation is triggered automatically from HR and vendor-contract records, covers connected applications, and reconciliation exceptions are tracked to closure. |
 
 **Probing questions**
@@ -2817,7 +2817,7 @@ This file is generated from `data/questionnaire.csv` by `tools/build_docs.py`; t
 
 #### ZT-15 — Are vendors required to disclose vulnerabilities and report incidents that affect your systems or data?
 
-**Weight:** 3 · **HHS CPG:** CPG-X: Third Party Vulnerability Disclosure; CPG-X: Third Party Incident Reporting · **References:** HIPAA 45 CFR 164.308(b); NIST CSF 2.0 GV.SC
+**Weight:** 3 · **HHS CPG:** CPG-X: Third Party Vulnerability Disclosure; CPG-X: Third Party Incident Reporting · **References:** HIPAA 45 CFR 164.308(b); HIPAA 45 CFR 164.314(a)(2)(i)(C); NIST CSF 2.0 GV.SC
 
 | Level | What you would see |
 |---|---|
@@ -3363,7 +3363,7 @@ This file is generated from `data/questionnaire.csv` by `tools/build_docs.py`; t
 
 #### ZT-27 — Are identified vulnerabilities and gaps tracked to closure with owners and dates?
 
-**Weight:** 2 · **HHS CPG:** CPG-X: Cybersecurity Mitigation · **References:** NIST CSF 2.0 ID.IM
+**Weight:** 2 · **HHS CPG:** CPG-X: Cybersecurity Mitigation · **References:** NIST CSF 2.0 ID.RA-06; NIST CSF 2.0 ID.IM
 
 | Level | What you would see |
 |---|---|

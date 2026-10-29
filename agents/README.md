@@ -29,7 +29,7 @@ toolkit/         the Excel workbook used by the organization
 
 | Source | Used for |
 |---|---|
-| `data/questionnaire.csv` | Questions, weights, HHS goal mapping, level anchors (`level_0` to `level_4`), probing questions, evidence, red flags, healthcare considerations, next-step actions and sources. |
+| `data/questionnaire.csv` | Questions, weights, HHS goal mapping, level anchors (`level_0` to `level_3` and `target_state`, the level 4 anchor), probing questions, evidence, red flags, healthcare considerations, next-step actions and sources. |
 | Workbook column D **Maturity levels (0–4)** and the **Question Guide** sheet | The same anchors and guidance, inside Excel, during the session. |
 | `docs/question-guide.md` | The Question Guide as a readable document, generated from the CSV. |
 | `docs/methodology.md` | Scale, evidence thresholds, N/A rules and scoring. |

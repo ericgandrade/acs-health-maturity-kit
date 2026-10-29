@@ -52,12 +52,7 @@ Confirm findings with participants, assign suggested owners, list open evidence,
 
 ### 3.1 Scoring evidence thresholds
 
-| Proposed score | Minimum evidence |
-|---|---|
-| 0–1 | Participant statement |
-| 2 | Description plus one artifact (policy, screenshot, list) |
-| 3 | Two independent forms of evidence covering the full scope named in the question |
-| 4 | Measurement over time: trend report, alert history, repeated test results |
+Evidence thresholds: as defined in `docs/methodology.md` (Evidence thresholds). In short: statement for 0–2; document and system output (or a test result) covering the whole scope for 3; plus measurement and review over time for 4.
 
 Two rules settle most disputes. First, configured is not enforced: report-only, audit or test mode caps the score at 2. Second, scope exclusions cap the score at 2 when they exclude a population the question names (vendors, contractors, medical devices, backups).
 
@@ -225,7 +220,7 @@ Essentials results (Illustrative):
 | ZT-25 Training | 3 | 2 | 2 |
 | ZT-26 Vendor requirements | 1 | 3 | 9 |
 
-Weighted Essentials average (Illustrative): sum of score × weight = 6+3+6+6+3+3+4+6+9+3+6+3 = 58; sum of weights = 34; 58 ÷ 34 = 1.71 (level 1, Initial).
+Reading the result (Illustrative): the CPG Crosswalk reports each Essential goal separately, using the unweighted average of its mapped questions (3 or more = Meets, 2 to 2.99 = Partially meets, below 2 = Gap). Read the status goal by goal; the kit does not combine the Essentials into a single figure.
 
 Ranking: five items tie at 9 gap points. Judgment breaks the tie toward the ransomware path: ZT-10 (always-on vendor VPN accounts) and ZT-06 (an internet-facing VPN appliance with a KEV-listed issue) first, then ZT-24, ZT-02 and ZT-26. ZT-19 backups, outside the Essentials, scored 1 (domain-joined repository) and is added to the first wave because it decides whether recovery is possible at all.
 

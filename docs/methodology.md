@@ -29,13 +29,13 @@ Every question is answered on the same five-level scale.
 
 ### Per-question level anchors
 
-The general scale is too abstract to score consistently on its own: "consistently applied" means something different for MFA than for a renewal calendar. In v0.2.0 every question therefore carries its own **level anchors** (`level_0` to `level_4` in `data/questionnaire.csv`). Each anchor describes what an assessor would actually observe at that level for that specific practice. You will find them in three places:
+The general scale is too abstract to score consistently on its own: "consistently applied" means something different for MFA than for a renewal calendar. In v0.2.0 every question therefore carries its own **level anchors** (`level_0` to `level_3` and `target_state`, the level 4 anchor, in `data/questionnaire.csv`). Each anchor describes what an assessor would actually observe at that level for that specific practice. You will find them in three places:
 
 - column D, **Maturity levels (0–4)**, of each service sheet in the workbook;
 - the **Question Guide** sheet of the workbook, which adds probing questions, evidence, red flags, healthcare considerations and next-step actions;
 - `docs/question-guide.md`, the same content generated from the CSV for reading outside Excel.
 
-`level_4` replaces the `target_state` field of v0.1.0. The anchors are written to be progressively stricter and mutually exclusive. Use them this way:
+The anchors are written to be progressively stricter and mutually exclusive. Use them this way:
 
 1. Read the anchors from 0 upward and stop at the **highest level whose description is fully true today**. If any element of an anchor is not true, the answer is the level below.
 2. When coverage is uneven, score the **weakest material part** of the scope. If MFA is enforced everywhere except vendor access, the vendor gap decides the level, because that is where an attacker would go.

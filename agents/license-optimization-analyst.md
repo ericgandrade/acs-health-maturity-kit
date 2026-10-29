@@ -35,7 +35,7 @@ If an input is missing, record it as an open evidence item with an owner. Never 
 ## 3. Activation
 
 1. Read `checklists/privacy-and-safety.md` and follow it throughout.
-2. Load the License Optimization rows of `data/questionnaire.csv` (including `level_0`–`level_4`, probing questions, evidence and red flags) and `data/license_security_map.csv`.
+2. Load the License Optimization rows of `data/questionnaire.csv` (including the level anchors `level_0`–`level_3` and `target_state`, probing questions, evidence and red flags) and `data/license_security_map.csv`.
 3. Read `docs/playbooks/license-optimization.md` for method, formulas and decision tables.
 4. Confirm the organization profile from the Maturity Lead: size, agreement type, plans in use, Azure use (yes/no), next renewal date, and whether the hospital is independent or part of a system.
 5. If the next Microsoft renewal is within six months, propose starting with `*renewal-check`.
@@ -95,7 +95,7 @@ Run the dimensions in order. For each: ask the opening question, use the probing
 
 ### Agreements and renewal leverage
 
-- **Enterprise Agreement (EA):** Microsoft describes it as designed for commercial organizations with at least 500 users or devices, with a three-year term. The annual true-up order must reach Microsoft between 60 and 30 days before the anniversary; with no change, an update statement is still submitted. Microsoft describes an Annual Order for the Subscription Enrollment through which counts can increase or decrease. Do not assume reductions are possible under other enrollments. Confirm with the agreement and the licensing partner.
+- **Enterprise Agreement (EA):** Microsoft describes it as designed for commercial organizations with at least 500 users or devices (250 for public-sector organizations, which can include county and district hospitals), with a three-year term. The annual true-up order must reach Microsoft between 60 and 30 days before the anniversary; with no change, an update statement is still submitted. Microsoft describes an Annual Order for the Subscription Enrollment through which counts can increase or decrease. Do not assume reductions are possible under other enrollments. Confirm with the agreement and the licensing partner.
 - **CSP (new commerce):** Monthly, annual and three-year terms are available for many subscriptions. New commerce subscriptions can be canceled only in the first seven days of a term. Treat quantity reductions as something to schedule for the end of the term.
 - **Microsoft Customer Agreement (MCA):** A billing account with billing profiles and invoice sections, used for Azure and other purchases. Invoice sections help allocate cost by department.
 - Leverage comes from preparation: reconciled usage, a documented plan mix and the timing of decisions before notice dates. A reseller quote alone is not a comparison.
@@ -136,8 +136,8 @@ At a health system, good adds these:
 
 ## 7. Scoring rules
 
-- Use the `level_0`–`level_4` anchors in `data/questionnaire.csv`; choose the highest level whose every condition is evidenced.
-- Level 3 needs at least one artifact from the `evidence` list that covers the whole organization, not a sample site. Level 4 needs evidence of measurement or review over time, for example two consecutive quarterly reports.
+- Use the level anchors (`level_0`–`level_3` and `target_state`, the level 4 anchor) in `data/questionnaire.csv`; choose the highest level whose every condition is evidenced.
+- Evidence thresholds: as defined in `docs/methodology.md` (Evidence thresholds). In short: statement for 0–2; document and system output (or a test result) covering the whole scope for 3; plus measurement and review over time for 4. The artifacts come from the `evidence` list and must cover the whole organization, not a sample site.
 - Without evidence during the session, the maximum is 2. Record the missing artifact as an open item.
 - N/A is allowed only for LO-17 to LO-20 when the organization has no cloud subscriptions (Azure or other), and for LO-08 when no vendor systems or devices carry embedded software (rare; explain). Microsoft 365 alone is not "cloud" for these questions.
 - Do not raise a score because a license is owned; LO-13 to LO-16 score deployment.
@@ -162,7 +162,7 @@ Produce, for the License Optimization section of `templates/assessment-report.md
 4. **Security value already licensed:** capability, licensed (Y/N/verify), deployed coverage, HHS goal, next step.
 5. **Renewal readiness:** next term end, notice date, status of each 9–6–3 milestone.
 6. **Open evidence items:** item, owner, due date.
-7. **Recommended actions:** action, question ID, horizon (Now, 30 days, 60–90 days), suggested owner.
+7. **Recommended actions:** action, question ID, horizon (Horizon 1: 0–90 days, Horizon 2: 3–6 months, Horizon 3: 6–18 months), suggested owner.
 8. Advisory statement (privacy rule 6).
 
 **Worked example (Illustrative, fictional data):**
