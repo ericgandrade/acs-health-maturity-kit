@@ -11,12 +11,18 @@ Answer 76 questions in an Excel workbook, or let an AI assistant guide you throu
 ![HHS goals](https://img.shields.io/badge/HHS%20CPGs-20%2F20-orange.svg)
 ![Agents](https://img.shields.io/badge/AI%20agents-5-purple.svg)
 
+**[📥 Download the workbook (.xlsx)](https://github.com/ericgandrade/acs-health-maturity-kit/releases/latest/download/ACS-Health-Maturity-Assessment.xlsx)** · **[⚡ Try it in 15 minutes](#-try-it-in-15-minutes)** · **[📸 See what you get](#-see-what-you-get)**
+
+One Excel file. Nothing to install, no account, no sign-up and no protected health information required.
+
 ---
 
 ## 📑 Contents
 
 - [Why this exists](#-why-this-exists)
 - [Who it is for](#-who-it-is-for)
+- [Try it in 15 minutes](#-try-it-in-15-minutes)
+- [See what you get](#-see-what-you-get)
 - [Quick start](#-quick-start)
 - [What's inside](#-whats-inside)
 - [The three services assessed](#-the-three-services-assessed)
@@ -68,11 +74,52 @@ This kit gives them that, for free, in a form they can use without hiring anyone
 
 ---
 
+## ⚡ Try it in 15 minutes
+
+Not ready for a full assessment? Start with the questions that matter most. The ten **Essential** HHS Cybersecurity Performance Goals are covered by twelve Zero Trust questions, so a single IT leader can get a first reading of the organization's baseline in one sitting.
+
+1. **[Download the workbook](https://github.com/ericgandrade/acs-health-maturity-kit/releases/latest/download/ACS-Health-Maturity-Assessment.xlsx)** and open it in Microsoft Excel or LibreOffice Calc. If Excel opens it in Protected View, select **Enable Editing** so you can answer.
+2. Go to the **Zero Trust** sheet and answer only these twelve questions in the yellow *Answer* column:
+
+   | Question | HHS Essential Goal it informs |
+   |---|---|
+   | ZT-01 | Multifactor Authentication |
+   | ZT-02 | Unique Credentials |
+   | ZT-03 | Separate User and Privileged Accounts |
+   | ZT-04 | Revoke Credentials for Departing Workforce Members |
+   | ZT-06 | Mitigate Known Vulnerabilities |
+   | ZT-10, ZT-26 | Vendor/Supplier Cybersecurity Requirements |
+   | ZT-11, ZT-16 | Strong Encryption |
+   | ZT-12 | Email Security |
+   | ZT-24 | Basic Incident Planning and Preparedness |
+   | ZT-25 | Basic Cybersecurity Training |
+
+3. Open the **CPG Crosswalk** sheet. Each of the ten Essential goals now shows **Meets**, **Partially meets** or **Gap**.
+4. Open **Priority Gaps** to see the recommended action for each low-scoring practice.
+
+Answer honestly and based on evidence: a score of 3 or 4 means the practice is documented and applied consistently, not planned. Goals that also map to License Optimization or App Modernization questions are refined when you complete those sheets. When you are ready, continue with the [full assessment](#-a-one-week-assessment-plan).
+
+---
+
+## 📸 See what you get
+
+The images below were produced from the workbook with **illustrative sample answers**. They do not describe any real organization.
+
+**Dashboard** — weighted scores by service and dimension, HHS goal summary and charts.
+
+![Dashboard with illustrative sample data](docs/images/dashboard-sample.png)
+
+**CPG Crosswalk** — status against each of the 20 HHS Cybersecurity Performance Goals, with the questions behind each goal.
+
+![HHS CPG Crosswalk with illustrative sample data](docs/images/cpg-crosswalk-sample.png)
+
+---
+
 ## 🚀 Quick start
 
 ### Option A — Workbook only (no technical skills needed)
 
-1. Download [`toolkit/ACS-Health-Maturity-Assessment.xlsx`](toolkit/ACS-Health-Maturity-Assessment.xlsx) (or the copy attached to the latest [release](../../releases)).
+1. **[Download the workbook](https://github.com/ericgandrade/acs-health-maturity-kit/releases/latest/download/ACS-Health-Maturity-Assessment.xlsx)** (direct link to the file attached to the latest [release](../../releases); the same file is in [`toolkit/`](toolkit/ACS-Health-Maturity-Assessment.xlsx)).
 2. Open it in Microsoft Excel or LibreOffice Calc and read the **Start Here** sheet.
 3. Fill the **Profile** sheet, then answer the yellow cells in the three service sheets.
 4. Review **Dashboard**, **Priority Gaps** and **CPG Crosswalk**. They update automatically.
