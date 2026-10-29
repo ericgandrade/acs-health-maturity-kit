@@ -1,22 +1,43 @@
-# 🏥 ACS Health Maturity Kit v0.1.0
+# 🏥 ACS Health Maturity Kit v0.2.0
 
 **A free, open toolkit that helps U.S. healthcare organizations assess and improve three things that decide whether their technology is secure, reliable and affordable: software licensing, application modernization and Zero Trust security.**
 
 Answer 76 questions in an Excel workbook, or let an AI assistant guide you through them. You get a scored maturity profile, your status against all 20 HHS Cybersecurity Performance Goals, a ranked list of gaps and a remediation roadmap your own team can execute.
 
-![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)
+![Version](https://img.shields.io/badge/version-0.2.0-blue.svg)
 ![Content license](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)
 ![Code license](https://img.shields.io/badge/code-MIT-green.svg)
 ![Questions](https://img.shields.io/badge/questions-76-brightgreen.svg)
 ![HHS goals](https://img.shields.io/badge/HHS%20CPGs-20%2F20-orange.svg)
 ![Agents](https://img.shields.io/badge/AI%20agents-5-purple.svg)
 
+**[📥 Download the workbook (.xlsx)](https://github.com/ericgandrade/acs-health-maturity-kit/releases/latest/download/ACS-Health-Maturity-Assessment.xlsx)** · **[⚡ Try it in 15 minutes](#-try-it-in-15-minutes)** · **[📸 See what you get](#-see-what-you-get)**
+
+One Excel file. Nothing to install, no account, no sign-up and no protected health information required.
+
+---
+
+## 🆕 What's new in v0.2.0
+
+v0.2.0 turns the kit from a questionnaire into a practitioner's method:
+
+- **Scoring criteria for every level of every question.** Each of the 76 questions now describes what you would observe at 0, 1, 2, 3 and 4, so two people assessing the same hospital reach the same score.
+- **An interview guide for every question:** probing questions, the evidence that proves the level and where to obtain it, red flags that an answer is overstated, healthcare-specific considerations and the path to the next level. It is in the new **Question Guide** sheet and in [`docs/question-guide.md`](docs/question-guide.md).
+- **Three practitioner playbooks** in [`docs/playbooks/`](docs/playbooks/): license reconciliation and renewal readiness, application portfolio triage and modernization, and Zero Trust with ransomware readiness for small hospitals.
+- **Rewritten AI agents** with interview playbooks, domain knowledge, challenge rules and output specifications, plus new commands (`*shelfware`, `*right-size`, `*runbook`, `*evidence-list`, `*vendor-access`).
+- **Deeper workflows, templates and checklists**, and a License-Security Map re-verified against Microsoft Learn.
+
+The question IDs, weights, HHS goal mappings and scoring rules are unchanged, so v0.1.0 results remain comparable. See [CHANGELOG.md](CHANGELOG.md).
+
 ---
 
 ## 📑 Contents
 
+- [What's new in v0.2.0](#-whats-new-in-v020)
 - [Why this exists](#-why-this-exists)
 - [Who it is for](#-who-it-is-for)
+- [Try it in 15 minutes](#-try-it-in-15-minutes)
+- [See what you get](#-see-what-you-get)
 - [Quick start](#-quick-start)
 - [What's inside](#-whats-inside)
 - [The three services assessed](#-the-three-services-assessed)
@@ -68,11 +89,52 @@ This kit gives them that, for free, in a form they can use without hiring anyone
 
 ---
 
+## ⚡ Try it in 15 minutes
+
+Not ready for a full assessment? Start with the questions that matter most. The ten **Essential** HHS Cybersecurity Performance Goals are covered by twelve Zero Trust questions, so a single IT leader can get a first reading of the organization's baseline in one sitting.
+
+1. **[Download the workbook](https://github.com/ericgandrade/acs-health-maturity-kit/releases/latest/download/ACS-Health-Maturity-Assessment.xlsx)** and open it in Microsoft Excel or LibreOffice Calc. If Excel opens it in Protected View, select **Enable Editing** so you can answer.
+2. Go to the **Zero Trust** sheet and answer only these twelve questions in the yellow *Answer* column. For each one, read the **Maturity levels (0–4)** column and pick the highest level whose description is fully true today:
+
+   | Question | HHS Essential Goal it informs |
+   |---|---|
+   | ZT-01 | Multifactor Authentication |
+   | ZT-02 | Unique Credentials |
+   | ZT-03 | Separate User and Privileged Accounts |
+   | ZT-04 | Revoke Credentials for Departing Workforce Members |
+   | ZT-06 | Mitigate Known Vulnerabilities |
+   | ZT-10, ZT-26 | Vendor/Supplier Cybersecurity Requirements |
+   | ZT-11, ZT-16 | Strong Encryption |
+   | ZT-12 | Email Security |
+   | ZT-24 | Basic Incident Planning and Preparedness |
+   | ZT-25 | Basic Cybersecurity Training |
+
+3. Open the **CPG Crosswalk** sheet. Each of the ten Essential goals now shows **Meets**, **Partially meets** or **Gap**.
+4. Open **Priority Gaps** to see the recommended action for each low-scoring practice.
+
+Answer honestly and based on evidence: a score of 3 or 4 means the practice is documented and applied consistently, not planned. Goals that also map to License Optimization or App Modernization questions are refined when you complete those sheets. When you are ready, continue with the [full assessment](#-a-one-week-assessment-plan).
+
+---
+
+## 📸 See what you get
+
+The images below were produced from the workbook with **illustrative sample answers**. They do not describe any real organization.
+
+**Dashboard** — weighted scores by service and dimension, HHS goal summary and charts.
+
+![Dashboard with illustrative sample data](docs/images/dashboard-sample.png)
+
+**CPG Crosswalk** — status against each of the 20 HHS Cybersecurity Performance Goals, with the questions behind each goal.
+
+![HHS CPG Crosswalk with illustrative sample data](docs/images/cpg-crosswalk-sample.png)
+
+---
+
 ## 🚀 Quick start
 
 ### Option A — Workbook only (no technical skills needed)
 
-1. Download [`toolkit/ACS-Health-Maturity-Assessment.xlsx`](toolkit/ACS-Health-Maturity-Assessment.xlsx) (or the copy attached to the latest [release](../../releases)).
+1. **[Download the workbook](https://github.com/ericgandrade/acs-health-maturity-kit/releases/latest/download/ACS-Health-Maturity-Assessment.xlsx)** (direct link to the file attached to the latest [release](../../releases); the same file is in [`toolkit/`](toolkit/ACS-Health-Maturity-Assessment.xlsx)).
 2. Open it in Microsoft Excel or LibreOffice Calc and read the **Start Here** sheet.
 3. Fill the **Profile** sheet, then answer the yellow cells in the three service sheets.
 4. Review **Dashboard**, **Priority Gaps** and **CPG Crosswalk**. They update automatically.
@@ -109,15 +171,17 @@ python tools/score_assessment.py my-assessment.xlsx results
 
 | Component | Location | What it does |
 |---|---|---|
-| **Assessment workbook** | `toolkit/ACS-Health-Maturity-Assessment.xlsx` | 76 maturity questions across three services, with automatic scoring, dashboard, priority gaps and HHS goal crosswalk |
+| **Assessment workbook** | `toolkit/ACS-Health-Maturity-Assessment.xlsx` | 76 maturity questions across three services, each with observable criteria for levels 0–4, automatic scoring, dashboard, priority gaps and HHS goal crosswalk |
+| **Question Guide** | sheet in the workbook and [`docs/question-guide.md`](docs/question-guide.md) | For every question: probing questions, evidence and how to obtain it, red flags, healthcare considerations and the path to the next level |
+| **Practitioner playbooks** | [`docs/playbooks/`](docs/playbooks/) | In-depth guides for License Optimization, App Modernization and Zero Trust, with methods, decision tables, illustrative examples and quick wins for small hospitals |
 | **App Portfolio Triage** | sheet in the workbook | Inventory applications, score technical risk and get a suggested disposition |
 | **License-Security Map** | sheet in the workbook and `data/license_security_map.csv` | See which security capabilities common Microsoft licenses include and whether you have deployed them |
 | **AI agent layer** | `agents/`, `workflows/`, `templates/`, `checklists/` | A lightweight, file-based method to run the assessment with an AI assistant |
 | **Runbook and report templates** | `templates/` | Modernization runbook with test and rollback steps; assessment report, executive summary and remediation roadmap |
 | **Scoring tool** | `tools/score_assessment.py` | Turns a completed workbook into JSON and Markdown results |
-| **Workbook builder** | `tools/build_workbook.py` | Rebuilds the workbook from the question bank |
+| **Workbook and docs builders** | `tools/build_workbook.py`, `tools/build_docs.py` | Rebuild the workbook, the Question Guide and the framework mapping from the question bank |
 | **Question bank** | `data/questionnaire.csv` | The single source of truth for all questions and framework mappings |
-| **Documentation** | `docs/` | Methodology, framework mapping and a step-by-step guide |
+| **Documentation** | `docs/` | Methodology, framework mapping, Question Guide, playbooks and a step-by-step guide |
 
 ---
 
@@ -129,7 +193,7 @@ python tools/score_assessment.py my-assessment.xlsx results
 | **App Modernization** | 24 | Portfolio Visibility · Lifecycle & Supportability · Rationalization & Roadmap · Engineering & Release · Resilience & Recovery · Cloud & Data Readiness |
 | **Zero Trust** | 28 | Identity · Devices · Networks · Applications & Workloads · Data · Visibility & Analytics · Governance & Readiness |
 
-Every question has a description of what "optimized" looks like, the evidence to review, a recommended action, and references to the **HHS Healthcare and Public Health Cybersecurity Performance Goals**, the **HIPAA Security Rule**, **NIST CSF 2.0**, the **CISA Zero Trust Maturity Model v2.0**, **NIST SP 800-218 (SSDF)**, **ISO/IEC 19770-1** and the **FinOps Framework**. Modernization planning questions also reference the **Microsoft Cloud Adoption Framework**. The full mapping is in [`docs/framework-mapping.md`](docs/framework-mapping.md).
+Every question has observable criteria for each maturity level, the evidence to review and how to obtain it, probing questions, red flags, healthcare considerations, a recommended action, and references to the **HHS Healthcare and Public Health Cybersecurity Performance Goals**, the **HIPAA Security Rule**, **NIST CSF 2.0**, the **CISA Zero Trust Maturity Model v2.0**, **NIST SP 800-218 (SSDF)**, **ISO/IEC 19770-1** and the **FinOps Framework**. Modernization planning questions also reference the **Microsoft Cloud Adoption Framework**. The full mapping is in [`docs/framework-mapping.md`](docs/framework-mapping.md).
 
 ---
 
@@ -147,6 +211,8 @@ Every question has a description of what "optimized" looks like, the evidence to
 | **N/A** | The practice does not apply (explain why in Notes). |
 
 Answers reflect what is in place today, supported by evidence. Plans count as 0–2 depending on how much is already implemented.
+
+**Rule of evidence.** Each question describes what you would observe at each level. Choose the highest level whose description is fully true today; if part of it is missing, choose the level below. Plans and pilots do not count, and a 3 or a 4 requires evidence you have seen.
 
 ### Weights
 
@@ -203,14 +269,15 @@ All 20 goals are mapped to at least one question. The **CPG Crosswalk** sheet sh
 |---|---|
 | **Start Here** | Purpose, instructions, scale, weights, privacy rules and legend |
 | **Profile** | Organization context: type, state, beds, workforce, IT staff, primary EHR, Microsoft agreement and plan |
-| **License Optimization** | 24 questions, answered in the yellow cells |
-| **App Modernization** | 24 questions, answered in the yellow cells |
-| **Zero Trust** | 28 questions organized by the CISA Zero Trust Maturity Model pillars |
+| **License Optimization** | 24 questions, answered in the yellow cells, with the criteria for each level and the evidence to review |
+| **App Modernization** | 24 questions, answered in the yellow cells, with the criteria for each level and the evidence to review |
+| **Zero Trust** | 28 questions organized by the CISA Zero Trust Maturity Model pillars, with the criteria for each level and the evidence to review |
 | **Dashboard** | Scores by service and dimension, with charts |
 | **Priority Gaps** | The 20 gaps with the most gap points and the recommended action for each |
 | **CPG Crosswalk** | Status against each of the 20 HHS Cybersecurity Performance Goals |
 | **App Portfolio Triage** | One row per application: technical risk (0–8), priority (0–40) and a suggested disposition, with columns for your final decision, owner and target date |
 | **License-Security Map** | Security capabilities included in common Microsoft licenses, the HHS goal each supports and whether you have deployed it |
+| **Question Guide** | For every question: probing questions, evidence and how to obtain it, red flags, healthcare considerations, the path to levels 2, 3 and 4, references and sources |
 
 Only yellow cells are inputs. Everything else is calculated.
 
@@ -225,9 +292,9 @@ The kit includes a lightweight, file-based agent method. Each agent is a plain M
 | Agent | File | Responsibility | Key commands |
 |---|---|---|---|
 | **ACS Maturity Lead** | `agents/acs-maturity-lead.md` | Orchestrates the assessment, hands off to specialists, runs scoring | `*start` `*plan` `*assess <service>` `*score` `*consolidate` `*status` |
-| **License Optimization Analyst** | `agents/license-optimization-analyst.md` | LO-01 to LO-24, License-Security Map, quick wins | `*assess` `*challenge` `*quick-wins` `*renewal-check` `*findings` |
-| **App Modernization Architect** | `agents/app-modernization-architect.md` | AM-01 to AM-24, App Portfolio Triage, modernization waves | `*inventory` `*assess` `*triage` `*unsupported` `*roadmap-draft` `*findings` |
-| **Zero Trust Assessor** | `agents/zero-trust-assessor.md` | ZT-01 to ZT-28, HHS goals, ransomware readiness | `*essentials` `*assess` `*cpg-status` `*ransomware-readiness` `*findings` |
+| **License Optimization Analyst** | `agents/license-optimization-analyst.md` | LO-01 to LO-24, License-Security Map, quick wins | `*assess` `*challenge` `*quick-wins` `*renewal-check` `*shelfware` `*right-size` `*findings` |
+| **App Modernization Architect** | `agents/app-modernization-architect.md` | AM-01 to AM-24, App Portfolio Triage, modernization waves | `*inventory` `*assess` `*triage` `*unsupported` `*roadmap-draft` `*runbook` `*findings` |
+| **Zero Trust Assessor** | `agents/zero-trust-assessor.md` | ZT-01 to ZT-28, HHS goals, ransomware readiness | `*essentials` `*assess` `*cpg-status` `*ransomware-readiness` `*evidence-list` `*vendor-access` `*findings` |
 | **Roadmap Strategist** | `agents/roadmap-strategist.md` | Consolidation, prioritization, report, executive summary, roadmap | `*prioritize` `*roadmap` `*report` `*exec-summary` `*qa` |
 
 ### How the agents work together
@@ -253,8 +320,11 @@ flowchart LR
 | **Workflows** | `01-intake.md` (30–45 min) · `02-service-assessment.md` (60–90 min per service) · `03-consolidate-and-report.md` |
 | **Templates** | `assessment-report.md` · `executive-summary.md` · `remediation-roadmap.md` · `modernization-runbook.md` |
 | **Checklists** | `evidence-checklist.md` · `privacy-and-safety.md` · `report-quality-checklist.md` |
+| **Playbooks** | `docs/playbooks/license-optimization.md` · `docs/playbooks/app-modernization.md` · `docs/playbooks/zero-trust.md` |
 
 Every agent follows the same rules: no PHI, no secrets, evidence over intent, no invented facts, advisory only. A score of 3 or 4 is accepted only when the evidence has been confirmed.
+
+Each specialist agent carries an interview playbook (opening questions, probes, how to triangulate and how to challenge an unsupported score), the domain knowledge it must apply, red flags, and an output specification. The specialists draw on the [practitioner playbooks](docs/playbooks/) and the [Question Guide](docs/question-guide.md).
 
 ### Using the agents in Claude Code
 
@@ -294,14 +364,15 @@ acs-health-maturity-kit/
 ├── workflows/      how the work is done, step by step
 ├── templates/      what the outputs look like
 ├── checklists/     how quality, evidence, privacy and safety are checked
-├── docs/           methodology, framework mapping, how-to guide
+├── docs/           methodology, Question Guide, framework mapping, how-to guide
+│   └── playbooks/  practitioner playbooks for the three services
 ├── tools/          build the workbook, score a completed assessment
 ├── integrations/   source of the Claude Code and GitHub integration files
 ├── .claude/        Claude Code subagents and the /acs-assess command
 └── .github/        issue forms: Adoption report and Feedback
 ```
 
-**Maintainers:** the files in `.claude/` and `.github/` are copies of `integrations/`. After editing `integrations/`, run `bash tools/install_integrations.sh` to refresh them. After editing `data/questionnaire.csv`, rebuild the workbook with `python tools/build_workbook.py`.
+**Maintainers:** the files in `.claude/` and `.github/` are copies of `integrations/`. After editing `integrations/`, run `bash tools/install_integrations.sh` to refresh them. After editing `data/questionnaire.csv`, rebuild the workbook with `python tools/build_workbook.py` and the generated docs with `python tools/build_docs.py`.
 
 ---
 
@@ -338,6 +409,9 @@ Yes, under CC BY 4.0. Please keep the attribution and the privacy rules.
 
 **How current is the licensing information?**
 Licensing contents change frequently. Verify every statement in the License-Security Map against current Microsoft documentation and your agreement.
+
+**How do I avoid inflated scores?**
+Use the criteria for each level and the rule of evidence: choose the highest level whose description is fully true today, and accept a 3 or a 4 only after seeing the evidence listed in the Question Guide. The red flags for each question show the most common ways answers are overstated.
 
 **Can I add questions or a new service?**
 Yes. Add questions to `data/questionnaire.csv`, add or update an agent, a workflow and a template, rebuild the workbook and update `CHANGELOG.md`. See [`agents/README.md`](agents/README.md#extending-the-method) and [CONTRIBUTING.md](CONTRIBUTING.md).

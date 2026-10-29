@@ -6,7 +6,7 @@ type: software
 authors:
   - family-names: "Gomes de Andrade"
     given-names: "Eric"
-version: "0.1.0"
+version: "0.2.0"
 date-released: "2026-10-29"
 license: CC-BY-4.0
 repository-code: "https://github.com/ericgandrade/acs-health-maturity-kit"
