@@ -1,0 +1,55 @@
+name: Adoption report
+description: Tell us how your organization used the ACS Health Maturity Kit
+title: "[Adoption] "
+labels: ["adoption"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting your use of the kit. **Do not include protected health information, credentials or details of your environment.**
+  - type: dropdown
+    id: org_type
+    attributes:
+      label: Organization type
+      options: [Critical access hospital, Rural emergency hospital, Community hospital, Health system, Academic medical center, Clinic or physician group, Health IT vendor or consultant, Other]
+    validations: { required: true }
+  - type: input
+    id: state
+    attributes:
+      label: State
+  - type: checkboxes
+    id: services
+    attributes:
+      label: Services assessed
+      options:
+        - label: License Optimization
+        - label: App Modernization
+        - label: Zero Trust
+  - type: dropdown
+    id: how
+    attributes:
+      label: How was the kit used?
+      options: [Internal self-assessment, With a consultant or partner, With the AI agents, For training or education, Other]
+    validations: { required: true }
+  - type: textarea
+    id: outcome
+    attributes:
+      label: What did you learn or change as a result?
+      description: For example, gaps identified, priorities set, capabilities deployed. No sensitive details.
+  - type: dropdown
+    id: listing
+    attributes:
+      label: May we list your organization in ADOPTERS.md?
+      options: ["Yes, with our organization name", "Yes, anonymously (count only)", "No"]
+    validations: { required: true }
+  - type: input
+    id: org_name
+    attributes:
+      label: Organization name (only if you chose to be named)
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirmation
+      options:
+        - label: I am authorized to share this information and it contains no PHI or confidential details.
+          required: true

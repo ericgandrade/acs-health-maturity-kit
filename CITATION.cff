@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this kit, please cite it as below."
+title: "ACS Health Maturity Kit"
+abstract: "An open self-assessment toolkit and AI agent method that helps U.S. healthcare organizations assess and improve License Optimization, App Modernization and Zero Trust maturity, mapped to the HHS Healthcare and Public Health Cybersecurity Performance Goals."
+type: software
+authors:
+  - family-names: "Gomes de Andrade"
+    given-names: "Eric"
+version: "0.1.0"
+date-released: "2026-10-29"
+license: CC-BY-4.0
+repository-code: "https://github.com/ericgandrade/acs-health-maturity-kit"
+keywords:
+  - healthcare
+  - cybersecurity
+  - zero trust
+  - application modernization
+  - software asset management
+  - HHS cybersecurity performance goals
+  - maturity assessment

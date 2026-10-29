@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.DS_Store
+~$*.xlsx
+# Never commit completed assessments
+assessments/
+results*.json
+results*.md

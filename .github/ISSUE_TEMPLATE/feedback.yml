@@ -1,0 +1,19 @@
+name: Feedback or correction
+description: Suggest a new question, a correction or an improvement
+title: "[Feedback] "
+labels: ["feedback"]
+body:
+  - type: input
+    id: question_id
+    attributes:
+      label: Question ID or file (if applicable)
+      placeholder: e.g., ZT-09 or data/license_security_map.csv
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggestion
+    validations: { required: true }
+  - type: input
+    id: source
+    attributes:
+      label: Source or framework reference
