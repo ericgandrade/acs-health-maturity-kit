@@ -1,18 +1,21 @@
 # Methodology
 
-This document defines how the ACS Health Maturity Kit measures maturity, how answers are scored, how much evidence each score needs, and how the results should and should not be read. The scoring rules are fixed for v0.2.0 and are implemented in `tools/score_assessment.py` and in the workbook formulas. If this document and the tool ever disagree, the tool is the reference and this document has a bug.
+This document defines how the ACS Health Maturity Kit measures maturity, how answers are scored, how much evidence each score needs, and how the results should and should not be read. The scoring rules have been fixed since v0.2.0, apply unchanged to every area including the Automation Readiness area added in v0.3.0, and are implemented in `tools/score_assessment.py` and in the workbook formulas. If this document and the tool ever disagree, the tool is the reference and this document has a bug.
 
 ## What the kit measures
 
-The kit measures how mature a healthcare organization's practices are in three areas that determine whether its technology is secure, reliable and affordable:
+The kit measures how mature a healthcare organization's practices are in four areas that determine whether its technology is secure, reliable, affordable and ready to take on administrative work:
 
 | Service | Questions | Dimensions (in order) |
 |---|---|---|
 | License Optimization | 24 | Governance & Ownership · Entitlements · Deployment & Usage · Security Value Realization · Cloud Cost · Programs & Negotiation |
 | App Modernization | 24 | Portfolio Visibility · Lifecycle & Supportability · Rationalization & Roadmap · Engineering & Release · Resilience & Recovery · Cloud & Data Readiness |
 | Zero Trust | 28 | Identity · Devices · Networks · Applications & Workloads · Data · Visibility & Analytics · Governance & Readiness |
+| Automation Readiness | 24 | Process Ownership & Baselines · Data & Integration Readiness · Controls & Human Review · AI Governance & Data Protection · Workforce & Change Management · Value & Continuous Improvement |
 
 It measures **practice**, not technology ownership. Owning a product that can enforce multifactor authentication is not maturity; enforcing it on every remote entry point, and being able to show that, is.
+
+**Automation Readiness** (added in v0.3.0) asks whether the administrative processes that consume the most staff time (prior authorization, eligibility verification, patient intake and registration, and referrals) are owned, documented and measured; whether the data and interfaces an automation needs are available; whether people stay in control of what automations and AI do; whether AI use protects PHI; whether staff are involved, trained and given a plan for the time automation frees; and whether the benefit and cost of each automation are measured and reviewed after go-live. It measures *readiness to automate safely*, not how much is already automated. An organization that has automated nothing can still score well, and one that has automated a great deal can score poorly. Question AR-03 is where the kit expects real, measured monthly volumes; rough volume bands collected elsewhere (for example Low, Medium, High) are an unscored input and do not replace it.
 
 ## The scale
 
@@ -29,7 +32,7 @@ Every question is answered on the same five-level scale.
 
 ### Per-question level anchors
 
-The general scale is too abstract to score consistently on its own: "consistently applied" means something different for MFA than for a renewal calendar. In v0.2.0 every question therefore carries its own **level anchors** (`level_0` to `level_3` and `target_state`, the level 4 anchor, in `data/questionnaire.csv`). Each anchor describes what an assessor would actually observe at that level for that specific practice. You will find them in three places:
+The general scale is too abstract to score consistently on its own: "consistently applied" means something different for MFA than for a renewal calendar. Since v0.2.0 every question therefore carries its own **level anchors** (`level_0` to `level_3` and `target_state`, the level 4 anchor, in `data/questionnaire.csv`). Each anchor describes what an assessor would actually observe at that level for that specific practice. You will find them in three places:
 
 - column D, **Maturity levels (0–4)**, of each service sheet in the workbook;
 - the **Question Guide** sheet of the workbook, which adds probing questions, evidence, red flags, healthcare considerations and next-step actions;
@@ -77,6 +80,7 @@ Use N/A only when the practice genuinely cannot apply to the organization. Typic
 - No public cloud subscriptions at all: the Cloud Cost questions (LO-17 to LO-20) and the cloud foundation question (AM-21).
 - No software development or configuration scripting of any kind: some Engineering & Release questions. Most hospitals still configure and release changes to vendor systems and interfaces, so N/A here is rare.
 - No AI-assisted engineering in use at all: AM-16. If staff use AI tools without approval, the question applies and is scored against its anchors; it is not N/A.
+- No automation or AI of any kind, including automation run by a vendor, clearinghouse or the EHR, touches the in-scope administrative processes: AR-09, AR-10 and AR-11. AR-16 is N/A only when no AI tool is in production. AR-21 (benefit measured after go-live) and AR-23 (review and retirement) are N/A only when no automation is in production. AR-12 (fallback when a connection or automation fails), AR-14 (no PHI in AI prompts), AR-22 (pilot and go-live decision for any new tool) and AR-24 (tracking the cost of automation and AI tools, including ones adopted without approval) are never N/A: every organization depends on clearinghouse and payer connections, and staff can paste PHI into public AI tools whether or not the organization has approved any.
 
 N/A is **not** valid when the practice applies but is done by someone else (score the oversight), when nobody knows the answer (leave blank and add an open item), or when the practice is not done because it seems unimportant (that is a 0).
 
@@ -88,11 +92,11 @@ Each question has a weight that reflects its consequence for patients, operation
 
 | Weight | Meaning | Examples |
 |---|---|---|
-| **3** | Critical to patient safety, continuity of care or protection of PHI. | MFA (ZT-01), isolated backups (ZT-19), unsupported platforms (AM-05), downtime procedures (AM-19), incident response (ZT-24). |
-| **2** | Important to control and efficiency. | Device compliance before PHI access (ZT-07), PHI classification (ZT-17), annual entitlement reconciliation (LO-06). |
-| **1** | Foundational practices that enable the others. | Licensing cost reporting (LO-04), total cost of ownership (AM-12), a Zero Trust strategy (ZT-28). |
+| **3** | Critical to patient safety, continuity of care or protection of PHI. | MFA (ZT-01), isolated backups (ZT-19), unsupported platforms (AM-05), downtime procedures (AM-19), incident response (ZT-24), no PHI in AI prompts (AR-14), human review of automated output (AR-10). |
+| **2** | Important to control and efficiency. | Device compliance before PHI access (ZT-07), PHI classification (ZT-17), annual entitlement reconciliation (LO-06), measured process baselines (AR-03). |
+| **1** | Foundational practices that enable the others. | Licensing cost reporting (LO-04), total cost of ownership (AM-12), a Zero Trust strategy (ZT-28), a prioritized automation candidate list (AR-04). |
 
-Weights are part of the frozen contract and are the same for every organization.
+Weights are part of the frozen contract and are the same for every organization. The weights of the 76 questions that existed in v0.2.0 are unchanged in v0.3.0.
 
 ## Scoring
 
@@ -103,6 +107,14 @@ Weights are part of the frozen contract and are the same for every organization.
 | Level | Integer part of the score, not rounding. | 2.17 → Developing; 2.99 → Developing; 3.00 → Defined. |
 | Gap points | (4 − score) × weight, for each answered question below 4. | Score 1, weight 3 → 9 gap points. Score 0, weight 1 → 4. |
 | HHS goal status | **Unweighted** average of the answered questions mapped to the goal: 3 or more = Meets; 2 to 2.99 = Partially meets; below 2 = Gap; no answered question = Not assessed. | Multifactor Authentication: ZT-01 at 2, LO-14 at 3, LO-13 at 4 → 3.0 → Meets. |
+
+What changed in v0.3.0, and what did not:
+
+- The Automation Readiness area is scored with exactly the same rules as the other three areas: the same 0–4 answers, the same N/A and blank handling, weighted averages, truncated levels and gap points. Nothing in the scoring tool or the workbook formulas treats it differently.
+- **Per-area, per-dimension and per-question results are comparable with v0.2.0.** The 76 original questions, their anchors and their weights are unchanged.
+- **The overall score is not directly comparable with a v0.2.0 overall score,** because it now averages four areas (100 questions) instead of three. To compare with an earlier assessment, compare the three original areas, or recompute the overall score from the License Optimization, App Modernization and Zero Trust questions only.
+- **HHS goal status is unchanged.** Automation Readiness questions are not mapped to any HHS Cybersecurity Performance Goal, so the CPG Crosswalk and the Essential and Enhanced goal counts are the same as in v0.2.0. The area's questions cite HIPAA, NIST and CMS references instead (see `docs/framework-mapping.md`).
+- Gap points from Automation Readiness questions rank alongside every other question; a weight-3 Automation Readiness question at 0 (12 points) outranks a weight-2 question at 1 in any other area (6 points).
 
 Why these choices:
 
@@ -130,6 +142,8 @@ Gap points rank the *size* of a gap. They do not decide the order of work on the
 | CISA Zero Trust Maturity Model v2.0 | Zero Trust pillars |
 | NIST SP 800-218 Secure Software Development Framework | Engineering practices |
 | ISO/IEC 19770-1 and the FinOps Framework | License and cloud cost management |
+| NIST AI Risk Management Framework 1.0 and the Generative AI Profile (NIST AI 600-1) | AI governance, monitoring and human oversight (Automation Readiness) |
+| HIPAA standard transactions (45 CFR Part 162), CMS-0057-F, HL7 Da Vinci prior authorization guides, ONC HTI-1 | Electronic transactions and prior authorization readiness (Automation Readiness) |
 | Microsoft Cloud Adoption Framework | Cloud readiness and landing-zone planning (the application disposition list used in the kit is the kit's own) |
 
 The HHS goals are voluntary. A proposed update to the HIPAA Security Rule was published as a notice of proposed rulemaking on January 6, 2025; the kit refers to it only as proposed. Check its current status before relying on it.
@@ -151,3 +165,5 @@ The mapping is the kit's interpretation for self-assessment purposes. It does no
 - CISA, Zero Trust Maturity Model: https://www.cisa.gov/zero-trust-maturity-model
 - NIST, Cybersecurity Framework: https://www.nist.gov/cyberframework
 - NIST SP 800-218: https://csrc.nist.gov/pubs/sp/800/218/final
+- NIST, AI Risk Management Framework: https://www.nist.gov/itl/ai-risk-management-framework
+- CMS, Interoperability and Prior Authorization final rule (CMS-0057-F): https://www.cms.gov/priorities/burden-reduction/overview/interoperability/policies-regulations/cms-interoperability-prior-authorization-final-rule-cms-0057-f

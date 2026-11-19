@@ -13,8 +13,8 @@ from openpyxl.chart import BarChart, RadarChart, Reference
 from openpyxl.worksheet.datavalidation import DataValidation
 from openpyxl.formatting.rule import CellIsRule, FormulaRule
 
-VERSION = '0.2.0'
-RELEASE_DATE = '2026-10-29'
+VERSION = '0.3.0'
+RELEASE_DATE = '2026-11-19'
 ROOT = Path(__file__).resolve().parent.parent
 OUT = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / 'toolkit' / 'ACS-Health-Maturity-Assessment.xlsx'
 
@@ -29,6 +29,7 @@ SERVICES = OrderedDict([
     ('License Optimization', 'License Optimization'),
     ('App Modernization', 'App Modernization'),
     ('Zero Trust', 'Zero Trust'),
+    ('Automation Readiness', 'Automation Readiness'),
 ])
 ANSWERS = ['0 - Not in place', '1 - Initial', '2 - Developing', '3 - Defined', '4 - Optimized', 'N/A']
 LEVELS = [('0 - Not in place', 'The practice does not exist.'),
@@ -145,13 +146,13 @@ def build():
     st.column_dimensions['A'].width = 26
     st.column_dimensions['B'].width = 95
     rows = [
-        ('Purpose', 'A free self-assessment for U.S. healthcare organizations of their maturity in three areas: '
-                    'License Optimization, App Modernization and Zero Trust. Questions are mapped to the HHS Healthcare and '
+        ('Purpose', 'A free self-assessment for U.S. healthcare organizations of their maturity in four areas: '
+                    'License Optimization, App Modernization, Zero Trust and Automation Readiness. Questions are mapped to the HHS Healthcare and '
                     'Public Health Cybersecurity Performance Goals (CPGs), the HIPAA Security Rule, NIST CSF 2.0, the CISA Zero '
-                    'Trust Maturity Model v2.0, NIST SP 800-218 (SSDF), ISO/IEC 19770-1 and the FinOps Framework.'),
+                    'Trust Maturity Model v2.0, NIST SP 800-218 (SSDF), ISO/IEC 19770-1, the FinOps Framework and the NIST AI Risk Management Framework.'),
         ('Who should answer', 'The IT leader, with input from security, infrastructure, applications, procurement and '
                               'clinical informatics. Answer based on evidence, not intent.'),
-        ('How to use', '1) Fill in the Profile sheet. 2) Answer every question in the three service sheets using the '
+        ('How to use', '1) Fill in the Profile sheet. 2) Answer every question in the four service sheets using the '
                        'yellow Answer column: pick the level in the "Maturity levels (0–4)" column that matches what the '
                        'evidence shows today. 3) Use the Question Guide sheet for interview probes, evidence, red flags and '
                        'the path to the next level. 4) Review the Dashboard, Priority Gaps and CPG Crosswalk sheets. '
@@ -197,6 +198,7 @@ def build():
         ('License Optimization', f'{sum(q["service"]=="License Optimization" for q in questions)} questions on licensing governance, entitlements, usage, security value, cloud cost and programs.'),
         ('App Modernization', f'{sum(q["service"]=="App Modernization" for q in questions)} questions on portfolio visibility, lifecycle, roadmap, engineering, resilience and cloud readiness.'),
         ('Zero Trust', f'{sum(q["service"]=="Zero Trust" for q in questions)} questions organized by the CISA Zero Trust Maturity Model pillars plus governance and readiness.'),
+        ('Automation Readiness', f'{sum(q["service"]=="Automation Readiness" for q in questions)} questions on process ownership and baselines, data and integration readiness, human review and audit controls, and AI governance and PHI protection for administrative automation.'),
         ('Dashboard', 'Scores by service and dimension, with charts.'),
         ('Priority Gaps', 'The 20 gaps with the most gap points and the recommended action for each.'),
         ('CPG Crosswalk', 'Status against each of the 20 HHS Cybersecurity Performance Goals.'),

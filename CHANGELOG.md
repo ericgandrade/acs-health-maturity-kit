@@ -2,6 +2,25 @@
 
 All notable changes to this kit are documented here. Versions follow semantic versioning.
 
+## [0.3.0] — 2026-11-19
+
+### Added
+- A fourth scored area, **Automation Readiness**, with 24 questions (AR-01 to AR-24) in six dimensions of four questions each: Process Ownership & Baselines, Data & Integration Readiness, Controls & Human Review, AI Governance & Data Protection, Workforce & Change Management, and Value & Continuous Improvement. It covers prior authorization, eligibility verification, patient intake and referrals, including baselines, standard transactions, interface and API readiness, CMS-0057-F electronic prior authorization planning, automation identities, human review, audit logging, fallback procedures, AI governance, no PHI in prompts, AI vendor assessment and post-go-live monitoring, staff involvement and training, a plan for freed staff time, a pilot and go-live decision, benefit measured against the baseline, review and retirement of automations, and the full cost of automation and AI tools.
+- Every new question has `level_0` to `level_3`, `target_state`, evidence, recommended action, the path to levels 2, 3 and 4, weight (1–3), references, healthcare considerations, probing questions, red flags and sources, in the same columns as the existing questions.
+- *Automation Readiness* sheet, Dashboard section and radar chart, and Question Guide entries in the workbook; `docs/question-guide.md` and `docs/framework-mapping.md` regenerated from the question bank.
+- N/A rules for Automation Readiness in `docs/methodology.md` (AR-09, AR-10, AR-11, AR-16, AR-21 and AR-23 only; AR-12, AR-14, AR-22 and AR-24 are never N/A).
+- `tools/cache_values.py` stores calculated formula values in the built workbook (requires the optional `formulas` package), so results display in viewers that do not recalculate, as in earlier releases.
+
+### Changed
+- `tools/score_assessment.py` and `tools/build_workbook.py` handle four areas. The scorer still reads v0.2.0 workbooks (three areas).
+- The overall score now averages four areas and 100 questions. It is not directly comparable with a v0.2.0 overall score; the per-area, per-dimension and per-question results are comparable (see `docs/methodology.md`).
+- README, CITATION and methodology updated for v0.3.0 and the fourth area.
+
+### Unchanged
+- All 76 question IDs, dimensions, weights, level anchors, HHS Cybersecurity Performance Goal mappings and scoring rules. The Automation Readiness questions are not mapped to HHS goals, so the CPG Crosswalk is the same as in v0.2.0.
+- The five AI agents, the workflows, templates and checklists, and the three playbooks still describe and cover the three original areas. An Automation Readiness agent and playbook are not part of this release.
+- Tag `v0.2.0` and the release asset of v0.2.0.
+
 ## [0.2.0] — 2026-10-29
 
 ### Added
