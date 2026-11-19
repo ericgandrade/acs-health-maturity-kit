@@ -11,6 +11,7 @@ This file is generated from `data/questionnaire.csv` by `tools/build_docs.py`; t
 - **[License Optimization](#license-optimization)** (24 questions) — Governance & Ownership · Entitlements · Deployment & Usage · Security Value Realization · Cloud Cost · Programs & Negotiation
 - **[App Modernization](#app-modernization)** (24 questions) — Portfolio Visibility · Lifecycle & Supportability · Rationalization & Roadmap · Engineering & Release · Resilience & Recovery · Cloud & Data Readiness
 - **[Zero Trust](#zero-trust)** (28 questions) — Identity · Devices · Networks · Applications & Workloads · Data · Visibility & Analytics · Governance & Readiness
+- **[Automation Readiness](#automation-readiness)** (24 questions) — Process Ownership & Baselines · Data & Integration Readiness · Controls & Human Review · AI Governance & Data Protection · Workforce & Change Management · Value & Continuous Improvement
 
 ---
 
@@ -3450,3 +3451,1124 @@ This file is generated from `data/questionnaire.csv` by `tools/build_docs.py`; t
 **Recommended action if gap:** Set realistic target maturity per pillar, name an executive sponsor and fund the roadmap in the budget cycle.
 
 **Sources:** <https://www.cisa.gov/zero-trust-maturity-model>
+
+---
+
+## Automation Readiness
+
+### Process Ownership & Baselines
+
+#### AR-01 — Is a named person accountable for each high-volume administrative process (prior authorization, eligibility verification, patient intake and registration, referrals)?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** NIST CSF 2.0 GV.RR
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No one owns these processes; each is handled by whoever is at the desk, and problems are fixed case by case. |
+| 1 – Initial | A supervisor knows how each process runs, but ownership is informal, shared across departments and not written down. |
+| 2 – Developing | Owners are named for some processes (for example, the revenue cycle manager owns prior authorization), but intake and referrals have no owner and IT is not involved in any of them. |
+| 3 – Defined | Every in-scope process has a named business owner and a named IT or analytics counterpart, written responsibilities and a documented backup. |
+| 4 – Optimized | Owners review their process metrics with leadership at least quarterly, and changes to a process or its systems require the owner's sign-off. |
+
+**Probing questions**
+
+- Who would I talk to about why prior authorizations for imaging are denied or delayed?
+- When intake staff re-key the same data in two systems, who decides whether that is fixed?
+- Who approves a change to the eligibility check workflow, and who tells IT?
+- Who covers when that person is on leave?
+
+**Evidence and how to obtain it**
+
+- List of in-scope processes with owner, IT counterpart and backup — operations or compliance records.
+- Job descriptions or a RACI naming the process owners — HR or governance documents.
+- Minutes or change requests showing owner sign-off on a process change — change management.
+
+**Red flags**
+
+- The process owner is "the vendor" or "the clearinghouse".
+- Different departments each describe a different owner for the same process.
+- IT learns of a workflow change after the fact.
+
+**Healthcare considerations**
+
+- In small hospitals and clinics one person often runs patient access, billing and referrals; score whether the role is written and covered, not whether the headcount is large.
+- Prior authorization and referrals cross clinical and revenue cycle teams; an owner on only one side leaves the other side's delays unmanaged.
+
+**Path to the next level**
+
+- **To 2 – Developing:** List the four processes and write one owner and one IT counterpart next to each (days).
+- **To 3 – Defined:** Publish a RACI with backups and require owner sign-off for changes to process or system (weeks).
+- **To 4 – Optimized:** Add process metrics to a quarterly leadership review (months).
+
+**Recommended action if gap:** Name a business owner and an IT counterpart for prior authorization, eligibility, intake and referrals, and record them in a one-page RACI.
+
+**Sources:** <https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final>
+
+#### AR-02 — Is each in-scope process documented end to end as it is actually performed today (steps, systems, handoffs, exceptions)?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** NIST CSF 2.0 ID.AM; OMG BPMN 2.0
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Nothing is written down; the process exists only in people's heads. |
+| 1 – Initial | Some tips or checklists exist for individual steps, written by individual staff, and they differ between sites or shifts. |
+| 2 – Developing | A current-state description exists for some processes, but it omits exceptions, handoffs between systems or payer-specific rules, and has not been validated by the staff who do the work. |
+| 3 – Defined | Every in-scope process has a current-state map or procedure covering steps, systems, handoffs, payer or portal variations and exceptions, validated by the staff who perform it and under version control. |
+| 4 – Optimized | Process documents are reviewed at least annually and after every system change, and staff can show that the written process matches the observed one. |
+
+**Probing questions**
+
+- Show me how a new prior authorization request moves from order to payer decision. Where does it leave the EHR?
+- What do you do when a payer portal is down or a referral arrives by fax?
+- When was this last updated, and who confirmed it matches what staff really do?
+- How many ways are there to do eligibility checks across sites?
+
+**Evidence and how to obtain it**
+
+- Process maps or procedures for prior authorization, eligibility, intake and referrals with version and validation date — process owner.
+- A walk-through of one live case against the document — observation.
+- Review log or change history of the documents — document repository.
+
+**Red flags**
+
+- The document describes a system the organization no longer uses.
+- Staff say "that is not how we do it".
+- Exceptions are described as "handled by the team".
+
+**Healthcare considerations**
+
+- Payer-specific rules and portal steps change often; the document must say where payer variation lives, not describe a single generic flow.
+- Fax, phone and portal steps are part of the process and must be mapped; they are usually where the manual effort sits.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Write a one-page current-state map for the process with the highest volume (weeks).
+- **To 3 – Defined:** Cover all four processes with exceptions and payer variations and validate each with its staff (one quarter).
+- **To 4 – Optimized:** Review the documents annually and after any system change (ongoing).
+
+**Recommended action if gap:** Map the current-state steps, systems, handoffs and exceptions for each in-scope process, validate with the staff who perform them, and put the documents under version control.
+
+**Sources:** <https://www.omg.org/spec/BPMN/2.0.2/> · <https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final>
+
+#### AR-03 — Are monthly volumes and baselines measured for each process (cases, turnaround time, touches or minutes per case, rework, denials caused by the process)?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** NIST CSF 2.0 ID.IM
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No one knows how many cases each process handles or how long they take. |
+| 1 – Initial | Volumes are estimated from memory or from a vendor invoice; turnaround and effort per case are not measured. |
+| 2 – Developing | Monthly volumes are counted for some processes from system reports, but turnaround time, rework and effort per case are measured for none or one of them and the method is not written down. |
+| 3 – Defined | For every in-scope process, monthly volume, turnaround time, effort per case (touches or minutes), rework rate and process-related denials are reported from a documented method and kept for at least 12 months. |
+| 4 – Optimized | Baselines are reviewed monthly by the process owner, targets are set and tracked, and changes to a process are judged against the baseline before and after. |
+
+**Probing questions**
+
+- How many prior authorization requests did you submit last month and how many took more than five business days?
+- How many minutes does a staff member spend on one eligibility check, and how do you know?
+- Of last month's denials, how many were caused by missing authorization or registration errors?
+- Is the number the same if I ask billing and ask intake?
+
+**Evidence and how to obtain it**
+
+- Monthly volume and turnaround report per process for the last 12 months — EHR, practice management or clearinghouse reports.
+- Method note describing how each measure is counted — process owner.
+- Review notes where the baseline was used to make a decision — management meeting records.
+
+**Red flags**
+
+- Volumes come only from a vendor invoice.
+- Effort per case is "about 20 minutes" with no method.
+- Baseline numbers exist for a pilot, not for the full process.
+
+**Healthcare considerations**
+
+- A small clinic may submit only dozens of prior authorizations a month while a hospital handles hundreds; baselines show whether automation is worth building at all, and a low volume often justifies better manual practice over technology.
+- Volumes should come from system reports, not from patient records; do not copy patient identifiers into measurement files.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Pull last month's volumes for each process from system reports and record how they were counted (weeks).
+- **To 3 – Defined:** Add turnaround, effort per case, rework and process-related denials with a documented method and 12 months of history (one quarter).
+- **To 4 – Optimized:** Review baselines monthly, set targets and track before and after changes (ongoing).
+
+**Recommended action if gap:** Count monthly cases for each process from system reports, then add turnaround time and effort per case with a documented method.
+
+**Sources:** <https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final>
+
+#### AR-04 — Is there a prioritized list of automation candidates, scored for benefit, risk and feasibility and approved by operations and IT?
+
+**Weight:** 1 · **HHS CPG:** — · **References:** NIST CSF 2.0 GV.RM
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Automation requests are handled one at a time as people ask, or not at all. |
+| 1 – Initial | A few ideas are known informally, usually brought by one enthusiastic person or a vendor, with no list. |
+| 2 – Developing | A list of candidates exists, but it is not scored, not tied to baseline volumes and has not been approved by both operations and IT. |
+| 3 – Defined | A written candidate list is scored for volume, effort saved, patient and PHI risk, data readiness and effort to build, was approved by the process owners and IT, and sets the order of work. |
+| 4 – Optimized | The list is reviewed at least twice a year, completed items are compared with the expected benefit, and lessons change the scoring. |
+
+**Probing questions**
+
+- Which three processes would you automate first, and why those?
+- What stopped you from starting the others?
+- Who said yes to the current list?
+- What happened to the last idea that was not chosen?
+
+**Evidence and how to obtain it**
+
+- Candidate list with scoring criteria and approval date — operations or IT governance.
+- Evidence that at least one item was started in the approved order — project records.
+- Post-implementation review comparing benefit with expectation — project records.
+
+**Red flags**
+
+- The list was written by a vendor.
+- The top item has no baseline volume.
+- High-risk items sit at the top because they are exciting.
+
+**Healthcare considerations**
+
+- Prefer candidates that are high-volume, rule-based and low in clinical judgment (eligibility checks, status checks, intake data entry) before anything near clinical decisions.
+- Include the effect on patients, such as delays to care, in benefit and risk, not only staff time.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Write down five candidates with the volume from AR-03 next to each (weeks).
+- **To 3 – Defined:** Score the list on volume, risk and readiness and obtain written approval from owners and IT (one quarter).
+- **To 4 – Optimized:** Review the list twice a year and compare results with expected benefit (ongoing).
+
+**Recommended action if gap:** List automation candidates, score them with volume from AR-03 and the risk and readiness criteria in this area, and have the process owners and IT approve the order.
+
+**Sources:** <https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final>
+
+### Data & Integration Readiness
+
+#### AR-05 — Does the organization use standard electronic transactions (eligibility 270/271, prior authorization 278, claim status 276/277) with its major payers instead of portals, phone and fax wherever the payer supports them?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** 45 CFR Part 162; CAQH CORE Operating Rules; NIST CSF 2.0 ID.AM
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Eligibility, authorization and claim status are handled by phone, fax or by staff logging into individual payer portals. |
+| 1 – Initial | Some eligibility checks use an electronic transaction through the EHR or a clearinghouse, but authorization and claim status are handled by portal, phone or fax. |
+| 2 – Developing | Eligibility uses electronic transactions for most payers and some payers use electronic authorization or claim status, but there is no list of which payers support which transaction and portal use is not tracked. |
+| 3 – Defined | A current list shows, for each major payer, which standard transactions are in use and which are not, the share of cases handled by portal, phone or fax is measured, and gaps have an owner and a plan. |
+| 4 – Optimized | The share handled by electronic transactions is reported quarterly, payer capability is reviewed at least annually and new payer capabilities are adopted according to a plan. |
+
+**Probing questions**
+
+- For your top five payers, which transactions are electronic and which need a portal login?
+- What percent of prior authorizations leave through the portal, phone or fax?
+- Who tracks which payers have added electronic authorization?
+- What does your clearinghouse contract say about eligibility and claim status transactions?
+
+**Evidence and how to obtain it**
+
+- Payer capability matrix by transaction type — revenue cycle or clearinghouse.
+- Monthly transaction counts by channel (electronic, portal, phone, fax) — clearinghouse or EHR reports.
+- Roadmap or tickets for closing channel gaps — project records.
+
+**Red flags**
+
+- Staff keep a shared sheet of payer portal passwords.
+- Nobody can name a payer that supports electronic authorization.
+- The clearinghouse is a black box.
+
+**Healthcare considerations**
+
+- Standard transactions are required for many HIPAA-covered transactions, but prior authorization is not covered by the same electronic standard for every payer today; mixed channels are normal, so the question is whether they are known and measured.
+- Shared portal logins for payers are a credential risk (see Zero Trust ZT-01 and ZT-04); a standard transaction removes a login rather than adding one.
+
+**Path to the next level**
+
+- **To 2 – Developing:** List the top ten payers and the channel used for each transaction (weeks).
+- **To 3 – Defined:** Measure channel mix monthly and assign an owner and plan for each gap (one quarter).
+- **To 4 – Optimized:** Report the electronic share quarterly and review payer capability annually (ongoing).
+
+**Recommended action if gap:** Build a payer-by-transaction matrix for the top ten payers and measure the share of cases handled by portal, phone or fax.
+
+**Sources:** <https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-162> · <https://www.caqh.org/core/operating-rules>
+
+#### AR-06 — Can the data an automation needs be reached through supported interfaces (EHR or practice management APIs, HL7 v2 interfaces, FHIR), without screen scraping or re-keying?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** ONC HTI-1 certification criteria; HL7 FHIR US Core; NIST CSF 2.0 ID.AM
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Staff copy data between screens by hand, and no interface or API access has been requested from vendors. |
+| 1 – Initial | Some data moves through interfaces, but automation tools would have to read the screen or export files by hand; vendor API terms are unknown. |
+| 2 – Developing | The EHR vendor has described its APIs and interfaces and some are enabled, but the data an in-scope process needs is only partly reachable and nobody has confirmed cost, limits or support terms. |
+| 3 – Defined | For every in-scope process, the data needed is mapped to a supported interface (API, HL7 or FHIR) with documented vendor terms, cost and limits, and any remaining manual step is listed with its owner. |
+| 4 – Optimized | Interface access is monitored for failures and drift, API credentials are reviewed regularly, and vendor roadmaps for new interfaces are tracked at least annually. |
+
+**Probing questions**
+
+- For an eligibility check, where does the data come from and how does it get to the tool?
+- Does the EHR vendor charge for API access?
+- What happens to an automation that reads the screen when the vendor changes the layout?
+- Who holds the credentials an interface uses?
+
+**Evidence and how to obtain it**
+
+- Data-to-interface map for each in-scope process — IT integration team.
+- Vendor documentation or contract showing API availability, cost and limits — EHR and practice management vendors.
+- Interface monitoring report or alert history — integration engine or vendor portal.
+
+**Red flags**
+
+- "The bot logs in like a person."
+- API access is assumed but never requested.
+- Interface credentials belong to a former employee.
+
+**Healthcare considerations**
+
+- Certified health IT must provide standardized APIs, but small organizations often run older versions or have not licensed the API module; confirm what is enabled, not what is certified.
+- Screen-based automation sees whatever is on screen, including PHI the process does not need; prefer interfaces that return only the needed fields (minimum necessary).
+
+**Path to the next level**
+
+- **To 2 – Developing:** Request written API and interface documentation from EHR and practice management vendors (weeks).
+- **To 3 – Defined:** Map data needed by each process to an interface and record cost and limits (one quarter).
+- **To 4 – Optimized:** Monitor interface failures and review credentials and vendor roadmaps annually (ongoing).
+
+**Recommended action if gap:** Ask the EHR and practice management vendors in writing which APIs and interfaces are enabled, at what cost and with what limits, and map the data each process needs to them.
+
+**Sources:** <https://www.healthit.gov/topic/laws-regulation-and-policy/health-data-technology-and-interoperability-certification-program> · <https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final>
+
+#### AR-07 — Has the organization confirmed with its EHR vendor and its major payers how it will take part in electronic prior authorization (CMS-0057-F payer requirements, Da Vinci standards)?
+
+**Weight:** 1 · **HHS CPG:** — · **References:** CMS-0057-F; HL7 Da Vinci CRD, DTR, PAS
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No one has asked the EHR vendor or the payers about electronic prior authorization. |
+| 1 – Initial | Leaders are aware that new federal rules exist for payers, but no one has asked what they mean for the organization. |
+| 2 – Developing | The EHR vendor has been asked about its plans, or payer plans have been discussed, but there is no written answer and no list of which payers are affected. |
+| 3 – Defined | Written vendor responses and a payer-by-payer view show which payers must meet CMS-0057-F requirements (Medicare Advantage, Medicaid, CHIP, individual-market plans on the federal exchange), what the EHR vendor will support and when, and the organization has an owner and a plan for each gap. |
+| 4 – Optimized | The plan is reviewed at least twice a year against payer and vendor milestones, and early adoption results are tracked against the AR-03 baselines. |
+
+**Probing questions**
+
+- Which of your payers are Medicare Advantage, Medicaid managed care or exchange plans?
+- What has your EHR vendor told you about electronic prior authorization, and is it in writing?
+- Which payers have started to send decisions within the new timeframes?
+- Who is watching this?
+
+**Evidence and how to obtain it**
+
+- Vendor letter or roadmap on prior authorization, Da Vinci CRD, DTR and PAS support — EHR vendor.
+- Payer mix and CMS-0057-F applicability list — revenue cycle.
+- Plan with owner and milestones — project records.
+
+**Red flags**
+
+- The vendor said "we are working on it" with no date.
+- The practice assumes the rule applies to providers directly.
+- No one has looked at payer mix.
+
+**Healthcare considerations**
+
+- CMS-0057-F places obligations on certain payers, such as shorter decision timeframes beginning in 2026 and a Prior Authorization API by 2027; it does not force providers to adopt anything, so the benefit depends on the EHR vendor and payer mix.
+- Commercial payers, workers' compensation and self-funded plans are mostly outside the rule; keep portals and fax in the plan.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Send a written question to the EHR vendor and list affected payers (weeks).
+- **To 3 – Defined:** Document vendor and payer plans and assign an owner for each gap (one quarter).
+- **To 4 – Optimized:** Review the plan twice a year against milestones and baselines (ongoing).
+
+**Recommended action if gap:** Ask the EHR vendor in writing for its plan on electronic prior authorization and list which of your payers are subject to CMS-0057-F.
+
+**Sources:** <https://www.cms.gov/priorities/burden-reduction/overview/interoperability/policies-regulations/cms-interoperability-prior-authorization-final-rule-cms-0057-f> · <https://hl7.org/fhir/us/davinci-pas/>
+
+#### AR-08 — Is the quality of the source data that these processes depend on (registration, coverage, referral and order information) measured and corrected at the source?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** NIST CSF 2.0 ID.IM; HIPAA 45 CFR 164.312(c)
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Data errors are found only when a claim or authorization is rejected; no one tracks them. |
+| 1 – Initial | Staff fix errors when they notice them; errors are not counted and are not traced to a cause. |
+| 2 – Developing | Some errors are counted (for example, registration errors or coverage mismatches) and a few are traced to a cause, but there is no regular report and no owner. |
+| 3 – Defined | Key errors (identity or demographics, coverage and eligibility mismatches, incomplete referrals and orders) are reported monthly, traced to cause, assigned to an owner and corrected at the source, such as registration staff or the order entry screen. |
+| 4 – Optimized | Error rates have targets and trends, front-end checks prevent common errors, and an automation is not allowed to run on a data set whose error rate exceeds the owner's threshold. |
+
+**Probing questions**
+
+- What is the most common reason an eligibility check fails?
+- How many denials last month were caused by wrong or missing registration data?
+- Who gets the list, and what do they change?
+- Would you trust a bot to act on this data tomorrow?
+
+**Evidence and how to obtain it**
+
+- Monthly report of rejected eligibility checks, registration errors, incomplete referrals — EHR, clearinghouse or revenue cycle reports.
+- Cause analysis and the corrective action taken — process owner.
+- Front-end edits or screen validations that prevent errors — EHR configuration.
+
+**Red flags**
+
+- "The data is fine" with no report.
+- Staff fix the same error daily without telling registration.
+- The errors are blamed on the vendor.
+
+**Healthcare considerations**
+
+- Patient identity errors (duplicates, mismatches) create patient safety risk as well as billing risk and must be handled under the organization's identity management process.
+- Automations multiply data errors quickly; a bot that submits wrong coverage data to a payer at scale is harder to unwind than a human error.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Count monthly rejections from registration, coverage and referral errors and share them with the department (weeks).
+- **To 3 – Defined:** Trace errors to cause, assign owners and add a front-end check for the top cause (one quarter).
+- **To 4 – Optimized:** Set targets and block automations when error rates exceed the threshold (months).
+
+**Recommended action if gap:** Count monthly rejections caused by registration, coverage and referral errors and name an owner who corrects the cause at the source.
+
+**Sources:** <https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final> · <https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C>
+
+### Controls & Human Review
+
+#### AR-09 — Do automations (bots, scripts, workflow tools, AI agents) run under their own unique, least-privilege identities that are inventoried, owned and removed when the automation is retired?
+
+**Weight:** 3 · **HHS CPG:** — · **References:** HIPAA 45 CFR 164.312(a)(1), 164.312(d); NIST CSF 2.0 PR.AA; CISA ZTMM Identity
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Automations run under a staff member's own account or a shared login, or no one knows what runs. |
+| 1 – Initial | Some automations have their own accounts, but permissions are broad, passwords are shared with the person who built them and there is no list. |
+| 2 – Developing | A list of automations and their accounts exists, but some use shared or personal accounts, privileges are not reviewed and retirement is not tied to account removal. |
+| 3 – Defined | Every automation has a unique identity with the minimum access it needs, credentials held in a secrets store or managed identity, a named owner and a removal step on retirement, all in an inventory that matches the directory. |
+| 4 – Optimized | Automation accounts are reviewed at least quarterly, credentials rotate automatically, activity is alerted on when it differs from normal, and orphaned or unused accounts are removed within a set time. |
+
+**Probing questions**
+
+- List every bot, script or workflow tool that logs in to an EHR, portal or payer system. Whose account does each use?
+- Can any of them see more patients than the process needs?
+- What happens to the account when a bot is switched off?
+- Who is told when the person who built the automation leaves?
+
+**Evidence and how to obtain it**
+
+- Inventory of automations with identity, owner and purpose — IT or automation platform.
+- Directory or platform export of service accounts showing privileges and last sign-in — identity system.
+- Retirement record showing the account removed — change tickets.
+
+**Red flags**
+
+- An automation signs in with a former employee's credentials.
+- Admin rights for convenience.
+- No one can name the owner.
+
+**Healthcare considerations**
+
+- RPA tools often need an EHR account; clinical systems can restrict an account to a role such as registration or billing, which limits PHI exposure.
+- Accounts used by automations need the same privilege review as people (see Zero Trust ZT-03 and ZT-04) and cannot use interactive multi-factor prompts, so compensate with network and activity controls.
+
+**Path to the next level**
+
+- **To 2 – Developing:** List every automation and the account it uses and stop any use of personal or shared logins (weeks).
+- **To 3 – Defined:** Give each automation a unique least-privilege identity, store credentials centrally and name an owner (one quarter).
+- **To 4 – Optimized:** Review accounts quarterly, rotate credentials and alert on abnormal activity (months).
+
+**Recommended action if gap:** Inventory every automation and its account, move each to its own identity with minimum privileges and name an owner.
+
+**Sources:** <https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C> · <https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final>
+
+#### AR-10 — Are there defined criteria for when a person must review or approve an automated or AI-generated output before it is acted on, and is that review recorded?
+
+**Weight:** 3 · **HHS CPG:** — · **References:** NIST AI RMF GOVERN, MANAGE; NIST CSF 2.0 GV.PO; 45 CFR 92.210
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Automated and AI outputs are used as they come; no rule says when a person must check them. |
+| 1 – Initial | Staff are expected to "use judgment", but nothing says which outputs need review or who does it. |
+| 2 – Developing | Review is required for some outputs (for example, AI-drafted appeal letters), but the criteria are informal, reviewers are not named and the review is not recorded. |
+| 3 – Defined | A written rule sets, for each automation, which outputs need human review before action (anything that denies, delays or changes care or coverage, sends a patient communication or submits a claim or authorization), who reviews, and how the review is recorded in the work item. |
+| 4 – Optimized | Review samples are audited for quality, override and error rates are reported, and the criteria are adjusted when the data show review is too thin or too heavy. |
+
+**Probing questions**
+
+- Which automated or AI outputs are sent to a payer or patient without a person looking at them?
+- If the tool is wrong, who finds out, and how soon?
+- Can a reviewer see why the tool produced this output?
+- What share of outputs do reviewers change, and does anyone look at that?
+
+**Evidence and how to obtain it**
+
+- Human-review rule per automation with reviewer role — policy or procedure.
+- Work items or audit logs showing the reviewer and decision — workflow tool or EHR.
+- Report of override, correction or rejection rates — process owner.
+
+**Red flags**
+
+- "The reviewer clicks approve on every item."
+- AI-drafted clinical or coverage determinations are sent without clinician review.
+- No review record.
+
+**Healthcare considerations**
+
+- Any output that influences a clinical decision or a coverage decision must be reviewed by a qualified person; 45 CFR 92.210 requires covered entities to make reasonable efforts to avoid discrimination when using patient care decision support tools.
+- Automation bias is real: reviewers approving at speed behave as if no one reviewed; sample and audit the reviews.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Write the review rule for the two highest-risk automations and name the reviewer role (weeks).
+- **To 3 – Defined:** Cover all automations, record reviews in the work item and test that the reviewer can see the basis of the output (one quarter).
+- **To 4 – Optimized:** Audit review samples, report override rates and tune the criteria (ongoing).
+
+**Recommended action if gap:** Write a rule that says, for each automation, which outputs must be reviewed by a named role before action and where the review is recorded.
+
+**Sources:** <https://www.nist.gov/itl/ai-risk-management-framework> · <https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-A/part-92>
+
+#### AR-11 — Are automated actions logged (which automation, which record, which action, when) and are the logs reviewed?
+
+**Weight:** 3 · **HHS CPG:** — · **References:** HIPAA 45 CFR 164.312(b), 164.308(a)(1)(ii)(D); NIST CSF 2.0 DE.CM; HHS CPG Centralized Log Collection
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No logs identify what an automation did or when. |
+| 1 – Initial | Some tools keep their own logs, but they are not collected and are reviewed only when something goes wrong. |
+| 2 – Developing | Logs exist for the main automations and are retained, but they do not show which record was touched, are not collected centrally and are reviewed irregularly. |
+| 3 – Defined | Every automation logs the identity, record or case reference (without copying PHI into the log), action and time to a central location, logs are retained according to policy and a named person reviews them on a set schedule. |
+| 4 – Optimized | Logs are monitored for unusual volume or access patterns with alerts, reviews are recorded, and sampled actions are traced from log to source record in audits. |
+
+**Probing questions**
+
+- If a bot submitted 200 wrong authorizations on Tuesday, how would you find out which ones?
+- Where do the logs from the RPA tool go?
+- Do the logs contain patient names or identifiers?
+- Who looked at the logs last month?
+
+**Evidence and how to obtain it**
+
+- Sample log entry from each automation — automation platform or SIEM.
+- Log retention and review procedure — IT or compliance.
+- Records of the last two log reviews and what they found — security or compliance.
+
+**Red flags**
+
+- Logs on the bot's own server only.
+- Logs contain full patient records.
+- Logs are kept for days.
+
+**Healthcare considerations**
+
+- Audit logs are required for systems that contain ePHI; an automation that reads or changes PHI must be traceable at the record level.
+- Keep PHI out of the logs themselves: use case or account references that can be looked up in the source system.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Enable logging in each automation tool and keep logs for at least 90 days (weeks).
+- **To 3 – Defined:** Send logs to a central place, remove PHI from log content and schedule a monthly review (one quarter).
+- **To 4 – Optimized:** Alert on unusual volume or access and audit sampled actions end to end (months).
+
+**Recommended action if gap:** Turn on logging for each automation that identifies the identity, record reference, action and time, collect it centrally and assign a reviewer.
+
+**Sources:** <https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C> · <https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final>
+
+#### AR-12 — Are exceptions, monitoring and a manual fallback defined for each automation, so that work continues if an automation, clearinghouse or payer connection fails?
+
+**Weight:** 3 · **HHS CPG:** — · **References:** HIPAA 45 CFR 164.308(a)(7); NIST CSF 2.0 RC.RP, DE.CM
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | If an automation or connection fails, work stops until someone notices; there is no fallback. |
+| 1 – Initial | Staff improvise a manual workaround when something fails; nothing is written down and failures are noticed late. |
+| 2 – Developing | A fallback is described for some automations, failures are noticed by staff or users rather than by monitoring, and the fallback has not been tested. |
+| 3 – Defined | Each automation has monitoring that alerts a named person, a documented queue for exceptions and failures, a written manual fallback with a maximum acceptable delay, and the fallback has been exercised in the last 12 months. |
+| 4 – Optimized | Failure and exception rates are reported, fallbacks are rehearsed at least annually, and the loss of a clearinghouse or payer connection for several days is covered by the downtime plan. |
+
+**Probing questions**
+
+- If the clearinghouse were down for three days, how would eligibility checks and claims continue?
+- Who is alerted when a bot stops?
+- When did you last do the process by hand end to end?
+- How many cases are waiting in the exception queue today?
+
+**Evidence and how to obtain it**
+
+- Exception queue and alerting configuration — automation platform.
+- Written fallback procedure and maximum acceptable delay — process owner.
+- Record of the last fallback test or real failure and what was learned — operations or IT.
+
+**Red flags**
+
+- Only one person knows how to do the process manually.
+- "It has never failed."
+- Exceptions are emailed to a shared inbox.
+
+**Healthcare considerations**
+
+- The 2024 Change Healthcare outage left many providers unable to check eligibility, submit claims or receive payment for weeks; the downtime plan should name clearinghouse and payer connectivity, not just the EHR.
+- Prior authorization delays can delay care; the fallback must state which cases are escalated clinically when the automated route fails.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Document the manual fallback and alert contact for the two highest-volume automations (weeks).
+- **To 3 – Defined:** Add monitoring, an exception queue and maximum delay for each automation and test a fallback (one quarter).
+- **To 4 – Optimized:** Rehearse fallbacks annually and include clearinghouse loss in the downtime plan (ongoing).
+
+**Recommended action if gap:** Write for each automation how a failure is noticed, who is alerted, what staff do manually and for how long that is acceptable.
+
+**Sources:** <https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C> · <https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final>
+
+### AI Governance & Data Protection
+
+#### AR-13 — Is AI governed by an accountable person or group, with an inventory of AI in use (including AI features inside vendor products) and approval required before new use?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** NIST AI RMF GOVERN 1, 2; NIST CSF 2.0 GV.RR, ID.AM
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No one is accountable for AI, and IT does not know which AI tools staff or vendors use. |
+| 1 – Initial | Leaders have discussed AI informally; some use is known, none is listed, and approval is not required. |
+| 2 – Developing | A person or group is named and a list of known AI tools exists, but vendor-embedded AI features and staff use of public tools are not captured and approval is not enforced. |
+| 3 – Defined | An accountable person or committee with clinical, compliance, security and operations input keeps an inventory that includes vendor-embedded AI and staff use, new use requires documented approval, and the inventory matches what IT can observe. |
+| 4 – Optimized | The inventory is reviewed at least quarterly, approvals and rejections are reported to leadership, and the governance process is reviewed against NIST AI RMF at least annually. |
+
+**Probing questions**
+
+- Which AI features are switched on inside your EHR, phone system, billing software or Microsoft products?
+- Who approves a department's request to use an AI tool?
+- Which AI tools do staff use that IT has not approved?
+- How would the committee learn about a vendor turning on a new AI feature?
+
+**Evidence and how to obtain it**
+
+- AI governance charter or committee minutes naming members — leadership or compliance.
+- AI inventory including vendor-embedded features and the approval date for each — IT or compliance.
+- Network or SaaS discovery report compared with the inventory — IT or security.
+
+**Red flags**
+
+- "We do not use AI" while the EHR vendor has turned on ambient or drafting features.
+- Approvals happen by email with no record.
+- Only IT is on the committee.
+
+**Healthcare considerations**
+
+- Many EHR, revenue cycle and communication vendors now include AI features that are switched on by default or by a release; the vendor contract and release notes are part of the inventory.
+- Include clinical leadership and compliance; a tool that looks administrative (for example, patient messaging) can affect patients directly.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Name an owner and list all known AI tools and vendor features (weeks).
+- **To 3 – Defined:** Form a small cross-functional group, add vendor-embedded features and staff use and require approval before use (one quarter).
+- **To 4 – Optimized:** Review the inventory quarterly and the process annually against NIST AI RMF (ongoing).
+
+**Recommended action if gap:** Name an accountable owner, start an AI inventory that includes vendor-embedded features, and require approval before any new AI use.
+
+**Sources:** <https://www.nist.gov/itl/ai-risk-management-framework> · <https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence>
+
+#### AR-14 — Is there a written policy that prohibits PHI in prompts to AI tools that are not approved and covered by a business associate agreement, and is it technically enforced?
+
+**Weight:** 3 · **HHS CPG:** — · **References:** HIPAA 45 CFR 164.502(b), 164.308(b), 164.308(a)(5); NIST AI 600-1; NIST CSF 2.0 PR.DS
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No policy; staff paste whatever they need into public AI tools, or IT does not know whether they do. |
+| 1 – Initial | Leaders have told staff informally not to put patient information into AI tools, with no written policy, approved list or enforcement. |
+| 2 – Developing | A written policy exists, but it does not name approved tools, does not cover files, screenshots and exported reports, staff have not been trained on it and nothing blocks unapproved tools. |
+| 3 – Defined | An approved policy prohibits PHI and credentials in prompts, files and uploads for tools without a business associate agreement and a security review, lists the approved tools, all staff were trained in the last 12 months, and unapproved AI sites and uploads are blocked or monitored by technical controls. |
+| 4 – Optimized | Violations and blocked attempts are measured and followed up, the approved tools are reviewed at least annually and the policy is tested (for example, with a simulated upload) to prove enforcement works. |
+
+**Probing questions**
+
+- Can a nurse manager paste a patient note into a public chatbot today? How would you know?
+- Which AI tools have a signed business associate agreement?
+- Does the policy cover uploading a spreadsheet or a screenshot?
+- When was the last training on it?
+
+**Evidence and how to obtain it**
+
+- AI use policy with approved tools, version and approval date — policy library.
+- Training records showing completion for all staff — HR or learning system.
+- Web filter, data loss prevention or CASB configuration and a report of blocked attempts — security tools.
+
+**Red flags**
+
+- "We told people not to."
+- Personal accounts on public tools open from clinical workstations.
+- The BAA exists but does not cover the AI feature being used.
+
+**Healthcare considerations**
+
+- A business associate agreement is the legal basis for sharing PHI with a vendor; it does not by itself make a tool safe, so also check retention, training on customer data and sub-processors.
+- Staff paste PHI most often into summaries, letters and appeals; give them an approved alternative, or the policy will be ignored.
+- De-identification must meet HIPAA's standard, not simply removing names.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Publish a one-page policy with the approved tool list and tell all staff (weeks).
+- **To 3 – Defined:** Train all staff, add the policy to onboarding and block unapproved AI sites and uploads (one quarter).
+- **To 4 – Optimized:** Measure blocked attempts, review approved tools annually and test enforcement (ongoing).
+
+**Recommended action if gap:** Publish a policy that bans PHI and credentials in AI tools without a business associate agreement, list the approved tools and block the unapproved public ones.
+
+**Sources:** <https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C> · <https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence>
+
+#### AR-15 — Are AI and automation vendors assessed before use (business associate agreement, data use, retention and training terms, security, transparency, performance and bias information)?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** HIPAA 45 CFR 164.308(b); NIST CSF 2.0 GV.SC; ONC HTI-1 predictive DSI; 45 CFR 92.210
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Tools are bought or switched on without any review of data use or contract terms. |
+| 1 – Initial | Large purchases get a security review; small tools, free trials and features turned on by existing vendors do not. |
+| 2 – Developing | A vendor questionnaire exists, but it does not ask about AI-specific matters such as use of customer data for training, retention of prompts or outputs, or model performance, and it is not applied to every vendor. |
+| 3 – Defined | Every AI or automation vendor is assessed before use, using a standard checklist that covers the BAA, whether customer data trains models, retention, sub-processors, security controls, how the model was evaluated and known limits, and contract terms reflect the answers. |
+| 4 – Optimized | Critical vendors are reassessed at least annually and when features change, vendor performance and incidents are tracked and results feed the approval decision. |
+
+**Probing questions**
+
+- Does the vendor train its models on your data? Where is that written?
+- How long are prompts and outputs kept, and who can see them?
+- What does the vendor tell you about how the model performs for your patient population?
+- What happens when the vendor adds an AI feature after you signed?
+
+**Evidence and how to obtain it**
+
+- AI vendor assessment checklist and the last three completed assessments — security, compliance or procurement.
+- Contract or addendum clauses on data use, retention and incident notification — legal or procurement.
+- Reassessment records after a feature change — vendor management.
+
+**Red flags**
+
+- "The vendor says it is HIPAA compliant."
+- Free tools adopted by departments.
+- No way to see model documentation.
+
+**Healthcare considerations**
+
+- Certified EHR vendors must give users source information about predictive decision support tools under ONC HTI-1; ask for it for any tool that touches clinical decisions.
+- A business associate agreement does not tell you whether prompts are retained or used for training; get that in writing.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Add five AI questions to the existing vendor review and apply them to current AI vendors (weeks).
+- **To 3 – Defined:** Require the full checklist before approval and add contract clauses for data use and retention (one quarter).
+- **To 4 – Optimized:** Reassess critical vendors annually and after feature changes (ongoing).
+
+**Recommended action if gap:** Add AI-specific questions (training on customer data, retention, sub-processors, evaluation and limits) to the vendor review and apply it before any new use.
+
+**Sources:** <https://www.healthit.gov/topic/laws-regulation-and-policy/health-data-technology-and-interoperability-certification-program> · <https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-A/part-92>
+
+#### AR-16 — If AI is in production, is its performance monitored after go-live (accuracy, override and error rates, drift, effects on different patient groups), with authority to pause it?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** NIST AI RMF MEASURE, MANAGE; NIST AI 600-1; 45 CFR 92.210
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | AI tools are used after go-live with no measurement of how they perform. |
+| 1 – Initial | Staff report problems informally; no measures are tracked and no one can stop a tool. |
+| 2 – Developing | Some measures were taken at go-live, but monitoring has stopped or is irregular, results are not reviewed by a group, and the authority to pause a tool is not defined. |
+| 3 – Defined | Each production AI tool has defined measures (accuracy or error rate, override rate, drift, effects on patient groups where relevant), results are reviewed on a schedule by the governance group, and a named role may pause or remove the tool. |
+| 4 – Optimized | Measures are trended against go-live baselines, thresholds trigger review or pause automatically, incidents are logged and lessons are used to change approval rules. |
+
+**Probing questions**
+
+- How do you know the tool is as accurate today as at go-live?
+- How often do reviewers override it, and has that changed?
+- Who can switch it off, and without asking the vendor?
+- Do results differ for any patient group, and who looked?
+
+**Evidence and how to obtain it**
+
+- Monitoring report for each production AI tool with trend — AI owner or vendor.
+- Governance group minutes recording the review — leadership or compliance.
+- Pause or rollback procedure naming the role — policy.
+
+**Red flags**
+
+- Performance was measured once, in the vendor demo.
+- Nobody owns the numbers.
+- The vendor controls the off switch.
+
+**Healthcare considerations**
+
+- Performance can change when payer rules, coding or patient mix change; small organizations can rely on vendor reports only if they review them and can verify a sample.
+- Where a tool affects care or coverage, monitor for differences by patient group and record what was done.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Pick measures and a monthly reviewer for each production AI tool (weeks).
+- **To 3 – Defined:** Review results in the governance group on a schedule and write down who can pause a tool (one quarter).
+- **To 4 – Optimized:** Trend results against baselines and set thresholds that trigger a review or pause (ongoing).
+
+**Recommended action if gap:** For each AI tool in production, choose measures, schedule a review by the governance group and name who can pause the tool.
+
+**Sources:** <https://www.nist.gov/itl/ai-risk-management-framework> · <https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence>
+
+### Workforce & Change Management
+
+#### AR-17 — Are the people who do the work involved before an automation is built or bought (process walk-through, input on exceptions), and told what will change in their job?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** NIST AI RMF GOVERN, MAP
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Automations are chosen by management or the vendor, and staff find out when the tool appears. |
+| 1 – Initial | Staff are told shortly before go-live; their input is not asked for and exceptions are discovered in production. |
+| 2 – Developing | Front-line staff are consulted for some projects but not systematically, and what changes in each role is explained verbally and not written down. |
+| 3 – Defined | For each automation, the staff who do the work walk through the current process before design, their exceptions and workarounds are recorded, and a written note tells each affected role what changes and when. |
+| 4 – Optimized | Front-line staff take part in the go-live decision, feedback after go-live is collected and used, and the process owner reports what changed in response. |
+
+**Probing questions**
+
+- Who did you ask before the last tool was bought, and what did they say?
+- Which workaround do staff use today that the automation does not handle?
+- How did the front desk learn the process was changing?
+- Did anyone who does the work see the exception rules before go-live?
+
+**Evidence and how to obtain it**
+
+- Walk-through notes or process maps reviewed by the staff who do the work — process owner.
+- Change note sent to each affected role — operations or HR communications.
+- Meeting records showing front-line input on exceptions — project records.
+
+**Red flags**
+
+- Staff learn about a tool from the vendor go-live email.
+- Workarounds are dismissed as bad habits.
+- The project team includes no one who does the work.
+
+**Healthcare considerations**
+
+- Registration, prior authorization and referral staff hold the exception knowledge (payer-specific habits, form quirks, which fax number works); automations built without them fail on the cases that matter.
+- Staff in small clinics often do several jobs; ask them about every process an automation touches, not only the one on the project chart.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Hold a one-hour walk-through of the process with two people who do it and write down their exceptions (weeks).
+- **To 3 – Defined:** Make the walk-through and a written change note part of every automation project (one quarter).
+- **To 4 – Optimized:** Add front-line staff to go-live decisions and review their feedback after go-live (ongoing).
+
+**Recommended action if gap:** Before the next automation project, walk through the current process with the people who do it and write down the exceptions and workarounds they use.
+
+**Sources:** <https://www.nist.gov/itl/ai-risk-management-framework>
+
+#### AR-18 — Are staff who use automations or AI tools trained for their role: what the tool does, where it fails, how to handle exceptions and what data must never be entered?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** 45 CFR 164.308(a)(5); NIST AI RMF GOVERN
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | There is no training; staff learn by trying the tool. |
+| 1 – Initial | A vendor demo or a one-time email explained the tool; no record shows who was trained and nothing covers data limits. |
+| 2 – Developing | Training exists for the main automation, but it is not role specific, does not cover failures or data limits (for example, no patient information in unapproved AI tools) and attendance is not recorded. |
+| 3 – Defined | Each tool has role-based training covering its purpose, known limits, exception handling, data that must not be entered and how to report problems; completion is recorded and new staff are trained before they use the tool. |
+| 4 – Optimized | Training is refreshed when a tool or rule changes, staff are checked on it (spot checks, scenarios), and incident patterns feed back into the training content. |
+
+**Probing questions**
+
+- What does a new registrar learn about the tool before using it?
+- Can staff tell you what to do when the tool gives a wrong answer?
+- Do staff know which AI tools they may paste patient information into?
+- When did training last change after a tool update?
+
+**Evidence and how to obtain it**
+
+- Training content for each tool, by role — training or vendor materials.
+- Completion records, including new hires and contract staff — HR or learning system.
+- Policy section on data that must not be entered — AI and PHI policy (see AR-14).
+
+**Red flags**
+
+- Training is a link to the vendor website.
+- Nobody can say who was trained.
+- Staff do not know that free AI tools are off limits for patient information.
+
+**Healthcare considerations**
+
+- The HIPAA Security Rule requires a security awareness and training program for all workforce members, including management (45 CFR 164.308(a)(5)); extend it to cover automation and AI tools.
+- Part-time, contract and agency staff use the same tools; include them.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Write the one-page guide for the main automation and AI tools and record who has read it (weeks).
+- **To 3 – Defined:** Make role-based training with completion records a condition for access to each tool (one quarter).
+- **To 4 – Optimized:** Refresh training when tools or rules change and test it with scenarios or spot checks (ongoing).
+
+**Recommended action if gap:** Write a one-page, role-based guide for each automation or AI tool covering what it does, its limits, exceptions and data that must not be entered, and record who has read it.
+
+**Sources:** <https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C> · <https://www.nist.gov/itl/ai-risk-management-framework>
+
+#### AR-19 — Is there a plan for how staff time freed by automation will be used, and are roles, workloads and job descriptions updated to match?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** NIST AI RMF GOVERN, MAP
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Automation is bought with no plan for the staff time it frees or the work it adds. |
+| 1 – Initial | Leadership expects savings but has not said what staff will do with the time; new tasks (checking outputs, fixing exceptions) are unplanned. |
+| 2 – Developing | A plan exists for one project, but workloads and job descriptions have not been updated and the extra work of monitoring and handling exceptions is not counted. |
+| 3 – Defined | For each automation, leadership documents how freed time will be used (for example, denial follow-up, patient calls, backlog), counts the new monitoring and exception work, updates job descriptions and tells the affected staff. |
+| 4 – Optimized | Time use is checked against the plan after go-live, workloads are rebalanced, and results (backlog cleared, overtime reduced) are shared with staff. |
+
+**Probing questions**
+
+- What will the registration team do with the hours the tool saves?
+- Who handles the cases the tool cannot?
+- Has any job description changed since the tool went live?
+- Did overtime or backlog change, and who looked?
+
+**Evidence and how to obtain it**
+
+- Plan stating how freed time will be used and what new work is created — project plan or business case.
+- Updated job descriptions or role assignments — HR.
+- Workload or overtime report before and after go-live — operations.
+
+**Red flags**
+
+- Savings are counted in full-time equivalents with no plan.
+- Staff fear for their jobs and no one has answered.
+- Exception work lands on whoever is free.
+
+**Healthcare considerations**
+
+- Staff shortages and burnout in administrative roles are a common reason to automate; the benefit is real only if freed time goes to work that needs people (patient contact, complex denials, backlog) and staff are told so.
+- Automation also adds work (monitoring, exception queues, vendor follow-up); count it.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Estimate the hours freed and the new exception work for the next automation and tell the affected team the plan (weeks).
+- **To 3 – Defined:** Update job descriptions and workloads for each automation in production (one quarter).
+- **To 4 – Optimized:** Check time use against the plan after go-live and share the results with staff (ongoing).
+
+**Recommended action if gap:** For the next automation, write down what staff will do with the time freed and who will handle the exceptions and monitoring it creates.
+
+**Sources:** <https://www.nist.gov/itl/ai-risk-management-framework>
+
+#### AR-20 — Can staff report problems with an automation or suggest improvements, and does someone answer?
+
+**Weight:** 1 · **HHS CPG:** — · **References:** NIST AI RMF MANAGE; NIST CSF 2.0 ID.IM
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No channel exists; staff work around problems. |
+| 1 – Initial | Staff tell their supervisor informally; reports are not tracked and often not answered. |
+| 2 – Developing | A mailbox or ticket category exists, but reports are not triaged, no one owns it and reporters do not hear back. |
+| 3 – Defined | A named channel exists, reports are logged against the specific automation, the process owner or IT triages them within a stated time, and the reporter is told the outcome. |
+| 4 – Optimized | Reports are trended, recurring issues drive fixes or retirements, and staff can see changes made because of their reports. |
+
+**Probing questions**
+
+- Where does a registrar report that the eligibility tool rejected a valid card?
+- When did you last change something because staff reported a problem?
+- How long does a report wait before someone looks at it?
+- Do reporters hear back?
+
+**Evidence and how to obtain it**
+
+- Channel description and named owner — operations.
+- Log of reports with outcome and date — ticketing system or shared tracker.
+- Examples of changes made because of staff reports — change records.
+
+**Red flags**
+
+- Problems are reported in hallway conversations.
+- The ticket category is "other".
+- Nothing has ever been changed in response to a report.
+
+**Healthcare considerations**
+
+- Front-line staff see failures first (claims rejected, wrong patient matched); a fast route to report them also supports the incident handling that security and privacy events require.
+- Staff must be able to report without blame, especially when the problem is their own use of an unapproved tool.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Create one reporting route and name who triages it (weeks).
+- **To 3 – Defined:** Log each report against an automation, set a response time and tell reporters the outcome (one quarter).
+- **To 4 – Optimized:** Trend reports and use them to decide fixes and retirements (ongoing).
+
+**Recommended action if gap:** Pick one place (a shared mailbox or a ticket category) for automation problems, name who triages it and tell staff.
+
+**Sources:** <https://www.nist.gov/itl/ai-risk-management-framework> · <https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final>
+
+### Value & Continuous Improvement
+
+#### AR-21 — After go-live, is the benefit of each automation measured against its baseline (time, turnaround, rework, denials) and reviewed by the process owner?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** NIST CSF 2.0 ID.IM; NIST AI RMF MEASURE
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No one checks whether automations deliver the benefit that was promised. |
+| 1 – Initial | Benefits are described from impressions or the vendor's claims; there are no before-and-after numbers. |
+| 2 – Developing | Benefit was measured once for the main automation against a baseline, but not repeated, not done for the others and not reviewed by the owner. |
+| 3 – Defined | For every automation in production, the same measures as the baseline (volume, turnaround, effort per case, rework, process-related denials) are reported on a schedule, compared with the pre-automation baseline and reviewed by the process owner. |
+| 4 – Optimized | Results go to leadership each quarter, automations that miss their targets are fixed, paused or retired, and the findings change what is chosen next. |
+
+**Probing questions**
+
+- How many minutes per case did the process take before the tool, and how many now?
+- Did denials from this process go down?
+- Has any automation been paused or removed because it did not deliver?
+- Does the vendor's report match your own numbers?
+
+**Evidence and how to obtain it**
+
+- Before-and-after report per automation tied to the baseline (see AR-03) — process owner.
+- Review notes with decisions — management records.
+- Record of an automation fixed, paused or retired after missing targets — change records.
+
+**Red flags**
+
+- The only evidence is the vendor's case study.
+- Savings are quoted with no baseline.
+- No automation has ever been judged to have failed.
+
+**Healthcare considerations**
+
+- Include the work the tool creates (checking outputs, exception queues) when comparing time per case, or the savings are overstated.
+- A small clinic with low volume may find the benefit is small; that is a useful result, not a failure of the assessment.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Take one automation and compare its current turnaround and effort per case with its baseline (weeks).
+- **To 3 – Defined:** Report all automations against their baselines every quarter with the process owner (one quarter).
+- **To 4 – Optimized:** Report results to leadership and act on automations that miss targets (ongoing).
+
+**Recommended action if gap:** For each automation in production, report the baseline measures after go-live and have the process owner review them quarterly.
+
+**Sources:** <https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final> · <https://www.nist.gov/itl/ai-risk-management-framework>
+
+#### AR-22 — Is each automation or AI tool piloted on a limited scope with success criteria agreed in advance, and is the decision to go live recorded?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** NIST AI RMF MAP, MEASURE; 45 CFR 164.308(a)(1)(ii)(A), (a)(8)
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Tools go live for everyone at once, with no test period. |
+| 1 – Initial | A short trial happens informally; there are no success criteria and the buyer decides. |
+| 2 – Developing | Some projects are piloted, but the criteria are loose ("see how it goes"), the pilot uses a favorable subset of cases and the decision is not recorded. |
+| 3 – Defined | Each automation or AI tool is piloted on a defined scope with success criteria (accuracy, turnaround, error and exception rates, security checks) agreed beforehand, pilot results are written down, and a named group records the go, change or stop decision. |
+| 4 – Optimized | Pilots run alongside the manual process where practical, failure cases are tested on purpose, rollback is rehearsed, and roll-out is staged with checkpoints. |
+
+**Probing questions**
+
+- What did you agree "good" would look like before the pilot began?
+- Were the pilot cases typical, or the easy ones?
+- Who decided to go live, and where is it written?
+- Did you try the cases the tool is most likely to get wrong?
+
+**Evidence and how to obtain it**
+
+- Pilot plan with scope and success criteria — project records.
+- Pilot results and the go, change or stop decision with names and date — governance or management minutes.
+- Rollback or fallback test record — IT or process owner.
+
+**Red flags**
+
+- The pilot ended when the contract was signed.
+- Success criteria were written after the results.
+- The pilot ran only on the vendor's sample data.
+
+**Healthcare considerations**
+
+- Run pilots with the minimum necessary patient data and under the same safeguards as production; a pilot in which the vendor creates, receives, maintains or transmits PHI needs a business associate agreement first.
+- Test the unusual cases (out-of-state payers, secondary coverage, minors, language needs) that tend to break rules-based automation.
+
+**Path to the next level**
+
+- **To 2 – Developing:** Write a one-page pilot plan with scope, success criteria and decision owner before the next go-live (weeks).
+- **To 3 – Defined:** Require a pilot, written results and a recorded decision for every new automation or AI tool, including edge cases (one quarter).
+- **To 4 – Optimized:** Run alongside the manual process where practical, rehearse rollback and stage the roll-out (ongoing).
+
+**Recommended action if gap:** Write a one-page pilot plan with scope, success criteria and a decision owner before the next tool goes live.
+
+**Sources:** <https://www.nist.gov/itl/ai-risk-management-framework> · <https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C>
+
+#### AR-23 — Is each automation reviewed on a schedule and when payer rules, forms or systems change, and retired cleanly when it is no longer needed?
+
+**Weight:** 2 · **HHS CPG:** — · **References:** NIST CSF 2.0 ID.AM, PR.AA; CMS-0057-F; 45 CFR 164.308(a)(8)
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | Automations run until they break; nobody remembers all of them. |
+| 1 – Initial | Review happens only when something fails; there is no list of what is running, and retired automations may still have access. |
+| 2 – Developing | Some automations are reviewed after failures or vendor notices, but there is no schedule, no trigger from payer or system changes, and retirement is informal. |
+| 3 – Defined | Each automation is reviewed at least annually and whenever a payer rule, form, EHR version or clearinghouse change affects it; the review confirms it still works and is still needed, and retirement follows a checklist (identities and access removed, data handled, documentation updated). |
+| 4 – Optimized | The review calendar is driven by an inventory, upcoming regulatory dates (such as the CMS-0057-F API milestones) are tracked against it, and retirement evidence is kept. |
+
+**Probing questions**
+
+- Which automations are running today, and when was each last reviewed?
+- What happens to an automation's account and data when you retire it?
+- Who tracks payer or EHR changes that could break an automation?
+- Which automation have you retired, and how did you know it was safe?
+
+**Evidence and how to obtain it**
+
+- Automation inventory with last review date and next trigger — process owner or IT.
+- Review record showing which change triggers were considered — change or governance records.
+- Completed retirement checklist for an automation — IT.
+
+**Red flags**
+
+- No one can list the automations.
+- Retired automations still have active credentials.
+- A payer portal changed and the tool kept failing silently for weeks.
+
+**Healthcare considerations**
+
+- Payer rules, portals, forms and standards change often, and CMS-0057-F brings payer decision-timeframe and API milestones through 2027; an automation built around a portal process may need to change or retire when payers offer APIs.
+- Retired automations that keep credentials or stored data are a security and privacy risk (see AR-09).
+
+**Path to the next level**
+
+- **To 2 – Developing:** List the running automations with an owner and a last-review date (weeks).
+- **To 3 – Defined:** Set an annual review and triggers for payer, form or system changes, and write the retirement checklist (one quarter).
+- **To 4 – Optimized:** Drive the review calendar from the inventory and keep retirement evidence (ongoing).
+
+**Recommended action if gap:** Add a last-review date and retirement criteria to the automation inventory and review every automation at least once a year.
+
+**Sources:** <https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final> · <https://www.cms.gov/priorities/burden-reduction/overview/interoperability/policies-regulations/cms-interoperability-prior-authorization-final-rule-cms-0057-f> · <https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C>
+
+#### AR-24 — Are the full costs of automation and AI tools (subscriptions, usage fees, integration, support and maintenance effort) tracked per tool and reviewed together with the organization's software licenses?
+
+**Weight:** 1 · **HHS CPG:** — · **References:** NIST CSF 2.0 ID.AM; NIST AI RMF GOVERN
+
+| Level | What you would see |
+|---|---|
+| 0 – Not in place | No one knows what is spent on automation or AI tools. |
+| 1 – Initial | Costs are visible only on invoices and card statements, and departments have signed up for tools nobody tracks. |
+| 2 – Developing | Subscription costs for the main tools are known, but usage fees, integration and maintenance effort are not, and the tools are not part of the license review. |
+| 3 – Defined | Each tool has an owner and a cost record that includes subscription, usage fees, integration and the staff time to run it, and the records are reviewed at least annually together with software licenses, including unused or duplicate tools. |
+| 4 – Optimized | Cost per case is reported next to the benefit, renewals are decided on that data, and unused or overlapping tools are removed before renewal. |
+
+**Probing questions**
+
+- How much did you spend last year on automation and AI subscriptions in total?
+- Which departments bought a tool on their own?
+- What does the tool cost per case once staff time is counted?
+- When did you last cancel an automation tool for low use?
+
+**Evidence and how to obtain it**
+
+- Cost record per automation or AI tool — finance or IT.
+- License or subscription review that includes these tools — IT asset or finance records.
+- Renewal decision with usage and benefit data — contract files.
+
+**Red flags**
+
+- AI subscriptions are paid on personal or department cards.
+- Renewal happens automatically without usage data.
+- Maintenance effort is not counted.
+
+**Healthcare considerations**
+
+- Automation and AI tools are often bought by departments outside the central license review, so their spend and any unapproved tools stay hidden; finding them is also a compliance step (see AR-13) and connects to the License Optimization area.
+- Usage-based pricing can grow with volume; track it monthly.
+
+**Path to the next level**
+
+- **To 2 – Developing:** List all automation and AI subscriptions, including card-paid ones, with owner and annual cost (weeks).
+- **To 3 – Defined:** Add them to the annual license review and include usage fees and maintenance effort in the cost record (one quarter).
+- **To 4 – Optimized:** Report cost per case next to the benefit and decide renewals on that data (ongoing).
+
+**Recommended action if gap:** List every automation and AI subscription, including those paid by departments or by card, with an owner and annual cost, and add them to the next software license review.
+
+**Sources:** <https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final> · <https://www.nist.gov/itl/ai-risk-management-framework>

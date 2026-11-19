@@ -1,13 +1,13 @@
-# 🏥 ACS Health Maturity Kit v0.2.0
+# 🏥 ACS Health Maturity Kit v0.3.0
 
-**A free, open toolkit that helps U.S. healthcare organizations assess and improve three things that decide whether their technology is secure, reliable and affordable: software licensing, application modernization and Zero Trust security.**
+**A free, open toolkit that helps U.S. healthcare organizations assess and improve four things that decide whether their technology is secure, reliable, affordable and ready to take work off their staff: software licensing, application modernization, Zero Trust security and automation readiness.**
 
-Answer 76 questions in an Excel workbook, or let an AI assistant guide you through them. You get a scored maturity profile, your status against all 20 HHS Cybersecurity Performance Goals, a ranked list of gaps and a remediation roadmap your own team can execute.
+Answer 100 questions in an Excel workbook, or let an AI assistant guide you through them. You get a scored maturity profile, your status against all 20 HHS Cybersecurity Performance Goals, a ranked list of gaps and a remediation roadmap your own team can execute.
 
-![Version](https://img.shields.io/badge/version-0.2.0-blue.svg)
+![Version](https://img.shields.io/badge/version-0.3.0-blue.svg)
 ![Content license](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)
 ![Code license](https://img.shields.io/badge/code-MIT-green.svg)
-![Questions](https://img.shields.io/badge/questions-76-brightgreen.svg)
+![Questions](https://img.shields.io/badge/questions-100-brightgreen.svg)
 ![HHS goals](https://img.shields.io/badge/HHS%20CPGs-20%2F20-orange.svg)
 ![Agents](https://img.shields.io/badge/AI%20agents-5-purple.svg)
 
@@ -17,7 +17,20 @@ One Excel file. Nothing to install, no account, no sign-up and no protected heal
 
 ---
 
-## 🆕 What's new in v0.2.0
+## 🆕 What's new in v0.3.0
+
+v0.3.0 adds a fourth scored area, **Automation Readiness**, for small hospitals and clinics whose staff are buried in manual administrative work:
+
+- **24 new questions (AR-01 to AR-24)** on whether prior authorization, eligibility verification, patient intake and referrals are owned, documented and measured; whether the data and interfaces an automation needs are available (including the CMS-0057-F electronic prior authorization changes); whether people review and audit what automations and AI do; whether AI use is governed and keeps PHI out of prompts; whether staff are involved and trained; and whether the benefit and cost of each automation are measured after go-live.
+- **Scored exactly like the other areas:** the same 0–4 scale, weights 1–3, weighted averages, truncated levels and gap points, with observable criteria, evidence, red flags, healthcare considerations and next-step actions for every question. It has its own sheet, dashboard section and Question Guide entries.
+- **Nothing existing changed.** The 76 question IDs, weights, criteria and the HHS goal mappings are the same as in v0.2.0, so per-area results stay comparable. The *overall* score now averages four areas; see [`docs/methodology.md`](docs/methodology.md). The AI agents and playbooks still cover the three original areas; Automation Readiness is assessed with the workbook and the Question Guide.
+- **Calculated values stay in the workbook** through `tools/cache_values.py`, which restores the stored results that earlier releases carried.
+
+See [CHANGELOG.md](CHANGELOG.md). Version v0.2.0 remains available as a tagged release.
+
+---
+
+## What was new in v0.2.0
 
 v0.2.0 turns the kit from a questionnaire into a practitioner's method:
 
@@ -33,14 +46,14 @@ The question IDs, weights, HHS goal mappings and scoring rules are unchanged, so
 
 ## 📑 Contents
 
-- [What's new in v0.2.0](#-whats-new-in-v020)
+- [What's new in v0.3.0](#-whats-new-in-v030)
 - [Why this exists](#-why-this-exists)
 - [Who it is for](#-who-it-is-for)
 - [Try it in 15 minutes](#-try-it-in-15-minutes)
 - [See what you get](#-see-what-you-get)
 - [Quick start](#-quick-start)
 - [What's inside](#-whats-inside)
-- [The three services assessed](#-the-three-services-assessed)
+- [The four services assessed](#-the-four-services-assessed)
 - [How scoring works](#-how-scoring-works)
 - [HHS Cybersecurity Performance Goals coverage](#-hhs-cybersecurity-performance-goals-coverage)
 - [Workbook tour](#-workbook-tour)
@@ -65,13 +78,14 @@ Healthcare organizations are connected through vendors, clearinghouses, payers a
 
 HHS has published Cybersecurity Performance Goals for the sector, and many organizations—especially rural, community and independent hospitals with small IT teams—need a practical way to know where they stand, what to fix first, and how to use the licenses and tools they already pay for.
 
-Three problems tend to show up together:
+Four problems tend to show up together:
 
 | Problem | What it looks like | What the kit helps you do |
 |---|---|---|
 | **Paying for security you have not turned on** | Licenses include MFA, conditional access, device management or email protection that was never deployed | Map licensed capabilities to deployment status and to the HHS goal each one supports |
 | **Running critical systems on unsupported platforms** | Clinical and business applications depend on operating systems or software that no longer receive security updates | Inventory applications, score technical risk and get a suggested disposition for each |
-| **No baseline to plan from** | Security and modernization investments are decided without a shared, evidence-based view of current maturity | Score 76 practices, rank the gaps and turn them into a 0–90 day, 3–6 month and 6–18 month roadmap |
+| **Staff buried in manual administrative work** | Prior authorization, eligibility checks, intake and referrals are re-keyed, faxed and chased by hand, and tools or AI are bought without knowing the baseline, the data access or the controls they need | Measure the baseline, check data and interface readiness, and put human review, audit logging and no-PHI-in-prompts rules in place before automating |
+| **No baseline to plan from** | Security and modernization investments are decided without a shared, evidence-based view of current maturity | Score 100 practices, rank the gaps and turn them into a 0–90 day, 3–6 month and 6–18 month roadmap |
 
 This kit gives them that, for free, in a form they can use without hiring anyone.
 
@@ -171,7 +185,7 @@ python tools/score_assessment.py my-assessment.xlsx results
 
 | Component | Location | What it does |
 |---|---|---|
-| **Assessment workbook** | `toolkit/ACS-Health-Maturity-Assessment.xlsx` | 76 maturity questions across three services, each with observable criteria for levels 0–4, automatic scoring, dashboard, priority gaps and HHS goal crosswalk |
+| **Assessment workbook** | `toolkit/ACS-Health-Maturity-Assessment.xlsx` | 100 maturity questions across four services, each with observable criteria for levels 0–4, automatic scoring, dashboard, priority gaps and HHS goal crosswalk |
 | **Question Guide** | sheet in the workbook and [`docs/question-guide.md`](docs/question-guide.md) | For every question: probing questions, evidence and how to obtain it, red flags, healthcare considerations and the path to the next level |
 | **Practitioner playbooks** | [`docs/playbooks/`](docs/playbooks/) | In-depth guides for License Optimization, App Modernization and Zero Trust, with methods, decision tables, illustrative examples and quick wins for small hospitals |
 | **App Portfolio Triage** | sheet in the workbook | Inventory applications, score technical risk and get a suggested disposition |
@@ -179,21 +193,23 @@ python tools/score_assessment.py my-assessment.xlsx results
 | **AI agent layer** | `agents/`, `workflows/`, `templates/`, `checklists/` | A lightweight, file-based method to run the assessment with an AI assistant |
 | **Runbook and report templates** | `templates/` | Modernization runbook with test and rollback steps; assessment report, executive summary and remediation roadmap |
 | **Scoring tool** | `tools/score_assessment.py` | Turns a completed workbook into JSON and Markdown results |
+| **Value cache** | `tools/cache_values.py` | Stores calculated results in the built workbook so it displays in viewers that do not recalculate (needs the optional `formulas` package) |
 | **Workbook and docs builders** | `tools/build_workbook.py`, `tools/build_docs.py` | Rebuild the workbook, the Question Guide and the framework mapping from the question bank |
 | **Question bank** | `data/questionnaire.csv` | The single source of truth for all questions and framework mappings |
 | **Documentation** | `docs/` | Methodology, framework mapping, Question Guide, playbooks and a step-by-step guide |
 
 ---
 
-## 🧭 The three services assessed
+## 🧭 The four services assessed
 
 | Service | Questions | Dimensions |
 |---|---|---|
 | **License Optimization** | 24 | Governance & Ownership · Entitlements · Deployment & Usage · Security Value Realization · Cloud Cost · Programs & Negotiation |
 | **App Modernization** | 24 | Portfolio Visibility · Lifecycle & Supportability · Rationalization & Roadmap · Engineering & Release · Resilience & Recovery · Cloud & Data Readiness |
 | **Zero Trust** | 28 | Identity · Devices · Networks · Applications & Workloads · Data · Visibility & Analytics · Governance & Readiness |
+| **Automation Readiness** | 24 | Process Ownership & Baselines · Data & Integration Readiness · Controls & Human Review · AI Governance & Data Protection · Workforce & Change Management · Value & Continuous Improvement |
 
-Every question has observable criteria for each maturity level, the evidence to review and how to obtain it, probing questions, red flags, healthcare considerations, a recommended action, and references to the **HHS Healthcare and Public Health Cybersecurity Performance Goals**, the **HIPAA Security Rule**, **NIST CSF 2.0**, the **CISA Zero Trust Maturity Model v2.0**, **NIST SP 800-218 (SSDF)**, **ISO/IEC 19770-1** and the **FinOps Framework**. Modernization planning questions also reference the **Microsoft Cloud Adoption Framework**. The full mapping is in [`docs/framework-mapping.md`](docs/framework-mapping.md).
+Every question has observable criteria for each maturity level, the evidence to review and how to obtain it, probing questions, red flags, healthcare considerations, a recommended action, and references to the **HHS Healthcare and Public Health Cybersecurity Performance Goals**, the **HIPAA Security Rule**, **NIST CSF 2.0**, the **CISA Zero Trust Maturity Model v2.0**, **NIST SP 800-218 (SSDF)**, **ISO/IEC 19770-1**, the **FinOps Framework** and, for Automation Readiness, the **NIST AI Risk Management Framework**, the HIPAA standard transactions and **CMS-0057-F**. Modernization planning questions also reference the **Microsoft Cloud Adoption Framework**. The full mapping is in [`docs/framework-mapping.md`](docs/framework-mapping.md).
 
 ---
 
@@ -272,6 +288,7 @@ All 20 goals are mapped to at least one question. The **CPG Crosswalk** sheet sh
 | **License Optimization** | 24 questions, answered in the yellow cells, with the criteria for each level and the evidence to review |
 | **App Modernization** | 24 questions, answered in the yellow cells, with the criteria for each level and the evidence to review |
 | **Zero Trust** | 28 questions organized by the CISA Zero Trust Maturity Model pillars, with the criteria for each level and the evidence to review |
+| **Automation Readiness** | 24 questions on process baselines, data and integration readiness, human review and controls, AI governance, workforce and change management, and value tracking, with the criteria for each level and the evidence to review |
 | **Dashboard** | Scores by service and dimension, with charts |
 | **Priority Gaps** | The 20 gaps with the most gap points and the recommended action for each |
 | **CPG Crosswalk** | Status against each of the 20 HHS Cybersecurity Performance Goals |

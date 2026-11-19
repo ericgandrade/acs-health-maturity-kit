@@ -12,7 +12,7 @@ from collections import OrderedDict, defaultdict
 from pathlib import Path
 from openpyxl import load_workbook
 
-SERVICES = ['License Optimization', 'App Modernization', 'Zero Trust']
+SERVICES = ['License Optimization', 'App Modernization', 'Zero Trust', 'Automation Readiness']
 LEVELS = ['Not in place', 'Initial', 'Developing', 'Defined', 'Optimized']
 CPGS_ESSENTIAL = ['Mitigate Known Vulnerabilities', 'Email Security', 'Multifactor Authentication',
                   'Basic Cybersecurity Training', 'Strong Encryption', 'Revoke Credentials for Departing Workforce Members',
@@ -37,6 +37,8 @@ def read(path):
     wb = load_workbook(path, data_only=False)
     items = []
     for svc in SERVICES:
+        if svc not in wb.sheetnames:  # workbooks from v0.2.0 have no Automation Readiness sheet
+            continue
         ws = wb[svc]
         for r in range(5, ws.max_row + 1):
             qid = ws.cell(r, 1).value
@@ -95,6 +97,8 @@ def summarize(items, profile, lic, apps):
                       top_applications=sorted([a for a in apps if a['priority'] is not None], key=lambda a: -a['priority'])[:10])
     for svc in SERVICES:
         s_items = [i for i in items if i['service'] == svc]
+        if not s_items:  # service not present in the workbook (v0.2.0 workbooks have three)
+            continue
         dims = OrderedDict()
         for d in OrderedDict.fromkeys(i['dimension'] for i in s_items):
             sc = wavg([i for i in s_items if i['dimension'] == d])
