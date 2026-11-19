@@ -17,36 +17,32 @@ One Excel file. Nothing to install, no account, no sign-up and no protected heal
 
 ---
 
-## 🆕 What's new in v0.3.0
+## 🔎 What is this, in plain words?
 
-v0.3.0 adds a fourth scored area, **Automation Readiness**, for small hospitals and clinics whose staff are buried in manual administrative work:
+Small hospitals and clinics run on a mix of software licenses, older applications, security tools and manual paperwork, and often nobody has one picture of how well it all works. This kit gives you that picture, and a short list of what to fix first.
 
-- **24 new questions (AR-01 to AR-24)** on whether prior authorization, eligibility verification, patient intake and referrals are owned, documented and measured; whether the data and interfaces an automation needs are available (including the CMS-0057-F electronic prior authorization changes); whether people review and audit what automations and AI do; whether AI use is governed and keeps PHI out of prompts; whether staff are involved and trained; and whether the benefit and cost of each automation are measured after go-live.
-- **Scored exactly like the other areas:** the same 0–4 scale, weights 1–3, weighted averages, truncated levels and gap points, with observable criteria, evidence, red flags, healthcare considerations and next-step actions for every question. It has its own sheet, dashboard section and Question Guide entries.
-- **Nothing existing changed.** The 76 question IDs, weights, criteria and the HHS goal mappings are the same as in v0.2.0, so per-area results stay comparable. The *overall* score now averages four areas; see [`docs/methodology.md`](docs/methodology.md). The AI agents and playbooks still cover the three original areas; Automation Readiness is assessed with the workbook and the Question Guide.
-- **Calculated values stay in the workbook** through `tools/cache_values.py`, which restores the stored results that earlier releases carried.
+1. **You answer questions** about what your organization actually does today, for example "Is multifactor authentication required for every account?" There are 100 questions, grouped into four areas.
+2. **You score each one from 0 to 4.** Every question describes what each level looks like, so you do not have to guess what "good" means.
+3. **You get results:** a score per area, your status against the 20 HHS Cybersecurity Performance Goals, a ranked list of gaps and a draft roadmap.
 
-See [CHANGELOG.md](CHANGELOG.md). Version v0.2.0 remains available as a tagged release.
+The four areas:
 
----
+| Area | The question it answers |
+|---|---|
+| **License Optimization** | Are we using the security and productivity features we already pay for? |
+| **App Modernization** | Are our critical applications supported, recoverable and on a plan? |
+| **Zero Trust** | Is access to patient data protected, and could we withstand a ransomware attack? |
+| **Automation Readiness** | Are we ready to take manual administrative work (prior authorization, eligibility checks, intake, referrals) off our staff with automation or AI, safely? |
 
-## What was new in v0.2.0
+The workbook is a plain Excel file. You do not need to be technical to use it.
 
-v0.2.0 turns the kit from a questionnaire into a practitioner's method:
-
-- **Scoring criteria for every level of every question.** Each of the 76 questions now describes what you would observe at 0, 1, 2, 3 and 4, so two people assessing the same hospital reach the same score.
-- **An interview guide for every question:** probing questions, the evidence that proves the level and where to obtain it, red flags that an answer is overstated, healthcare-specific considerations and the path to the next level. It is in the new **Question Guide** sheet and in [`docs/question-guide.md`](docs/question-guide.md).
-- **Three practitioner playbooks** in [`docs/playbooks/`](docs/playbooks/): license reconciliation and renewal readiness, application portfolio triage and modernization, and Zero Trust with ransomware readiness for small hospitals.
-- **Rewritten AI agents** with interview playbooks, domain knowledge, challenge rules and output specifications, plus new commands (`*shelfware`, `*right-size`, `*runbook`, `*evidence-list`, `*vendor-access`).
-- **Deeper workflows, templates and checklists**, and a License-Security Map re-verified against Microsoft Learn.
-
-The question IDs, weights, HHS goal mappings and scoring rules are unchanged, so v0.1.0 results remain comparable. See [CHANGELOG.md](CHANGELOG.md).
+> **Latest release: v0.3.0** added the Automation Readiness area. The [CHANGELOG](CHANGELOG.md) lists what changed in each release, and earlier versions stay available as tagged releases.
 
 ---
 
 ## 📑 Contents
 
-- [What's new in v0.3.0](#-whats-new-in-v030)
+- [What is this, in plain words?](#-what-is-this-in-plain-words)
 - [Why this exists](#-why-this-exists)
 - [Who it is for](#-who-it-is-for)
 - [Try it in 15 minutes](#-try-it-in-15-minutes)
@@ -132,7 +128,7 @@ Answer honestly and based on evidence: a score of 3 or 4 means the practice is d
 
 ## 📸 See what you get
 
-The images below were produced from the workbook with **illustrative sample answers**. They do not describe any real organization.
+The images below were produced from the workbook with **illustrative sample answers**. They do not describe any real organization. They were captured before the Automation Readiness area was added, so the Dashboard shows three areas; the current workbook shows four.
 
 **Dashboard** — weighted scores by service and dimension, HHS goal summary and charts.
 
@@ -150,7 +146,7 @@ The images below were produced from the workbook with **illustrative sample answ
 
 1. **[Download the workbook](https://github.com/ericgandrade/acs-health-maturity-kit/releases/latest/download/ACS-Health-Maturity-Assessment.xlsx)** (direct link to the file attached to the latest [release](../../releases); the same file is in [`toolkit/`](toolkit/ACS-Health-Maturity-Assessment.xlsx)).
 2. Open it in Microsoft Excel or LibreOffice Calc and read the **Start Here** sheet.
-3. Fill the **Profile** sheet, then answer the yellow cells in the three service sheets.
+3. Fill the **Profile** sheet, then answer the yellow cells in the four service sheets (License Optimization, App Modernization, Zero Trust and Automation Readiness).
 4. Review **Dashboard**, **Priority Gaps** and **CPG Crosswalk**. They update automatically.
 
 ### Option B — Workbook plus AI agents
@@ -168,6 +164,8 @@ Then, inside Claude Code:
 ```
 
 Follow the commands: `*start` → `*assess license` → `*assess apps` → `*assess zerotrust` → `*score <file.xlsx>` → `*consolidate`.
+
+The AI agents guide the first three areas. **Automation Readiness does not have an agent or playbook yet**: answer it in its workbook sheet, using the interview guide in [`docs/question-guide.md`](docs/question-guide.md).
 
 Using ChatGPT, Copilot, Gemini or another assistant? See [Using the agents with other assistants](#using-the-agents-with-other-assistants).
 
@@ -187,7 +185,7 @@ python tools/score_assessment.py my-assessment.xlsx results
 |---|---|---|
 | **Assessment workbook** | `toolkit/ACS-Health-Maturity-Assessment.xlsx` | 100 maturity questions across four services, each with observable criteria for levels 0–4, automatic scoring, dashboard, priority gaps and HHS goal crosswalk |
 | **Question Guide** | sheet in the workbook and [`docs/question-guide.md`](docs/question-guide.md) | For every question: probing questions, evidence and how to obtain it, red flags, healthcare considerations and the path to the next level |
-| **Practitioner playbooks** | [`docs/playbooks/`](docs/playbooks/) | In-depth guides for License Optimization, App Modernization and Zero Trust, with methods, decision tables, illustrative examples and quick wins for small hospitals |
+| **Practitioner playbooks** | [`docs/playbooks/`](docs/playbooks/) | In-depth guides for License Optimization, App Modernization and Zero Trust (none yet for Automation Readiness), with methods, decision tables, illustrative examples and quick wins for small hospitals |
 | **App Portfolio Triage** | sheet in the workbook | Inventory applications, score technical risk and get a suggested disposition |
 | **License-Security Map** | sheet in the workbook and `data/license_security_map.csv` | See which security capabilities common Microsoft licenses include and whether you have deployed them |
 | **AI agent layer** | `agents/`, `workflows/`, `templates/`, `checklists/` | A lightweight, file-based method to run the assessment with an AI assistant |
@@ -365,7 +363,7 @@ A small hospital IT team can complete the assessment in about one week of part-t
 | 2 | License Optimization session; complete the License-Security Map | IT leader, procurement or finance |
 | 3 | App Modernization session; start the App Portfolio Triage | Applications and infrastructure leads, clinical informatics |
 | 4 | Zero Trust session; review the CPG Crosswalk | Security lead, compliance or privacy officer |
-| 5 | Score, prioritize and draft the roadmap | IT leader with leadership review |
+| 5 | Automation Readiness session (60–90 minutes), then score, prioritize and draft the roadmap | Revenue cycle or operations lead, IT leader with leadership review |
 
 Re-assess every 6–12 months with the same workbook to measure progress. See [`docs/how-to-run-an-assessment.md`](docs/how-to-run-an-assessment.md).
 
@@ -382,7 +380,7 @@ acs-health-maturity-kit/
 ├── templates/      what the outputs look like
 ├── checklists/     how quality, evidence, privacy and safety are checked
 ├── docs/           methodology, Question Guide, framework mapping, how-to guide
-│   └── playbooks/  practitioner playbooks for the three services
+│   └── playbooks/  practitioner playbooks for License Optimization, App Modernization and Zero Trust
 ├── tools/          build the workbook, score a completed assessment
 ├── integrations/   source of the Claude Code and GitHub integration files
 ├── .claude/        Claude Code subagents and the /acs-assess command
