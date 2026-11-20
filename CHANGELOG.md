@@ -2,6 +2,15 @@
 
 All notable changes to this kit are documented here. Versions follow semantic versioning.
 
+## [Unreleased]
+
+### Fixed
+- Dashboard charts in Excel: the axis labels were hidden, chart titles overlapped the plot and each point had its own colour. The charts now show the category and value axes, one colour and a title above the plot, and the radar charts have more room for long dimension names.
+
+### Changed
+- The README opens with a plain-language explanation of the kit instead of release notes, and text that still described three areas now describes four.
+- The sample screenshots in `docs/images/` were recaptured from the current workbook (Excel, illustrative sample answers).
+
 ## [0.3.0] — 2026-11-19
 
 ### Added

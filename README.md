@@ -128,7 +128,7 @@ Answer honestly and based on evidence: a score of 3 or 4 means the practice is d
 
 ## 📸 See what you get
 
-The images below were produced from the workbook with **illustrative sample answers**. They do not describe any real organization. They were captured before the Automation Readiness area was added, so the Dashboard shows three areas; the current workbook shows four.
+The images below were produced from the workbook with **illustrative sample answers**. They do not describe any real organization.
 
 **Dashboard** — weighted scores by service and dimension, HHS goal summary and charts.
 

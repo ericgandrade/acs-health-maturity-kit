@@ -381,9 +381,13 @@ def build():
     bar.y_axis.scaling.min = 0
     bar.y_axis.scaling.max = 4
     bar.y_axis.majorUnit = 1
+    bar.x_axis.delete = False  # openpyxl omits this, and Excel then hides the axis labels
+    bar.y_axis.delete = False
     bar.add_data(Reference(db, min_col=2, min_row=4, max_row=overall_row), titles_from_data=True)
     bar.set_categories(Reference(db, min_col=1, min_row=5, max_row=overall_row))
     bar.legend = None
+    bar.title.overlay = False  # keep the title above the plot area in Excel
+    bar.varyColors = False
     bar.height, bar.width = 7, 14
     db.add_chart(bar, 'H4')
     anchor_row = 20
@@ -397,10 +401,14 @@ def build():
         rc.y_axis.scaling.min = 0
         rc.y_axis.scaling.max = 4
         rc.y_axis.majorUnit = 1
+        rc.x_axis.delete = False
+        rc.y_axis.delete = False
         rc.legend = None
-        rc.height, rc.width = 8, 14
+        rc.title.overlay = False
+        rc.varyColors = False
+        rc.height, rc.width = 10, 14
         db.add_chart(rc, f'H{anchor_row}')
-        anchor_row += 17
+        anchor_row += 21
 
     # ---------------- Priority Gaps ----------------
     pg = wb.create_sheet('Priority Gaps', 6)
